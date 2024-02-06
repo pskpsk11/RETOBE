@@ -2,7 +2,180 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.retobe.user.UserMapper">
 
+<!-- 로그인 -->
+ 	<select id="login" resultType="kr.co.retobe.vo.MemberVO" parameterType="kr.co.retobe.vo.MemberVO">
+ 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd}) and user_validity=true;
+ 	</select>
+	
+	<!-- 회원가입 -->
+ 	<insert id="regist" parameterType="kr.co.retobe.vo.MemberVO">
+		INSERT INTO member(
+			name, id, pwd, email, gender, birthday, hp, addr1, addr2, registdate, zipcode, user_validity, email_agree ,point
+		) VALUES (
+			#{name}, #{id}, MD5(#{pwd}), #{email}, #{gender},#{birthday}, #{hp}, #{addr1}, #{addr2}, NOW(), #{zipcode}, 1, #{email_agree} ,2000
+		)
+		<selectKey keyProperty="member_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()   
+		</selectKey>
+ 	</insert>
+	
+	<!-- 회원정보수정 -->
+ 		<update id="update" parameterType="kr.co.retobe.vo.MemberVO">
+			UPDATE member SET
+				<if test="pwd != ''">
+				pwd = MD5(#{pwd}),
+				</if>
+				<!--name = #{name}-->
+				gender = #{gender},
+				birthday = #{birthday},
+				hp = #{hp},
+				zipcode = #{zipcode},
+				addr1 = #{addr1},
+				addr2 = #{addr2}	
+			WHERE member_no = #{member_no}
+		</update>
+	
+	
+	<!-- 비밀번호 확인 -->
+ 	<select id="pwdCheck" resultType="kr.co.retobe.vo.MemberVO" parameterType="kr.co.retobe.vo.MemberVO">
+ 		SELECT * FROM member WHERE pwd=MD5(#{pwd})
+ 	</select>
+	
+	
+	<!-- 회원탈퇴 -->
+	<update id="quit" parameterType="kr.co.retobe.vo.MemberVO">
+		UPDATE member
+		SET user_validity = false
+		where member_no= #{member_no}
+	</update>
+	
+	<!-- 수정중 -->
+	<!-- 아이디 찾기 -->
+	
+	<select id ="findId" resultType="kr.co.retobe.vo.MemberVO" parameterType="kr.co.retobe.vo.MemberVO"> 
+		SELECT * FROM member WHERE name = #{name} AND email = #{email}		
+	</select>
+	
+	<select id ="findPwd" resultType="kr.co.retobe.vo.MemberVO" parameterType="kr.co.retobe.vo.MemberVO"> 
+		SELECT * FROM member WHERE name = #{name} AND id = #{id} AND email = #{email}		
+	</select>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="dupId" resultType="Integer" parameterType="String" >
+		SELECT COUNT(*)
+		FROM member
+		WHERE id = #{xxx}
+	</select>
+	
+	<!-- 임시비밀번호 -->
+	<update id="updatePw" parameterType="kr.co.retobe.vo.MemberVO">
+		UPDATE member
+		SET pwd=MD5(#{pwd})
+		WHERE id = #{id}
+	</update>
+
+	<!-- 마이페이지 -->
+	<select id="list" resultType="java.util.Map" parameterType="int">
+		SELECT education, area, branch, subject, mon, tue, wed, thu, fri, sat, sun, time, price, cname, cart_no, teacher_img_org
+		FROM basket INNER JOIN course
+		ON basket.course_no = course.course_no
+		WHERE member_no = #{no}
+	</select>
+		<!-- WHERE member_no = #{no}-->
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM basket WHERE cart_no=#{no}
+	</delete>	
+	
+	<select id="count" resultType="int" parameterType="int">
+		SELECT count(*)
+		FROM basket
+		 WHERE member_no = #{no}
+	</select>
+	<insert id="cartInsert"  parameterType="kr.co.retobe.vo.BasketVO">
+		INSERT INTO basket(
+			member_no, course_no
+		) VALUES (
+			#{member_no}, #{course_no}
+		)
+	</insert>
+		<!-- WHERE member_no = #{no} -->
+		
+		 
+	<select id="currentCourseIndex" parameterType="kr.co.retobe.vo.MemberVO" resultType="java.util.Map">
+	    <![CDATA[
+		    SELECT
+		        pd.course_no, i_cname, i_startday, i_endday, 
+		        (SELECT teacher_img_org FROM course WHERE course.course_no = pd.course_no) as teacher_img
+		    FROM member m
+		    JOIN pay p ON m.member_no = p.member_no
+		    JOIN pay_detail pd ON p.order_no = pd.order_no
+		    WHERE m.member_no = #{member_no}
+		        AND STR_TO_DATE(i_startday, '%Y-%m-%d') <= CURDATE()
+		        AND STR_TO_DATE(i_endday, '%Y-%m-%d') > CURDATE()
+		    ORDER BY i_startday
+	    ]]>
+	</select>
 
 
+	<select id="pastCourseIndex" parameterType="kr.co.retobe.vo.MemberVO" resultType="java.util.Map">
+         SELECT 
+		    m.member_no, pd.detail_no, c.course_no,
+		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS pay_date,
+		    p.order_no, 
+		    i_cname, 
+		    i_price, 
+		    DATE_FORMAT(i_startday, '%Y-%m-%d') AS i_startday, 
+		    DATE_FORMAT(i_endday, '%Y-%m-%d') AS i_endday,
+		   teacher_img_org,
+		   pay_cancel, DATE_FORMAT(pay_cancel_date, '%Y-%m-%d') AS pay_cancel_date, pay_refund, pay_refund_date,
+           (SELECT count(*) FROM review WHERE detail_no=pd.detail_no) AS review_cnt
+		FROM member m
+		JOIN pay p ON m.member_no = p.member_no
+		JOIN pay_detail pd ON p.order_no = pd.order_no
+        JOIN course c ON pd.course_no=c.course_no
+		WHERE m.member_no = #{member_no}
+		ORDER BY i_endday DESC;
+	</select>	
+	
+	<select id="myCourseAskIndex" parameterType="kr.co.retobe.vo.MemberVO" resultType="java.util.Map">
+  		SELECT
+		    cqna_no, m.member_no, cq_title, course_no,
+		    DATE_FORMAT(cq_writedate, '%Y-%m-%d') AS cq_writedate
+		FROM member m JOIN cqna cq ON m.member_no = cq.member_no
+		WHERE m.member_no = #{member_no}
+		ORDER BY cq_writedate;
+	</select>	
+	
+	<select id="askIndex" parameterType="kr.co.retobe.vo.MemberVO" resultType="java.util.Map">
+		SELECT
+		    q.qna_no, m.member_no, q_title, q_content,
+		    DATE_FORMAT(q_writedate, '%Y-%m-%d') AS q_writedate
+		FROM member m JOIN qna q ON m.member_no = q.member_no
+		WHERE m.member_no = #{member_no}
+		ORDER BY q_writedate
+	</select>
+	
+	<select id="myReviewIndex" parameterType="kr.co.retobe.vo.MemberVO" resultType="java.util.Map">
+        SELECT
+		    c.cname, r_title, review_no, m.member_no, r.course_no,
+		    DATE_FORMAT(r_writedate, '%Y-%m-%d') AS r_writedate
+		FROM member m JOIN review r ON m.member_no = r.member_no
+		JOIN course c ON c.course_no = r.course_no
+		WHERE m.member_no = #{member_no}
+		ORDER BY r.r_writedate desc
+	</select>	
 
+	
+	<select id="courseSelect" resultType="kr.co.retobe.vo.CourseVO" parameterType="int">
+		SELECT *
+		FROM course
+		 WHERE course_no = #{no}
+	</select>
+
+	<select id="reviewTotal" resultType="int" parameterType="int">
+		SELECT count(*)
+		FROM review
+		 WHERE course_no = #{no}
+	</select>
 </mapper>

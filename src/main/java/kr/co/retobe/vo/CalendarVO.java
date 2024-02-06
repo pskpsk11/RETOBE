@@ -1,4 +1,4 @@
-package kr.co.retobe.cousre;
+package kr.co.retobe.vo;
 
 import lombok.Data;
 

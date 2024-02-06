@@ -1,4 +1,4 @@
-package kr.co.retobe.board.boardVO;
+package kr.co.retobe.vo;
 
 import java.sql.Timestamp;
 

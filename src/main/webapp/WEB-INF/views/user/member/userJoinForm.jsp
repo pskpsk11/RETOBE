@@ -72,7 +72,7 @@
     	$(function() {
     		$("#idCheck").click(function() {
     			$.ajax({
-    				url:'/tobe/user/idCheck.do',
+    				url:'/retobe/user/idCheck.do',
     				data:{id:$('#id').val()},
     				success:function(res) {
     					console.log(res);
