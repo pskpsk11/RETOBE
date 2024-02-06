@@ -24,7 +24,7 @@
       </init-param>
       <init-param>
          <param-name>contextConfigLocation</param-name>
-         <param-value>kr.co.tobe.config.MvcConfig</param-value>
+         <param-value>kr.co.retobe.config.MvcConfig</param-value>
       </init-param> 
       <load-on-startup>1</load-on-startup>
    </servlet>
