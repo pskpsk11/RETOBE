@@ -10,7 +10,7 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
 <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+<link rel="stylesheet" href="/retobe/css/user_Header_Footer.css" />
 <style>
 .calendarWrap{
 	
@@ -178,7 +178,7 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
        events: function(info, successCallback, failureCallback){
     	   $.ajax({
    			type: 'GET',
-   			url:'/tobe/user/common/calendar/list',
+   			url:'/retobe/user/common/calendar/list',
    			dataType:"json",  
    			success:function(res) {
 				var jsonArray = [];
