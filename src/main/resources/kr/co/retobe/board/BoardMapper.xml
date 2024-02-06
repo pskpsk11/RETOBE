@@ -2,7 +2,198 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.retobe.board.BoardMapper">
 
+<insert id="insert" parameterType="kr.co.retobe.vo.ReviewVO">
+		insert into review (
+			member_no, course_no, detail_no, r_title, r_content, r_writedate, r_rating
+		) values (
+			#{member_no}, #{course_no}, #{detail_no}, #{r_title}, #{r_content}, now(), #{r_rating}
+		)
+	</insert>
+	
+	<select id="selectCourse" parameterType ="int" resultType="double">
+		select course_rating
+		from course
+		where course_no = #{no}
+	</select>
+	
+	<update id="updateCouse" parameterType="String">
+		UPDATE course
+		SET course_rating = #{rating}
+		WHERE course_no = #{no};
+	</update>
+	
+	<select id="selectReviewNo" resultType="java.util.Map">
+      	SELECT c.course_no, cname, m.member_no, id, r_title, r.review_no,
+      	<![CDATA[ STR_TO_DATE(r_writedate, '%Y-%m-%d') ]]> as r_writedate
+      	FROM course c 
+        JOIN review r ON r.course_no=c.course_no
+		JOIN member m ON r.member_no=m.member_no;
+   	</select>
+   	
+    <select id="ReviewDetail" parameterType="kr.co.retobe.vo.ReviewVO" resultType="kr.co.retobe.vo.ReviewVO">
+        SELECT r_title, r_writedate, r_content
+        FROM review
+        WHERE review_no = #{review_no};
+    </select>
 
 
+	<!-- 고객센터 -->
+	<sql id="noticeSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					n_title LIKE '%${searchWord}%' OR n_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="noticeList" parameterType="kr.co.retobe.vo.NoticeVO" resultType="kr.co.retobe.vo.NoticeVO">
+		SELECT *
+		FROM notice
+		<include refid="noticeSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="noticeCount" parameterType="kr.co.retobe.vo.NoticeVO" resultType="int">
+		SELECT COUNT(*)
+		FROM notice
+		<include refid="noticeSql"/>
+	</select>
+	
+	<!-- 상세 -->
+	<select id="detail" parameterType="int" resultType="kr.co.retobe.vo.NoticeVO">
+		SELECT * FROM notice WHERE notice_no = #{notice_no}
+	</select>
+	
+		<select id="qnaDetail" parameterType="int" resultType="kr.co.retobe.vo.QnaVO">
+		SELECT * FROM qna WHERE qna_no = #{qna_no}
+	</select>
+	
+	<!-- 문의 -->
+	<sql id="qnaSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					q_title LIKE '%${searchWord}%' OR q_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="qnaList" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
+		SELECT *
+		FROM qna
+		<include refid="qnaSql"/>
+		<!-- ORDER BY gno DESC, ono ASC  -->
+		LIMIT #{startIdx}, 10
+	</select>
+	<select id="qnaCount" parameterType="kr.co.retobe.vo.QnaVO" resultType="int">
+		SELECT COUNT(*)
+		FROM qna
+		<include refid="qnaSql"/>
+	</select>
+	
+	<!-- <insert id="insert" parameterType="kr.co.retobe.vo.QnaVO">
+		INSERT INTO qna(
+			`member_no`,
+			`q_title`,
+			`q_content`,
+			`q_writedate`			
 
+		) VALUES (
+			#{member_no},
+			#{q_title},
+			#{q_content},
+			NOW()
+		)
+	</insert> -->
+	
+
+
+	<select id="faqTitle" parameterType="kr.co.retobe.vo.FaqVO" resultType="kr.co.retobe.vo.FaqVO">
+		SELECT f_title FROM faq
+	</select>
+	
+ 	<select id="faqList" parameterType="kr.co.retobe.vo.FaqVO" resultType="kr.co.retobe.vo.FaqVO">
+		SELECT *
+		FROM faq	
+		LIMIT #{startIdx}, 10
+	</select>
+	<select id="faqCount" parameterType="kr.co.retobe.vo.FaqVO" resultType="int">
+		SELECT COUNT(*)
+		FROM faq
+	</select>
+
+	
+
+
+	<!-- 
+	<insert id="noticeInsert" parameterType="kr.co.retobe.vo.NoticeVO">
+		INSERT INTO notice(
+			`notice_no`,
+			`n_title`,
+			`n_content`,
+			`n_writedate`,
+		) VALUES (
+			#{notice_no},
+			#{n_title},
+			#{n_content},
+			NOW()
+		)
+	</insert>
+	-->
+	
+	
+<!--  -->
+	<update id="qnaUpdate" parameterType="kr.co.retobe.vo.QnaVO">
+		UPDATE qna SET 
+			q_title=#{q_title},
+			q_content=#{q_content}
+		WHERE qna_no=#{qna_no}
+	</update>
+	
+	<insert id="qnaInsert" parameterType="kr.co.retobe.vo.QnaVO">
+		INSERT INTO qna (
+			`member_no`,
+			`q_title`,
+			`q_content`,
+			`q_writedate`
+		) VALUES (
+			#{member_no},
+			#{q_title},
+			#{q_content},
+			NOW()
+		)
+		<selectKey keyProperty="qna_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<!-- <update id="updateGno" parameterType="int">
+		UPDATE qna SET gno=#{no} WHERE qna_no=#{no}
+	</update> -->
+	
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM qna WHERE qna_no=#{no}
+	</delete>
+	
+	<select id="NoticeDetail" parameterType="kr.co.retobe.vo.NoticeVO" resultType="kr.co.retobe.vo.NoticeVO">
+        SELECT n_title, n_writedate, n_content
+        FROM notice
+        WHERE notice_no = #{no};
+    </select>
+    
+    <!-- 1:1 문의 수정 -->
+	<select id="view" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
+	    SELECT *
+	    FROM qna
+	    WHERE qna_no = #{qna_no}
+	</select>
 </mapper>

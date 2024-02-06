@@ -175,36 +175,36 @@ function courseView() {
 <div class="header">
 	<span class="header_memberBar">
 		<c:if test="${empty loginInfo }">
-		    <a href="/tobe/user/member/userLogin.do">로그인</a> |
-		    <a href="/tobe/user/member/userJoinPolicy.do">회원가입</a>
+		    <a href="/retobe/user/userLogin.do">로그인</a> |
+		    <a href="/retobe/user/userJoinPolicy.do">회원가입</a>
 		</c:if>
 		
 		<c:if test="${!empty loginInfo }">
-		    <a href="/tobe/user/member/userLogout.do">로그아웃</a> |
-		    <a href="/tobe/user/member/userMyPageMain.do">마이페이지</a>
+		    <a href="/retobe/user/userLogout.do">로그아웃</a> |
+		    <a href="/retobe/user/userMyPageMain.do">마이페이지</a>
 		</c:if>
 	</span>
 	
 	
-	<span><a href="/tobe/user/common/userIndex.do"><img src="/tobe/img/header_tobe_logo.png" class="tobe_logo"></a></span>
+	<span><a href="/retobe/user/userIndex.do"><img src="/retobe/img/header_tobe_logo.png" class="tobe_logo"></a></span>
 	<div class="menu_container">
 		<ul>
-			<li><a href="/tobe/user/course/userCourseIndex.do">수강신청</a></li>
-			<li><a href="/tobe/user/common/userTestSchedule.do">시험일정</a></li>
-			<li><a href="/tobe/user/review/userReviewIndex.do">수강후기</a></li>
-			<li><a href="/tobe/user/customer/userCustomer.do">고객센터</a></li>
+			<li><a href="/retobe/user/course/userCourseIndex.do">수강신청</a></li>
+			<li><a href="/retobe/user/common/userTestSchedule.do">시험일정</a></li>
+			<li><a href="/retobe/user/review/userReviewIndex.do">수강후기</a></li>
+			<li><a href="/retobe/user/customer/userCustomer.do">고객센터</a></li>
 		</ul>
 	</div>
 
 
 	<span class="quickMenu">
-		<span><img src="/tobe/img/top.png" class="quick" id="goTop" style="width: 27px; height: 20px; margin-left: 17px;"></span>
-		<span><a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/customer.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
-		<span><a href="/tobe/user/common/userBasket.do"><img src="/tobe/img/basket.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
+		<span><img src="/retobe/img/top.png" class="quick" id="goTop" style="width: 27px; height: 20px; margin-left: 17px;"></span>
+		<span><a href="/retobe/user/customer/userCustomer.do"><img src="/retobe/img/customer.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
+		<span><a href="/retobe/user/common/userBasket.do"><img src="/retobe/img/basket.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
 <!-- 		<span><a href="/tobe/user/common/modal.do" id="manual-ajax" ><img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;"></a></span> -->
 		<span>
-		<img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;" onclick="courseView();"></span>
-		<span><img src="/tobe/img/bottom.png" class="quick" id="goBottom" style="width: 28px; height: 20px; margin-left: 18px;" onclick=""></span>
+		<img src="/retobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;" onclick="courseView();"></span>
+		<span><img src="/retobe/img/bottom.png" class="quick" id="goBottom" style="width: 28px; height: 20px; margin-left: 18px;" onclick=""></span>
 	</span>
 
 </div>

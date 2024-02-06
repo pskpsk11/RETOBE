@@ -1,4 +1,4 @@
-package kr.co.retobe.user;
+package kr.co.retobe.vo;
 
 import java.sql.Timestamp;
 

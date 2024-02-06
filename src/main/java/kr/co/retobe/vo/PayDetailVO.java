@@ -1,4 +1,4 @@
-package kr.co.retobe.order.orderVO;
+package kr.co.retobe.vo;
 
 import lombok.Data;
 

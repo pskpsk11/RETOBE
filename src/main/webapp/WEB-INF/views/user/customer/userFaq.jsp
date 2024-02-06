@@ -140,15 +140,15 @@ text-align:center;
 					<tr>
 						<td id="click1">
 							<p>공지사항</p>
-							<a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/chiefAdmin_notice.png"></a>
+							<a href="/retobe/user/customer/userCustomer.do"><img src="/retobe/img/chiefAdmin_notice.png"></a>
 						</td>
 						<td id="click2">
 							<p>1:1 문의사항</p>
-							<a href="/tobe/user/customer/userQna.do"><img src="/tobe/img/chiefAdmin_qna.png"></a>
+							<a href="/retobe/user/customer/userQna.do"><img src="/retobe/img/chiefAdmin_qna.png"></a>
 						</td>
 						<td id="click3">
 							<p>FAQ</p>
-							<a href="/tobe/user/customer/userFaq.do"><img src="/tobe/img/chiefAdmin_faq.png"></a>
+							<a href="/retobe/user/customer/userFaq.do"><img src="/retobe/img/chiefAdmin_faq.png"></a>
 						</td>
 					</tr>
 				</table>

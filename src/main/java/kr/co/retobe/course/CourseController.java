@@ -1,4 +1,4 @@
-package kr.co.retobe.cousre;
+package kr.co.retobe.course;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
