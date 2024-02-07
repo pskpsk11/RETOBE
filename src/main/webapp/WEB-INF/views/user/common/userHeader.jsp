@@ -189,8 +189,8 @@ function courseView() {
 	<span><a href="/retobe/user/userIndex.do"><img src="/retobe/img/header_tobe_logo.png" class="tobe_logo"></a></span>
 	<div class="menu_container">
 		<ul>
-			<li><a href="/retobe/user/course/userCourseIndex.do">수강신청</a></li>
-			<li><a href="/retobe/user/common/userTestSchedule.do">시험일정</a></li>
+			<li><a href="/retobe/user/userCourseIndex.do">수강신청</a></li>
+			<li><a href="/retobe/user/userTestSchedule.do">시험일정</a></li>
 			<li><a href="/retobe/user/review/userReviewIndex.do">수강후기</a></li>
 			<li><a href="/retobe/user/customer/userCustomer.do">고객센터</a></li>
 		</ul>

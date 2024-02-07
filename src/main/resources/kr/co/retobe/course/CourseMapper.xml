@@ -6,5 +6,171 @@
 		SELECT *
 		FROM calendar
 	</select>
+	
+	<select id="lectureSelect" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		
+	</select> 
+	<select id="complexSelect" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+	    SELECT *
+	    FROM course
+	    WHERE 0=0
+	        <if test="education != 0"> AND education = #{education}</if>
+	        AND subject = #{subject}
+	        AND area = #{area}
+	        <if test="branch != 0"> AND branch = #{branch}</if>
+	        <if test="level != 0"> AND level = #{level}</if>
+	        <if test="mon != 0 or tue != 0 or wed != 0 or thu != 0 or fri != 0 or sat != 0 or sun != 0">
+	            AND (
+	                <if test="mon != 0"> mon = #{mon}</if>
+	                <if test="tue != 0"> OR tue = #{tue}</if>
+	                <if test="wed != 0"> OR wed = #{wed}</if>
+	                <if test="thu != 0"> OR thu = #{thu}</if>
+	                <if test="fri != 0"> OR fri = #{fri}</if>
+	                <if test="sat != 0"> OR sat = #{sat}</if>
+	                <if test="sun != 0"> OR sun = #{sun}</if>
+	            )
+	        </if>
+	        <if test="timezone != 0"> AND timezone = #{timezone}</if>
+	    LIMIT ${startIdx}, 12
+	</select>
 
+	<select id="complexCount" parameterType="kr.co.retobe.vo.CourseVO" resultType="int">
+	    SELECT COUNT(*)
+	    FROM course
+	    WHERE 0=0
+	        <if test="education != 0"> AND education = #{education}</if>
+	        <if test="subject != 0"> AND subject = #{subject}</if>
+	        <if test="area != 0"> AND area = #{area}</if>
+	        <if test="branch != 0"> AND branch = #{branch}</if>
+	        <if test="level != 0"> AND level = #{level}</if>
+	        <if test="mon != 0 or tue != 0 or wed != 0 or thu != 0 or fri != 0 or sat != 0 or sun != 0">
+	            AND (
+	                <if test="mon != 0"> mon = #{mon}</if>
+	                <if test="tue != 0"> OR tue = #{tue}</if>
+	                <if test="wed != 0"> OR wed = #{wed}</if>
+	                <if test="thu != 0"> OR thu = #{thu}</if>
+	                <if test="fri != 0"> OR fri = #{fri}</if>
+	                <if test="sat != 0"> OR sat = #{sat}</if>
+	                <if test="sun != 0"> OR sun = #{sun}</if>
+	            )
+	        </if>
+	        <if test="timezone != 0"> AND timezone = #{timezone}</if>
+	</select>
+
+	<update id="qnaUpdate" parameterType="kr.co.retobe.vo.CqnaVO">
+		UPDATE cqna SET 
+			cq_title=#{cq_title},
+			cq_content=#{cq_content}
+		WHERE cqna_no=#{cqna_no}
+	</update>
+	<insert id="qnaInsert" parameterType="kr.co.retobe.vo.CqnaVO">
+		INSERT INTO cqna (
+			`course_no`,
+			`member_no`,
+			`cq_title`,
+			`cq_content`,
+			`cq_writedate`
+		) VALUES (
+			#{course_no},
+			#{member_no},
+			#{cq_title},
+			#{cq_content},
+			NOW()
+		)
+		<selectKey keyProperty="cqna_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+<!-- 	<update id="updateGno" parameterType="int"> 
+		UPDATE cqna SET gno=#{no} WHERE cqna_no=#{no}
+ 	</update> -->
+	
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM cqna WHERE cqna_no=#{no}
+	</delete>
+	
+	<select id="courseSelect" parameterType="int" resultType="kr.co.retobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		WHERE course_no = #{no};
+	</select>
+	
+	
+	<sql id="cqnaSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					cq_title LIKE '%${searchWord}%' OR cq_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 강좌문의 -->
+	<select id="cqnaDetailList" parameterType="kr.co.retobe.vo.CqnaVO" resultType="kr.co.retobe.vo.CqnaVO">
+		SELECT *
+		FROM cqna
+		WHERE course_no = #{course_no}
+		ORDER BY cqna_no DESC
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="cqnaCount" parameterType="kr.co.retobe.vo.CqnaVO" resultType="int">
+		SELECT COUNT(*)
+		FROM cqna
+		WHERE course_no = #{course_no}
+	</select>
+	
+	<select id="lectureDetail" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{course_no};
+    </select>
+    
+    
+    <!-- 강좌후기 -->
+    <select id="ReviewList" parameterType="kr.co.retobe.vo.ReviewVO" resultType="kr.co.retobe.vo.ReviewVO">
+		SELECT *
+		FROM review
+		WHERE course_no = #{course_no}
+		ORDER BY review_no
+		LIMIT #{startIdx}, 10
+	</select>
+    <select id="reviewCount" parameterType="kr.co.retobe.vo.ReviewVO" resultType="int">
+        SELECT COUNT(*)
+        FROM review
+        WHERE review_no = #{review_no};
+    </select>
+    
+    <select id="cqnaDetail" parameterType="int" resultType="kr.co.retobe.vo.CqnaVO">
+		SELECT * FROM cqna WHERE cqna_no = #{cqna_no}
+	</select>
+	
+	<!-- 강좌 상세 문의 수정 -->
+	<select id="view" parameterType="int" resultType="kr.co.retobe.vo.CqnaVO">
+	    SELECT cq.*,
+	           c.cname AS infoCourseName
+	    FROM cqna cq
+	    LEFT JOIN course c ON cq.course_no = c.course_no
+	    WHERE cqna_no = #{cqna_no}
+	</select>
+    
+    <!-- 강좌 문의 작성 -->
+    <select id="selectInfoByCourse" parameterType="int" resultType="kr.co.retobe.vo.CourseVO">
+        SELECT * 
+        FROM course
+        WHERE course_no = #{infoCourse_no}
+    </select>
+	
+	<select id="courseDetail" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{course_no};
+    </select>
 </mapper>
