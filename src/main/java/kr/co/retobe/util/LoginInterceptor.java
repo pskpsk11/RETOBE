@@ -27,7 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 			out.print("location.href='/retobe/user/userLogin.do';");
 			out.print("</script>");
 			out.close();
-			return false; // 못가
+			return false; // 못가 
 		}
 		return true; // 가던길가
 	}

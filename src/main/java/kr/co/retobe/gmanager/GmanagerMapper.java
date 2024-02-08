@@ -5,15 +5,19 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+<<<<<<< HEAD
 import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.EmailVO;
 import kr.co.retobe.vo.FaqVO;
 import kr.co.retobe.vo.MemberVO;
 import kr.co.retobe.vo.NoticeVO;
+=======
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 import kr.co.retobe.vo.QnaVO;
 
 @Mapper
 public interface GmanagerMapper {
+<<<<<<< HEAD
 	//common
 	Map<String, Object> pay_chargeTotal();
 	
@@ -84,4 +88,11 @@ public interface GmanagerMapper {
 	
 	int cmemberCount(MemberVO vo);
 	List<MemberVO> cmemberList(MemberVO vo);
+=======
+	Map<String, Object> pay_chargeTotal();
+	
+	int totalCount();
+	
+	List<Map<String, Object>> qna(QnaVO qvo);
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 }

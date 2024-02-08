@@ -1,11 +1,16 @@
 package kr.co.retobe.gmanager;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+=======
+import java.util.List;
+import java.util.Map;
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +23,14 @@ import kr.co.retobe.vo.MemberVO;
 import kr.co.retobe.vo.NoticeVO;
 import kr.co.retobe.vo.QnaVO;
 
+import kr.co.retobe.vo.QnaVO;
+
 @Service
 public class GmanagerServiceImpl implements GmanagerService{
 
 	@Autowired
 	GmanagerMapper mapper;
+<<<<<<< HEAD
 	//common
 	@Override
 	public Map<String, Object> pay_chargeTotal() {
@@ -286,5 +294,21 @@ public class GmanagerServiceImpl implements GmanagerService{
         map.put("prev", prev);
         map.put("next", next);
 		return map;
+=======
+	
+	@Override
+	public Map<String, Object> pay_chargeTotal() {
+		return mapper.pay_chargeTotal();
+	};
+	
+	@Override 
+	public List<Map<String, Object>> qna(QnaVO qvo) {
+		return mapper.qna(qvo);
+	}
+
+	@Override
+	public int totalCount() {
+		return mapper.totalCount();
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 	}
 }
