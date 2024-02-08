@@ -426,7 +426,7 @@ caption {
           var selectedTime = $("#td_time button.on").data("timecd");
 
           $.ajax({
-              url: "/tobe/user/course/userCourseList.do",
+              url: "/tobe/user/userCourseList.do",
               method: "get",
               data: {
                   "education": selectedAcademy,
