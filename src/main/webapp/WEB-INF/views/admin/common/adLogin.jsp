@@ -65,7 +65,7 @@ body {
 <body>
 
 		<div class="admin_logo">
-			<img src="/tobe/img/admin_logob.png" style="width: 13rem;">
+			<img src="/retobe/img/admin_logob.png" style="width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 로그인 페이지</b></span>
 		</div>
 	<form action="adLogin.do" method="post" id="board1" name="board1" onsubmit="return loginCheck()">

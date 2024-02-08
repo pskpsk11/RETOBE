@@ -2,6 +2,117 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.retobe.order.OrderMapper">
 
+	<!-- chiefpay -->
+	<select id="getlistgm" resultType="map" >
+		SELECT p.order_no, m.hp, m.member_no, m.name, m.id, m.email, d.i_subject, d.i_cname, p.pay_total, p.point_usage, p.pay_date,d.product_no, p.pay_by  
+	FROM tobe.member m 
+	inner join tobe.pay p on m.member_no = p.member_no
+	inner join tobe.pay_detail d on p.order_no = d.order_no
+	</select>
+	<select id="getcontentgm" resultType="map">
+	SELECT  m.name, m.member_no, m.hp, m.id, m.email,p.order_no, p.pay_total, p.point_usage, p.pay_date,d.product_no , d.i_cname, p.pay_by
+	FROM tobe.member m 
+	inner join tobe.pay p on m.member_no = p.member_no
+	inner join tobe.pay_detail d on p.order_no = d.order_no
+     </select>   
+     
+     <!-- adpay -->
+     <select id="getlistm" resultType="map" >
+		SELECT p.order_no, m.name, m.id, m.email, d.i_subject, d.i_cname, p.pay_total, p.point_usage, p.pay_date,d.product_no, p.pay_by  
+	FROM tobe.member m 
+	inner join tobe.pay p on m.member_no = p.member_no
+	inner join tobe.pay_detail d on p.order_no = d.order_no
+	</select>
+	<select id="getcontentm" resultType="map">
+	SELECT  m.name, m.id, m.email,p.order_no, p.pay_total, p.point_usage, p.pay_date,d.product_no , d.i_cname, p.pay_by
+	FROM tobe.member m 
+	inner join tobe.pay p on m.member_no = p.member_no
+	inner join tobe.pay_detail d on p.order_no = d.order_no
+     </select>  
+     
+     <!-- sales -->
+     <select id="payList" parameterType="java.util.Map" resultType="java.util.Map">
+	    SELECT education, DATE_FORMAT(pay_date,'%Y-%m-%d') AS pay_date, pay_total, charge_total
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+	    	pay_refund=0
+		    <if test="education!=null and education!=''">
+		        AND education = #{education}
+		    </if>
+	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
+  	        <![CDATA[
+	             AND pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
+	        <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= STR_TO_DATE(#{startday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday==null or startday=='') and (endday!=null and endday!='')">
+	         <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	    </where>
+	    ORDER BY p.order_no DESC
+	</select>
+	
+	<select id="conEduTotal" parameterType="java.util.Map" resultType="java.util.Map">
+	    SELECT sum(pay_total) as pay_total, sum(charge_total) as charge_total, education
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+	    	pay_refund=0
+	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
+   	        <![CDATA[
+	             AND pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
+	        <![CDATA[
+	            AND pay_date >= STR_TO_DATE(#{startday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday==null or startday=='') and (endday!=null and endday!='')">
+	         <![CDATA[
+	            AND pay_date <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	    </where>
+    	GROUP BY education
+    	ORDER BY education
+	</select>
+	
+	
+	<!-- 전체선택했을 때와 학원선택없이 날짜만 선택했을 때의 총매출, 총수수료-->
+	<select id="pay_chargeTotal" parameterType="java.util.Map" resultType="java.util.Map">
+	    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+	    	pay_refund=0
+	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
+   	        <![CDATA[
+	             AND pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
+	        <![CDATA[
+	            AND pay_date >= STR_TO_DATE(#{startday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	        <if test="(startday==null or startday=='') and (endday!=null and endday!='')">
+	         <![CDATA[
+	            AND pay_date <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	        ]]>
+	        </if>
+	   	</where>
+	</select>
 
 
 

@@ -1,7 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.retobe.manager.ManagerMapper">
+<sql id="whereSql">
+		<where>	
+			 admin_no = #{admin_no}
+		    <if test="searchWord != null and searchWord != ''">
+		        AND (cname LIKE '%${searchWord}%' OR teacher1 LIKE '%${searchWord}%' OR teacher2 LIKE '%${searchWord}%')
+		    </if>
+		    <if test="area != null and area != ''">
+		        AND area = #{area}
+		    </if>
+		    <if test="branch != null and branch != ''">
+		        AND branch = #{branch}
+		    </if>
+		    <if test="subject != null and subject != ''">
+		        AND subject = #{subject}
+		    </if>
+		</where>	
+	</sql>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="kr.co.retobe.vo.AdminVO" parameterType="kr.co.retobe.vo.AdminVO">
+ 		SELECT * FROM admin WHERE ad_id=#{ad_id} AND ad_pwd=MD5(#{ad_pwd});
+ 	</select>
+	
+	<select id="thisMonthPayTotal" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE());
+	    ]]>
+	</select>
+	
+	<select id="lastMonthPayTotal" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+		
+	<select id="lastMonthChargeTotal" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			SELECT SUM(charge_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+	
+	<select id="thisYearPayTotal" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE());
+	    ]]>
+	</select>
+	
+	<select id="todayPayCnt" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_date, '%Y-%m-%d') = CURDATE();
+	    ]]>
+	</select>
+	
+	<select id="todayPayCancelCnt" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+	    <![CDATA[
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_cancel_date, '%Y-%m-%d') = CURDATE();
+	    ]]>
+	</select>
 
+	<select id="cqnaCount" parameterType="map" resultType="int">
+		select count(*) 
+		from tobe.cqna cq Inner join tobe.course c
+		on cq.course_no = c.course_no
+		where c.admin_no = #{no};
+	</select>
+	
+
+	<select id="courseQna" parameterType="kr.co.retobe.vo.AdminVO" resultType="java.util.Map">
+			SELECT cqna_no, cq_title, STR_TO_DATE(cq_writedate, '%Y-%m-%d') as cq_writedate
+			FROM cqna cq JOIN course c ON cq.course_no=c.course_no
+			WHERE education=#{ad_type}
+			AND cq_reply is null;
+	</select>
+	
+
+	<select id="cqnaList" parameterType="map" resultType="kr.co.retobe.vo.CqnaVO">
+		select cq.cqna_no, cq.course_no, cq.member_no, cq.cq_title, cq.cq_content, cq.cq_writedate, cq.cq_reply,
+		(SELECT name FROM member WHERE member_no = cq.member_no) as member_name 
+		from cqna cq Inner join course c
+		on cq.course_no = c.course_no
+		where c.admin_no = #{no}
+		limit #{startIdx}, 10;
+	</select>
+
+	<select id="courseCount" parameterType="kr.co.retobe.vo.CourseVO" resultType="int">
+		SELECT COUNT(*) FROM course
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="courseList" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		<include refid="whereSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
 
 
 
