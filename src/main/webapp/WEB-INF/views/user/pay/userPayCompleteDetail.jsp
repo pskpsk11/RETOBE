@@ -300,7 +300,7 @@ $(function(){
 		</table>
 		<!--  -->
 			<div id="btnBox">
-				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">이전</button>
+				<button id="backBtn" onclick="location.href='/tobe/user/mypage.do'">이전</button>
 				<button id="cancelBtn">주문취소</button>
 			</div>
 		</div>

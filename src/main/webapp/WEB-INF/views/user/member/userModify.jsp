@@ -188,20 +188,20 @@
 				</div>
 				<div class="part2">
 					<div id="set">
-						<a href="/tobe/user/member/userModify.do">
-							<img src="/tobe/img/set.png" id="setImg">
+						<a href="/tobe/user/modify.do">
+							<img src="/retobe/img/set.png" id="setImg">
 							<span id="setText">회원정보수정</span>
 						</a>
 					</div>
 					<div id="quit">
-						<a href="/tobe/user/member/userQuit.do">
-							<img src="/tobe/img/quit.png" id="quitImg">
+						<a href="/tobe/user/cancel.do">
+							<img src="/retobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
 				
-				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
 					<span id="point">
 						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
 						<span id="numPointText"><b>${user.point } </b> 포인트</span>
@@ -215,7 +215,7 @@
 					<p style="font-size: 1.25em;">개인정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</p>
 				</div>
 					
-				<form method="post" action="userModifyForm.do" id="frm">
+				<form method="post" action="modifyForm.do" id="frm">
 					<div id="pwdCheckBox">
 						<input type="text" id="idCheck" value="${user.id }" disabled><br>
 						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>

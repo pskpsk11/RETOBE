@@ -49,7 +49,7 @@
 	 		alert('개인정보 제3자 제공을 확인하세요.');
 	 		return;
 	 	}
-	 	location.href="userJoinForm.do";
+	 	location.href="joinForm.do";
 	}
 		
     </script>

@@ -223,14 +223,14 @@
 						</a>
 					</div>
 					<div id="quit">
-						<a href="/tobe/user/member/userQuit.do">
-							<img src="/tobe/img/quit.png" id="quitImg">
+						<a href="/tobe/user/member/cancel.do">
+							<img src="/retobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
 				
-				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
 					<span id="point">
 						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
 						<span id="numPointText"><b>${user.point } </b> 포인트</span>
@@ -254,7 +254,7 @@
 			<div class="quitBox">
 				<h2 id="q">회원 탈퇴 사유</h2>
 				<div class="line"></div>
-				<form class="quitForm" method="post" action="userQuit.do">
+				<form class="quitForm" method="post" action="cancel.do">
 					<table>
 						<tr>
 							<th style="width: 10rem; font-size: 1.25rem;" >회원 탈퇴 사유</th>

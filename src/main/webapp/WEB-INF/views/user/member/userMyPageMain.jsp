@@ -264,20 +264,20 @@ table {
 				</div>
 				<div class="part2">
 					<div id="set">
-						<a href="/tobe/user/member/userModify.do">
+						<a href="/tobe/user/modify.do">
 							<img src="/tobe/img/set.png" id="setImg">
 							<span id="setText">회원정보수정</span>
 						</a>
 					</div>
 					<div id="quit">
-						<a href="/tobe/user/member/userQuit.do">
-							<img src="/tobe/img/quit.png" id="quitImg">
+						<a href="/tobe/user/cancel.do">
+							<img src="/retobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
 
-				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
 					<span id="point">
 						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
 						<span id="numPointText"><b>${user.point } </b> 포인트</span>
@@ -313,10 +313,10 @@ table {
 		                    <c:forEach var="vo" items="${cci}">
 								<tr style="text-align: center;">
 	                        		<td>${vo.course_no }</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            <td class="url" onclick="location.href='/tobe/user/userCourseDetail.do?course_no=${vo.course_no}'">
 		                            	<img src="/tobe/img/course_img/${vo.teacher_img}" style="width: 7rem;">
 	                            	</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            <td class="url" onclick="location.href='/tobe/user/userCourseDetail.do?course_no=${vo.course_no}'">
 		                            	<b style="font-size: 1.25rem;">${vo.i_cname}</b>
 	                            	</td>    
 		                            <td>${vo.i_startday}</td>
@@ -348,14 +348,14 @@ table {
 			                   	<c:if test="${vo.pay_cancel eq 0}">
 		                        <tr style="font-size: 1rem;">
 			                    	<td>${vo.pay_date }</td> 
-		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
+		                            <td class="url" onclick="location.href='/tobe/user/userCourseDetail.do?course_no=${vo.course_no}'">
 		                            	<b>${vo.i_cname}</b>
 	                            	</td> 
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
-		                            <td><form action="/tobe/user/review/write.do" method="get">
+		                            <td><form action="/tobe/user/write.do" method="get">
 		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
@@ -369,7 +369,7 @@ table {
 										%>
 										
 										<c:if test="${vo.review_cnt gt 0 }">
-											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${rvo.review_no}'" >
+											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/userReviewDetail.do?review_no=${rvo.review_no}'" >
 										</c:if>
 										<c:if test="${currentTime gt vo.i_endday and vo.review_cnt eq 0}">
 											<input type="submit" value="후기작성">
@@ -395,8 +395,8 @@ table {
 			                   	<c:if test="${vo.pay_cancel eq 1}">
 			                        <tr style="font-size: 1rem;">
 				                    	<td>${vo.pay_cancel_date }</td> 
-			                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCancelDetail.do?detail_no=${vo.detail_no}'" value="취소상세보기"/></td>    
-			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><b>${vo.i_cname}</b></td> 
+			                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/userPayCancelDetail.do?detail_no=${vo.detail_no}'" value="취소상세보기"/></td>    
+			                            <td class="url" onclick="location.href='/tobe/user/userCourseDetail.do?course_no=${vo.course_no}'"><b>${vo.i_cname}</b></td> 
 			                            <td>${vo.i_price}</td>
 			                            <td>${vo.i_startday}</td>
 			                            <td>${vo.i_endday}</td>
@@ -425,18 +425,18 @@ table {
 		                    <c:forEach var="vo" items="${mcai}">
 		                        <tr>
 		                            <td>${vo.cqna_no}</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'" >${vo.cq_title}</td>    
+		                            <td class="url" onclick="location.href='/tobe/user/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'" >${vo.cq_title}</td>    
 		                            <td>${vo.cq_writedate}</td>
-		                            <td><input type="button" onclick="location.href='/tobe/user/course/userCourseModAskForm.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
+		                            <td><input type="button" onclick="location.href='/tobe/user/userCourseModAskForm.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
 		                    <tr></tr>
 		                    <c:forEach var="vo" items="${ai}">
 		                        <tr>
 		                            <td>${vo.qna_no}</td>
-		                            <td class="url" onclick="location.href='/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+		                            <td class="url" onclick="location.href='/tobe/user/userModAskForm.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 		                            <td>${vo.q_writedate}</td>
-		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
+		                            <td><input type="button" onclick="location.href='/tobe/user/userModAskForm.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 	                        </c:forEach>
 	                    </table>
@@ -460,8 +460,8 @@ table {
 		                    <c:forEach var="vo" items="${mri}">
 		                        <tr>
 		                            <td>${vo.review_no}</td>
-		                            <td><a class="url" href="/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}">${vo.cname}</a></td>
-		                            <td><a class="url" href="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
+		                            <td><a class="url" href="/tobe/user/userCourseDetail.do?course_no=${vo.course_no}">${vo.cname}</a></td>
+		                            <td><a class="url" href="/tobe/user/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
 		                            <td>${vo.r_writedate}</td>  
 		                        </tr>
 		                    </c:forEach>

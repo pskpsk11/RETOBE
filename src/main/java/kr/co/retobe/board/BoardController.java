@@ -52,7 +52,7 @@ public class BoardController {
 		if (r > 0 &&  rr> 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/user/member/userMyPageMain.do"); //url : 후기 목록..? 마이페이지?
+			model.addAttribute("url", "/tobe/user/mypage.do"); //url : 후기 목록..? 마이페이지?
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");

@@ -217,7 +217,7 @@
 				</table>			
 			</div>
 			<div id="btnBox">
-				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">마이페이지</button>
+				<button id="backBtn" onclick="location.href='/tobe/user/mypage.do'">마이페이지</button>
 			</div>
 		</div>
 

@@ -72,7 +72,7 @@
     	$(function() {
     		$("#idCheck").click(function() {
     			$.ajax({
-    				url:'/retobe/user/idCheck.do',
+    				url:'/tobe/user/idCheck.do',
     				data:{id:$('#id').val()},
     				success:function(res) {
     					console.log(res);
@@ -232,7 +232,7 @@
 	        <div class="sub">
 	            <div class="size">
 	                <h2 class="sub_title">회원가입</h2>
-	                <form name="frm" id="frm" action="userJoinForm.do" method="post">
+	                <form name="frm" id="frm" action="join.do" method="post">
 	                <h4>필수입력</h4>
 	                <table class="board_write" cellspacing = "0">
 	                    <!-- <caption style="float:left;">필수입력</caption> -->

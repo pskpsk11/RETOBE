@@ -243,7 +243,7 @@ margin:0 10px;
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
     	<div class="main">
-	    	<form action="userLogin.do" method="post" id="board1" name="board1" onsubmit="">
+	    	<form action="login.do" method="post" id="board1" name="board1" onsubmit="">
 	            <div class="sub">
 	                <h3 class="sub_title">로그인</h3>
 	                	<div class="size">

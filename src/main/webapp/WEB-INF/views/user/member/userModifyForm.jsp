@@ -322,20 +322,20 @@ table{
 				</div>
 				<div class="part2">
 					<div id="set">
-						<a href="/tobe/user/member/userModify.do">
+						<a href="/tobe/user/modify.do">
 							<img src="/tobe/img/set.png" id="setImg">
 							<span id="setText">회원정보수정</span>
 						</a>
 					</div>
 					<div id="quit">
-						<a href="/tobe/user/member/userQuit.do">
-							<img src="/tobe/img/quit.png" id="quitImg">
+						<a href="/tobe/user/cancel.do">
+							<img src="/retobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
 				
-				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
 					<span id="point">
 						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
 						<span id="numPointText"><b>${user.point } </b> 포인트</span>
@@ -345,7 +345,7 @@ table{
 	
 			<div class="modifyForm">
 				<h2 class="sub_title">회원정보 수정</h2>
-                <form name="frm" id="frm" method="post" action="userModify.do">
+                <form name="frm" id="frm" method="post" action="modify.do">
 	                <table class="board_write" cellspacing = "0" >
 	                    <colgroup>
 	                        <col width="20%" />

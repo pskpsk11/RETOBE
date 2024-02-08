@@ -23,31 +23,30 @@ public class UserController {
 	@Autowired
 	UserService service;
 	//메인페이지
-	@GetMapping("/user/userIndex.do")
+	@GetMapping("/user/main.do")
 	public String index(){//(HttpSession sess) {
 		return "user/common/userIndex"; 
 	}
 	
 	//로그인
-	@GetMapping("/user/userLogin.do")
+	@GetMapping("/user/login.do")
 	public String userLogin() {
 		return "user/member/userLogin";
 	}
 	
 	//회원가입
-	@GetMapping("/user/userJoinForm.do")
+	@GetMapping("/user/joinForm.do")
 	public String userJoinForm() {
 		return "user/member/userJoinForm";
 	}
 	
-	@PostMapping("/user/userJoinForm.do")
-//	@GetMapping("/user/member/userJoinForm.do")
+	@PostMapping("/user/join.do")
 	public String regist(MemberVO vo, Model model) {
 		boolean r = service.regist(vo); 
 		if (r) { 
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "회원가입되었습니다.");
-			model.addAttribute("url", "/retobe/user/userIndex.do");
+			model.addAttribute("url", "/tobe/user/main.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "회원가입실패");
@@ -55,7 +54,7 @@ public class UserController {
 		return "user/common/userAlert";
 	}
 	
-	@PostMapping("/user/userLogin.do")
+	@PostMapping("/user/login.do")
 	public String loginProcess(MemberVO vo, HttpSession sess, Model model) {
 		MemberVO login = service.login(vo);
 		if (login == null) { // 로그인실패
@@ -64,25 +63,25 @@ public class UserController {
 			return "user/common/userAlert";
 		} else { // 로그인성공
 			sess.setAttribute("loginInfo", login);
-			return "redirect:/user/userIndex.do";
+			return "redirect:/user/main.do";
 		}
 	}
-	@GetMapping("/user/userLogout.do")
+	@GetMapping("/user/logout.do")
 	public String logout(Model model, HttpSession sess) {
 //		sess.removeAttribute("loginInfo");
 		sess.invalidate();
 		model.addAttribute("msg", "로그아웃되었습니다.");
-		model.addAttribute("url", "/retobe/user/userIndex.do");
+		model.addAttribute("url", "/tobe/user/main.do");
 		model.addAttribute("cmd", "move");
 		return "user/common/userAlert";
 	}
 	
-	@PostMapping("/user/userModifyForm.do")
+	@PostMapping("/user/modifyForm.do")
 	public String userModifyForm(HttpSession sess, MemberVO mvo, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
 		MemberVO pwdCheck = service.pwdCheck(mvo);
 		if(user == null) {
-			return "redirect:/user/userIndex.do";
+			return "redirect:/user/main.do";
 		}
 		
 		if (pwdCheck == null) { // 비밀번호 확인 실패
@@ -95,12 +94,12 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/user/userQuitForm.do")
+	@PostMapping("/user/cancelForm.do")
 	public String quitForm(HttpSession sess, MemberVO mvo, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
 		MemberVO pwdCheck = service.pwdCheck(mvo);
 		if(user == null) {
-			return "redirect:/user/userIndex.do";
+			return "redirect:/user/main.do";
 		}
 		
 		if (pwdCheck == null) { // 비밀번호 확인 실패
@@ -113,11 +112,11 @@ public class UserController {
 		}
 	}
 
-	@PostMapping("/user/userModify.do")
+	@PostMapping("/user/modify.do")
 	public String userModify(MemberVO vo, Model model) {
 		int r = service.update(vo);
 		String msg = "";
-		String url = "userModify.do";
+		String url = "modify.do";
 		if (r > 0) {
 			msg = "정상적으로 수정되었습니다.";
 		} else {
@@ -129,13 +128,13 @@ public class UserController {
 		return "user/common/userAlert";
 	}
 	
-	@PostMapping("/user/userQuit.do")
+	@PostMapping("/user/cancel.do")
 	public String quit(MemberVO mvo, Model model, HttpSession sess) {
 		mvo = (MemberVO)sess.getAttribute("loginInfo");
 		System.out.println(mvo.getMember_no());
 		int r = service.quit(mvo);
 		String msg = "";
-		String url = "/retobe/user/userIndex.do";
+		String url = "/tobe/user/main.do";
 		if (r > 0) {
 			sess.invalidate();
 			msg = "회원탈퇴가 완료되었습니다.";
@@ -149,7 +148,7 @@ public class UserController {
 	}
 	
 	//약관동의
-	@GetMapping("/user/userJoinPolicy.do")
+	@GetMapping("/user/joinPolicy.do")
 	public String userJoinPolicy() {
 		return "user/member/userJoinPolicy";
 	}
@@ -162,7 +161,7 @@ public class UserController {
 		return String.valueOf(r);
 	}	
 	
-	@GetMapping("/user/userMyPageMain.do")
+	@GetMapping("/user/mypage.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
 		
@@ -217,14 +216,14 @@ public class UserController {
 		return "user/common/userCompareCourse";
 	}
 	
-	@GetMapping("/user/userModify.do")
+	@GetMapping("/user/modify.do")
 	public String userModify(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
 		model.addAttribute("user", user);
 		return "user/member/userModify";
 	}
 	
-	@GetMapping("/user/userQuit.do")
+	@GetMapping("/user/cancel.do")
 	public String quit(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
 		model.addAttribute("user", user);
