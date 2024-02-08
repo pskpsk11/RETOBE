@@ -144,7 +144,7 @@ div {
 	  <div id="con">
 		   <div id="boxa">
 	         <div id="a">
-	            <a href="/tobe/chiefAdmin/member/chiefMemberIndex.do" id="aa"><font size=1px;>회원관리→ </font></a>
+	            <a href="/retobe/chiefAdmin/member/chiefMemberIndex.do" id="aa"><font size=1px;>회원관리→ </font></a>
 	            <div id="wrap">
 		            <div id="cnt" style="position:absolute; top: 7rem; left: 18rem; font-size: 5rem; color: #A9E2F3">1</div>
 		            <div id="today" style="position:absolute; top: 13.5rem; left: 16rem; font-size: 1rem;">오늘 신규 회원 수</div>
@@ -152,7 +152,7 @@ div {
 	            </div>
 	         </div>
 	         <div id="b">
-	            <a href="/tobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px; style="margin-left:-40px;">결제관리→ </font></a>
+	            <a href="/retobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px; style="margin-left:-40px;">결제관리→ </font></a>
 	             <div>
 	             	<div id="today">
 	             		<div style="position:absolute; top: 8rem; left: 33rem; font-size: 5rem; color: #7401DF">3</div>
@@ -169,25 +169,25 @@ div {
 	             </div>
 	         </div>
 	         <div id="a">
-	            <a href="/tobe/chiefAdmin/email/chiefEmailIndex.do" id="dd"><font size=1px;>이메일→ </font></a>
-	            <img src="/tobe/img/mail.png" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailIndex.do';" id="mail"><br>
-	            <a href="/tobe/chiefAdmin/email/chiefEmailIndex.do" id="mailp">메일작성 바로가기</a>
+	            <a href="/retobe/chiefAdmin/email/chiefEmailIndex.do" id="dd"><font size=1px;>이메일→ </font></a>
+	            <img src="/retobe/img/mail.png" onclick="location.href='/retobe/chiefAdmin/email/chiefEmailIndex.do';" id="mail"><br>
+	            <a href="/retobe/chiefAdmin/email/chiefEmailIndex.do" id="mailp">메일작성 바로가기</a>
 	         </div>
 	      </div>
 	      <div id="boxa">
 	         <div id="a">
-	            <a href="/tobe/chiefAdmin/course/chiefCourseIndex.do" id="aa"><font size=1px;>강좌관리→ </font></a>
+	            <a href="/retobe/chiefAdmin/course/chiefCourseIndex.do" id="aa"><font size=1px;>강좌관리→ </font></a>
 	            <div>
 	               <div id="class1">
-	                  <img src="/tobe/img/cl_1.png" width=22% height=80%;><p>  강좌  리스트</p><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do" id="w1">→</a>
+	                  <img src="/retobe/img/cl_1.png" width=22% height=80%;><p>  강좌  리스트</p><a href="/retobe/chiefAdmin/course/chiefCourseIndex.do" id="w1">→</a>
 	               </div>
 	               <div id="class2">
-	                  <img src="/tobe/img/cl_2.png" width=21% height=80%;><p>  강좌 등록하기</p><a href="/tobe/chiefAdmin/course/chiefCourseForm.do" id="w2">→</a>
+	                  <img src="/retobe/img/cl_2.png" width=21% height=80%;><p>  강좌 등록하기</p><a href="/retobe/chiefAdmin/course/chiefCourseForm.do" id="w2">→</a>
 	               </div>
 	            </div>
 	         </div>
 	         <div id="b">
-	            <a href="/tobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→ </font></a>
+	            <a href="/retobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→ </font></a>
 	          
 	             <div style="overflow-y:scroll; height: 10rem; width:360px; position: absolute; left: 29.5rem; top: 27rem;">
 				<c:if test="${!empty q}">
@@ -196,7 +196,7 @@ div {
 						<tr>
 						    <td style="width: 20%;">${vo.qna_no}</td>
 							<td class="url" style="width: 40%; cursor:pointer;"
-								onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+								onclick="location.href='/retobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 							<td style="width: 40%;">${vo.q_writedate}</td>
 						</tr>
 					</c:forEach>
@@ -205,7 +205,7 @@ div {
 			</div>
 	         </div>
 	         <div id="a">
-	            <a href="/tobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→ </font></a>
+	            <a href="/retobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→ </font></a>
 	         	<div style="position:absolute; top: 29rem; left: 59rem; font-size: 2rem; color: #7401DF">4,778,150</div>
 	         	<div style="position:absolute; top: 33rem; left: 60rem; font-size: 1rem;">이번 달 매출</div>                             
 	         </div>

@@ -143,7 +143,7 @@ public class MvcConfig implements WebMvcConfigurer{
 		registry.addInterceptor(loginIntercepton_admin())
 						.addPathPatterns("/admin/**")
 						.addPathPatterns("/chiefAdmin/**")
-						.excludePathPatterns("/admin/common/adLogin.do");
+						.excludePathPatterns("/admin/adLogin.do");
 						
 	}
 			

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import kr.co.retobe.vo.AdminVO;
+
 public class LoginInterceptor_admin implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
@@ -22,7 +24,7 @@ public class LoginInterceptor_admin implements HandlerInterceptor{
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('로그인 후 사용가능합니다.');");
-			out.print("location.href='/tobe/admin/common/adLogin.do';");
+			out.print("location.href='/retobe/admin/adLogin.do';");
 			out.print("</script>");
 			out.close();
 			return false; // 못가

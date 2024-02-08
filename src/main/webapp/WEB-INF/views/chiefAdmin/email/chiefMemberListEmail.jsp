@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="/tobe/css/bbs.css"/>
+<link rel="stylesheet" href="/retobe/css/bbs.css"/>
 <script>
  $(function(){
 	
@@ -93,7 +93,7 @@
 		    });
 
 		    if (selectedNoList.length > 0) {
-				 window.location.href= '/tobe/chiefAdmin/email/chiefEmailForm.do?member_no='+selectedNoList.join(',');
+				 window.location.href= '/retobe/chiefAdmin/chiefEmailForm.do?member_no='+selectedNoList.join(',');
    			 
 		    }
 	 }
@@ -257,7 +257,7 @@ border:solid 1px #A4A4A4;
 					</tr>
 					</table>
 			   	 	<div class="searchOrReset">
-						<input type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/email/chiefMemberListEmail.do'">
+						<input type="reset" value="초기화" onclick="window.location.href='/retobe/chiefAdmin/chiefMemberListEmail.do'">
 						<input type="submit" id="" value="검색">
 					</div>  
 				</form>
@@ -299,18 +299,18 @@ border:solid 1px #A4A4A4;
 	       	 <div class="pagenate clear">
 	              <ul class='paging'>
 	              <c:if test="${map.prev }">
-	              	<li><a href="/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${map.startPage-1 }"> << </a></li>
+	              	<li><a href="/retobe/chiefAdmin/chiefEmailIndex.do?page=${map.startPage-1 }"> << </a></li>
 	              </c:if>
 	              <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 	              	<c:if test="${p == memberVO.page}">
 	                  <li><a href='#;' class='current'>${p}</a></li>
 	                  </c:if>
 	                  <c:if test="${p != memberVO.page}">
-	                  <li><a href='/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${p}'>${p}</a></li>
+	                  <li><a href='/retobe/chiefAdmin/chiefEmailIndex.do?page=${p}'>${p}</a></li>
 	                  </c:if>
 	              </c:forEach>
 	              <c:if test="${map.next }">
-	              	<li><a href="/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${map.endPage+1 }"> >> </a></li>
+	              	<li><a href="/retobe/chiefAdmin/chiefEmailIndex.do?page=${map.endPage+1 }"> >> </a></li>
 	              </c:if>
 	              </ul> 
            	</div> 

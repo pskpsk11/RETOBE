@@ -1,8 +1,310 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.retobe.gmanager.GmanagerMapper">
+	<!-- common -->
+	<!-- 전체선택했을 때와 학원선택없이 날짜만 선택했을 때의 총매출, 총수수료-->
+	<select id="pay_chargeTotal" resultType="java.util.Map">
+		    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
+		    FROM course c JOIN pay_detail pd
+		    ON c.course_no=pd.course_no
+		    JOIN pay p ON pd.order_no=p.order_no
+	</select>
+	<select id="totalCount" resultType="int">
+		select count(*) 
+		from member
+	</select>
+	
+	<select id="qna" parameterType="kr.co.retobe.vo.QnaVO" resultType="java.util.Map">
+		SELECT qna_no, q_title, STR_TO_DATE(q_writedate, '%Y-%m-%d') as q_writedate
+		FROM qna q 
+		WHERE q_reply is null
+	</select>
+	<!-- course -->
+	<insert id="courseinsert" parameterType="kr.co.retobe.vo.CourseVO">
+		INSERT INTO course (
+		teacher_img_org, teacher_img_real, education,
+		area, branch,
+		subject, level, timezone,
+		mon, tue, wed, thu, fri, sat,
+		sun,
+		teacher1, teacher2, startday, endday, postday,
+		cname, detail, time,
+		price
+		) VALUES (
+		#{teacher_img_org}, #{teacher_img_real}, #{education},
+		#{area}, #{branch}, #{subject}, #{level}, #{timezone},
+		#{mon}, #{tue},
+		#{wed}, #{thu}, #{fri}, #{sat}, #{sun},
+		#{teacher1}, #{teacher2},
+		#{startday}, #{endday}, NOW(),
+		#{cname}, #{detail},
+		#{time}, #{price}
+		)
+		<selectKey keyProperty="course_no" order="AFTER"
+			resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<select id="modcourse" parameterType="int" resultType="kr.co.retobe.vo.CourseVO">
+		SELECT * FROM course WHERE course_no = #{no}
+	</select>
+	<update id="courseUpdate" parameterType="kr.co.retobe.vo.CourseVO">
+	UPDATE  course SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
+	
+<!--  -->	
+	
+	<sql id="whereSqlA">
+		<where>	
+			 
+		    <if test="searchWord != null and searchWord != ''">
+		        (cname LIKE '%${searchWord}%' OR teacher1 LIKE '%${searchWord}%' OR teacher2 LIKE '%${searchWord}%')
+		    </if>
+		    <if test="education != null and education != '' and education != 0 ">
+		        AND education = #{education}
+		    </if>
+		    <if test="area != null and area != ''">
+		        AND area = #{area}
+		    </if>
+		    <if test="branch != null and branch != ''">
+		        AND branch = #{branch}
+		    </if>
+		    <if test="subject != null and subject != ''">
+		        AND subject = #{subject}
+		    </if>
+		</where>	
+	</sql>
+	
+	<select id="courseCount" parameterType="kr.co.retobe.vo.CourseVO" resultType="int">
+		SELECT COUNT(*) FROM course
+		<include refid="whereSqlA"/>
+	</select>
+	
+	<select id="courseList" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		<include refid="whereSqlA"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	<!-- customer -->
+	<insert id="customerinsert" parameterType="kr.co.retobe.vo.NoticeVO">
+		INSERT INTO notice (
+				n_title, n_content, n_writedate
+				) VALUES (
+				#{n_title}, #{n_content}, NOW()
+				
+				)
+				<selectKey keyProperty="notice_no" order="AFTER"
+					resultType="int">
+					SELECT LAST_INSERT_ID()
+				</selectKey>
+	</insert>
+	
+	<insert id="faqinsert" parameterType="kr.co.retobe.vo.FaqVO">
+		INSERT INTO faq (
+				f_title, f_content
+				) VALUES (
+				#{f_title}, #{f_content}
+				
+				)
+				<selectKey keyProperty="faq_no" order="AFTER"
+					resultType="int">
+					SELECT LAST_INSERT_ID()
+				</selectKey>
+	</insert>
+	<!--  <select id="count" parameterType="kr.co.retobe.vo.FaqVO" resultType="int">
+		SELECT COUNT(*) FROM faq
+		<include refid="whereSql"/>
+	</select>-->
+	
+	<select id="getlist" resultType="kr.co.retobe.vo.NoticeVO">
+		select notice_no, n_title, n_writedate from notice
+	</select>
+	<select id="NoticeDetail" parameterType="kr.co.retobe.vo.NoticeVO" resultType="kr.co.retobe.vo.NoticeVO">
+        SELECT n_title, n_writedate, n_content
+        FROM notice
+        WHERE notice_no = #{noticeNo};
+    </select>	
+    
+	<select id="getqnalist" resultType="kr.co.retobe.vo.QnaVO">
+		select qna_no, q_title, q_writedate, member_no from qna
+	</select>
+	<select id="QnaDetail" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
+        SELECT q_title, q_writedate, q_content
+        FROM qna
+        <!-- JOIN member ON qna.member_no = member.member_no -->
+        WHERE qna_no = #{qnaNo};
+		<!--GROUP BY member.name;  -->
+    </select>
+    
+    <select id="getfaqlist" resultType="kr.co.retobe.vo.FaqVO">
+		select faq_no, f_title, f_content from faq
+	</select>
+	
+	
+	<!-- ㄴㅇㄹ호ㅓ -->
+	<sql id="noticeSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					n_title LIKE '%${searchWord}%' OR n_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+   <select id="noticeList" parameterType="kr.co.retobe.vo.NoticeVO" resultType="kr.co.retobe.vo.NoticeVO">
+		SELECT *
+		FROM notice
+		<include refid="noticeSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="noticeCount" parameterType="kr.co.retobe.vo.NoticeVO" resultType="int">
+		SELECT COUNT(*)
+		FROM notice
+		<include refid="noticeSql"/>
+	</select>
+   
+   <update id="replyInsert" parameterType="kr.co.retobe.vo.QnaVO">
+		UPDATE qna 
+		SET q_reply = #{q_reply}
+		WHERE qna_no =#{qna_no}
+	</update>
+	
+	<!-- 문의 -->
+	<sql id="qnaSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					q_title LIKE '%${searchWord}%' OR q_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	<!-- email -->
+	<sql id="whereSqlB">
+		<where>	
+			<if test="searchWord != null and searchWord != ''">
+				(id LIKE '%${searchWord}%' OR name LIKE '%${searchWord}%' OR email LIKE '%${searchWord}%')
+			</if>
+         	<if test="startday != null and startday != ''">
+            	<if test="searchWord != null and searchWord != ''">
+                   AND
+               </if>
+                  <![CDATA[
+	              registdate BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	       		 ]]>
+         	</if>
+         	<if test="birthDayStartday != null and birthDayStartday != ''">
+             	<if test="searchWord != null and searchWord != '' or startday != null and startday != ''">
+                   AND
+               </if>
+                 <![CDATA[
+	              birthday BETWEEN STR_TO_DATE(#{birthDayStartday}, '%Y-%m-%d') AND STR_TO_DATE(#{birthDayEndday}, '%Y-%m-%d')
+	       		 ]]>
+        	</if>
+		</where>	
+	</sql>
+	
+	<insert id="emailInsert" parameterType="kr.co.retobe.vo.EmailVO">
+		INSERT INTO email (
+		   member_no, e_title, e_content, e_senddate
+		) VALUES (
+			#{member_no},#{e_title} ,#{e_content}, NOW()
+		)
 
+	</insert>
+	
+	<select id="count" parameterType="kr.co.retobe.vo.EmailVO" resultType="int">
+		SELECT COUNT(*) FROM email
+	</select>
+	
+	<select id="emailList" resultType="kr.co.retobe.vo.EmailVO" >
+		SELECT email_no, member_no
+		,e_title, e_content, e_senddate, 
+		(SELECT name from member where member_no =email.member_no) as member_name
+		FROM email
+		LIMIT #{startIdx}, 20
+	</select>
+	
+	<select id="emailSelect" resultType="String" parameterType="int">
+		SELECT email
+		FROM member
+		WHERE member_no=#{no}
+	</select>
+	
+	<select id="memberSelect" resultType="int" parameterType="String" >
+		SELECT member_no
+		FROM member
+		WHERE email=#{email}
+	</select>
+	
+	<select id="memberCount" parameterType="kr.co.retobe.vo.MemberVO" resultType="int">
+		SELECT COUNT(*) FROM member
+		<include refid="whereSqlB"/>
+	</select>
+	
+	<select id="memberList" parameterType="kr.co.retobe.vo.MemberVO" resultType="kr.co.retobe.vo.MemberVO">
+		SELECT *
+		FROM member
+		<include refid="whereSqlB"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	<!-- member -->
+	<sql id="whereSqlC">
+		<where>	
+			<if test="searchWord != null and searchWord != ''">
+				(id LIKE '%${searchWord}%' OR name LIKE '%${searchWord}%' OR email LIKE '%${searchWord}%')
+			</if>
+         	<if test="startday != null and startday != ''">
+            	<if test="searchWord != null and searchWord != ''">
+                   AND
+               </if>
+                  <![CDATA[
+	              registdate BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	       		 ]]>
+         	</if>
+         	<if test="birthDayStartday != null and birthDayStartday != ''">
+             	<if test="searchWord != null and searchWord != '' or startday != null and startday != ''">
+                   AND
+               </if>
+                 <![CDATA[
+	              birthday BETWEEN STR_TO_DATE(#{birthDayStartday}, '%Y-%m-%d') AND STR_TO_DATE(#{birthDayEndday}, '%Y-%m-%d')
+	       		 ]]>
+        	</if>
+		</where>	
+	</sql>
+	
+	
+	<select id="cmemberDetail" parameterType="int" resultType="kr.co.retobe.vo.MemberVO">
+		SELECT * FROM member WHERE member_no = #{no}
+	</select>
+	
+	<update id="cmemberUpdate" parameterType="kr.co.retobe.vo.MemberVO">
+	UPDATE  member SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
 
+	<select id="cmemberCount" parameterType="kr.co.retobe.vo.MemberVO" resultType="int">
+		SELECT COUNT(*)
+		FROM member
+		<include refid="whereSqlC"/>
+	</select>
 
+ 	<select id="cmemberList" parameterType="kr.co.retobe.vo.MemberVO" resultType="kr.co.retobe.vo.MemberVO">
+		SELECT *
+		FROM member
+		<include refid="whereSqlC"/>	
+		LIMIT #{startIdx}, 10
+	</select>
 
 </mapper>

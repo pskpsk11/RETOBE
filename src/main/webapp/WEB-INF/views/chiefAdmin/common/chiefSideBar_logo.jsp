@@ -129,38 +129,38 @@ a:hover {
 <div id="main">
 	<div id="contain">
     	<div id="logo">
-        	<img src="/tobe/img/admin_logo.png" onclick="location.href='/tobe/chiefAdmin/common/chiefIndex.do';">
+        	<img src="/retobe/img/admin_logo.png" onclick="location.href='/retobe/chiefAdmin/chiefIndex.do';">
 			<hr style="border: solid 1px pink;">
 		</div>
 	
 		<div>
-		   	<button id="btn" onclick="location.href='/tobe/chiefAdmin/member/chiefMemberIndex.do';">
-		    	<img src="/tobe/img/admin_user.png">
+		   	<button id="btn" onclick="location.href='/retobe/chiefAdmin/chiefMemberIndex.do';">
+		    	<img src="/retobe/img/admin_user.png">
 		    </button>
 	   	</div>
 		<div>
-			<button id="btn" onclick="location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do';">
-				<img src="/tobe/img/admin_course.png">
+			<button id="btn" onclick="location.href='/retobe/chiefAdmin/chiefCourseIndex.do';">
+				<img src="/retobe/img/admin_course.png">
 			</button>
 		</div>
 		<div>
-		   	<button id="btno" onclick="location.href='/tobe/chiefAdmin/pay/chiefPayIndex.do';">
-				<img src="/tobe/img/admin_order.png">
+		   	<button id="btno" onclick="location.href='/retobe/chiefAdmin/chiefPayIndex.do';">
+				<img src="/retobe/img/admin_order.png">
 			</button>
 		</div>
 		<div>
-		   	<button id="btne" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailIndex.do';">
-	      		<img src="/tobe/img/admin_email.png">
+		   	<button id="btne" onclick="location.href='/retobe/chiefAdmin/chiefEmailIndex.do';">
+	      		<img src="/retobe/img/admin_email.png">
 		   	</button>
 		</div>
 		<div>
-		   	<button id="btno" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do';">
-		      	<img src="/tobe/img/admin_qna.png">
+		   	<button id="btno" onclick="location.href='/retobe/chiefAdmin/chiefCustomerIndex.do';">
+		      	<img src="/retobe/img/admin_qna.png">
 		   	</button>
 		</div>
 		<div>
-	   		<button id="btn" onclick="location.href='/tobe/chiefAdmin/sales/chiefSalesIndex.do';">
-	      		<img src="/tobe/img/admin_account.png">
+	   		<button id="btn" onclick="location.href='/retobe/chiefAdmin/chiefSalesIndex.do';">
+	      		<img src="/retobe/img/admin_account.png">
 		   	</button>
 		</div>
 		<div>
@@ -171,10 +171,10 @@ a:hover {
 	 	<div id="btna"></div>
 	</div> 
 	<div id="mainlogo">
-	      <img src="/tobe/img/admin_logoa.png" onclick="location.href='/tobe/chiefAdmin/common/chiefIndex.do';">
+	      <img src="/retobe/img/admin_logoa.png" onclick="location.href='/retobe/chiefAdmin/chiefIndex.do';">
 	</div>
 	<div class="logout">
-		<a href="/tobe/admin/common/adLogout.do"> 로그아웃</a>
+		<a href="/retobe/admin/adLogout.do"> 로그아웃</a>
 	</div>
 	
 </div>
