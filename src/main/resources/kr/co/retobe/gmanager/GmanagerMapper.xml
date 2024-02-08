@@ -221,7 +221,6 @@
 			#{member_no},#{e_title} ,#{e_content}, NOW()
 		)
 
-<<<<<<< HEAD
 	</insert>
 	
 	<select id="count" parameterType="kr.co.retobe.vo.EmailVO" resultType="int">
@@ -294,27 +293,7 @@
 		point=#{point}
 	WHERE member_no=#{member_no}
 	</update>
-=======
-<!-- 전체선택했을 때와 학원선택없이 날짜만 선택했을 때의 총매출, 총수수료-->
-	<select id="pay_chargeTotal" resultType="java.util.Map">
-		    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
-		    FROM course c JOIN pay_detail pd
-		    ON c.course_no=pd.course_no
-		    JOIN pay p ON pd.order_no=p.order_no
-	</select>
-	
-	<select id="totalCount" resultType="int">
-		select count(*) 
-		from member
-	</select>
-	
-		<select id="qna" parameterType="kr.co.retobe.vo.QnaVO" resultType="java.util.Map">
-			SELECT qna_no, q_title, STR_TO_DATE(q_writedate, '%Y-%m-%d') as q_writedate
-			FROM qna q 
-			WHERE q_reply is null
-			 
-	</select>
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
+
 
 	<select id="cmemberCount" parameterType="kr.co.retobe.vo.MemberVO" resultType="int">
 		SELECT COUNT(*)

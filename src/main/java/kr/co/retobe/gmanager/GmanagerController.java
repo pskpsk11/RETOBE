@@ -1,6 +1,5 @@
 package kr.co.retobe.gmanager;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Map;
 
@@ -25,22 +24,10 @@ import kr.co.retobe.vo.NoticeVO;
 import kr.co.retobe.vo.QnaVO;
 
 @Controller
-=======
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import kr.co.retobe.vo.AdminVO;
-import kr.co.retobe.vo.QnaVO;
-
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 public class GmanagerController {
 
 	@Autowired
 	GmanagerService service;
-<<<<<<< HEAD
 	//common
 	@GetMapping ("/chiefAdmin/chiefIndex.do")
 	public String index(HttpSession sess, Model model,QnaVO qvo) {
@@ -49,7 +36,7 @@ public class GmanagerController {
 		model.addAttribute("q", service.qna(qvo));
 		return "chiefAdmin/common/chiefIndex";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefSalesIndex.do")
 	public String chiefSalesIndex(Model model) {
 //		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
@@ -60,7 +47,7 @@ public class GmanagerController {
 	public String chiefClassForm() {
 		return "chiefAdmin/course/chiefCourseForm";
 	}
-	
+
 	@PostMapping ("/chiefAdmin/chiefCourseInsert.do")
 	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request, String educationName) {
 		System.out.println(vo);
@@ -81,11 +68,11 @@ public class GmanagerController {
 
 	@GetMapping ("/chiefAdmin/chiefModCourseForm.do")
 	public String modcourse(Model model, int no) {
-		
+
 		model.addAttribute("map", service.modcourse(no));
 		return "chiefAdmin/course/chiefModCourseForm"; 
 	}
-	
+
 	@PostMapping ("/chiefAdmin/chiefCourseIndex.do")
 	public String cheifModForm(CourseVO vo, Model model) {
 		int r = service.update(vo);
@@ -96,13 +83,13 @@ public class GmanagerController {
 		} else {
 			msg = "수정사항이 없습니다";
 		}
-		
+
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		model.addAttribute("cmd","move");
 		return "chiefAdmin/common/alert";
 	}
-	
+
 	//
 	@GetMapping ("/chiefAdmin/chiefCourseIndex.do")
 	public String chiefCourseIndex(HttpSession sess, Model model, CourseVO vo) {
@@ -121,19 +108,19 @@ public class GmanagerController {
 		model.addAttribute("map", NoticeList);
 	return "chiefAdmin/customer/chiefCustomerIndex";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefNoticeDetail.do")
 	public String Detail(Model model, @RequestParam("noticeNo") int noticeNo) {
 		NoticeVO notice = service.getNoticeDetail(noticeNo);
 	        model.addAttribute("notice", notice);
 	return "chiefAdmin/customer/chiefNoticeDetail";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefNoticeForm.do")
 	public String Notice() {
 	return "chiefAdmin/customer/chiefNoticeForm";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefQnaList.do")
 		public String QnaList(Model model, QnaVO vo) {
 		List<QnaVO> QnaList = service.getqnalist(vo);
@@ -146,7 +133,7 @@ public class GmanagerController {
 		model.addAttribute("qna", qna);
 		return "chiefAdmin/customer/chiefQnaDetail";
 	}
-	
+
 	@PostMapping ("/chiefAdmin/chiefNoticeInsert.do")
 	public String insert(NoticeVO vo, Model model) {
 		boolean r = service.insert(vo);
@@ -160,24 +147,24 @@ public class GmanagerController {
 	       }
 		return "chiefAdmin/common/alert";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefReplyForm.do")
 	public String chiefReply() {
 	return "chiefAdmin/customer/chiefReplyForm";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefFaqList.do")
 	public String FaqList(Model model, FaqVO vo) {	
 		List<FaqVO> FaqList = service.getfaqlist(vo);
 		model.addAttribute("list", FaqList);
 	return "chiefAdmin/customer/chiefFaqList";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefFaqForm.do")
 	public String FaqForm() {
 	return "chiefAdmin/customer/chiefFaqForm";
 	}
-	
+
 	@PostMapping ("/chiefAdmin/chiefFaqInsert.do")
 	public String insert(FaqVO vo, Model model) {
 		boolean r = service.faqinsert(vo);
@@ -191,7 +178,7 @@ public class GmanagerController {
 	       }
 		return "chiefAdmin/common/alert";
 	}
-	
+
 	@PostMapping("/chiefAdmin/reply.do")
 	public String insert(Model model, QnaVO vo ) {
 		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
@@ -206,7 +193,7 @@ public class GmanagerController {
 		}
 		return "chiefAdmin/common/alert";
 	}
-	
+
 	@PostMapping("/chiefAdmin/edit.do")
 	public String edit(Model model, QnaVO vo ) {
 		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
@@ -224,7 +211,7 @@ public class GmanagerController {
 	//email
 	@Autowired
 	SendMail sendEmail;
-	
+
 	@GetMapping("/chiefAdmin/chiefEmailForm.do")
 	public String emailWrite(int[] member_no, Model model) {
 		String email="";
@@ -237,27 +224,27 @@ public class GmanagerController {
 				if((member_no.length -1) != i) {
 					email += ", "; //회원 emai주소 가져오기 
 				}
-				
+
 			}
 			model.addAttribute("email", email);
 		}
-		
+
 		return "chiefAdmin/email/chiefEmailForm"; 
 	}
-	
+
 	@PostMapping("/chiefAdmin/send.do")
 	public String emailSend(String[] email, EmailVO vo, Model model, int[] no ) {
 		System.out.println("vo!!!" + vo);
 
 		sendEmail.init();
-		
+
 		int r =0;
 		for(int i=0; i<email.length; i++) {
 			sendEmail.sendMail(email[i], vo.getE_title(), vo.getE_content());
 			vo.setMember_no(service.findMember(email[i]));
 			r = service.sendEmail(vo);//, request); /db에 이메일 등록하기 
 		}
-		
+
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으 메일이 전송되었습니다.");
@@ -266,10 +253,10 @@ public class GmanagerController {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "전송 오류");
 		}
-		
+
 		return "chiefAdmin/common/alert"; 
 	}
-	
+
 	@GetMapping("/chiefAdmin/chiefEmailBox.do")
 	public String emailBox(Model model, EmailVO vo) {
 		//db에서 보낸 메일함 가져오기 
@@ -277,17 +264,17 @@ public class GmanagerController {
 		model.addAttribute("map",service.emailList(vo));
 		return "chiefAdmin/email/chiefEmailBox"; 
 	}
-	
+
 	@GetMapping("/chiefAdmin/chiefMemberListEmail.do")
 	public String eMemberList(Model model, MemberVO vo ) {
 		model.addAttribute("map", service.memberListS(vo));
 		System.out.println( service.memberListS(vo));
 		return "chiefAdmin/email/chiefMemberListEmail"; 
 	}
-	
+
 	@GetMapping("/chiefAdmin/chiefEmailIndex.do")
 	public String index() {
-		
+
 		return "chiefAdmin/email/chiefEmailIndex"; 
 	}
 	//member
@@ -296,7 +283,7 @@ public class GmanagerController {
 		model.addAttribute("map", service.cmemberList(vo));		
 		return "chiefAdmin/member/chiefMemberIndex"; 
 	}
-	
+
 	@PostMapping ("/chiefAdmin/chiefMemberIndex.do")
 	public String cheifMemberindex(MemberVO vo, Model model) {
 		int r = service.update(vo);
@@ -307,31 +294,16 @@ public class GmanagerController {
 		} else {
 			msg = "수정사항이 없습니다";
 		}
-		
+
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		model.addAttribute("cmd","move");
 		return "chiefAdmin/common/alert";
 	}
-	
+
 	@GetMapping ("/chiefAdmin/chiefMemberDetail.do")
 	public String cheifMemberDetail(Model model, int no) {
 		model.addAttribute("map", service.detail(no));
 		return "chiefAdmin/member/chiefMemberDetail"; 
-=======
-	
-	@GetMapping ("/chiefAdmin/chiefIndex.do")
-	public String index(HttpSession sess, Model model,QnaVO qvo) {
-		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
-		model.addAttribute("totalCount", service.totalCount());
-		model.addAttribute("q", service.qna(qvo));
-		return "chiefAdmin/common/chiefIndex";
-	}
-	
-	@GetMapping ("/chiefAdmin/chiefSalesIndex.do")
-	public String chiefSalesIndex(Model model) {
-//		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
-		return "chiefAdmin/sales/chiefSalesIndex";
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 	}
 }

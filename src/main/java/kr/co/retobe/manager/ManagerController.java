@@ -17,7 +17,7 @@ import kr.co.retobe.vo.CqnaVO;
 
 @Controller
 public class ManagerController {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 	@Autowired
 	ManagerService service;
@@ -115,7 +115,7 @@ public class ManagerController {
 			model.addAttribute("admin", admin);
 			return "admin/course/adCourseModForm"; 
 		}
-=======
-	
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
+//=======
+//	
+//>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 }
