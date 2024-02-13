@@ -10,7 +10,11 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
 <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
-<link rel="stylesheet" href="/retobe/css/user_Header_Footer.css" />
+<link rel="stylesheet" href="/tobe/css/reset.css" />
+<link rel="stylesheet" href="/tobe/css/common.css" />
+<link rel="stylesheet" href="/tobe/css/main.css" />
+<link rel="stylesheet" href="/tobe/css/contents.css" />
+<link rel="stylesheet" href="/tobe/css/swiper.css" />
 <style>
 .calendarWrap{
 	

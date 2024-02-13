@@ -11,206 +11,178 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <title>Insert title here</title>
-<style>
-.wrap {
-	width: 85rem;
-	margin: 0 auto;	
-	position: relative;
-}
-
-*{
-	box-sizing: border-box;
-}
-.headerBox {
-	width: 75rem;
-	height: 13rem;
-}
-.header { 
-	width: 75rem;
-	height: 12rem;
-	position: absolute;
-	
-	top: 0;
-	left: 0rem;
-}
-
-.header_memberBar {
-	position: absolute;
-	color: #000;
-	right: 0;
-	top:10%;
-	font-family: Inter;
-	text-align: center;
-	font-size: 1rem;
-	letter-spacing: 0;
-}
-
-.tobe_logo {
-	position: absolute;
-	top: 6rem;
-	width: 15rem;	
-	margin: 0 0 0 50px;
-}
-
-.menu_container{
-	position: absolute;
-	width: 50rem;
-	right: 0;
-	top: 6.5rem;
-	font-size: 
-}
-
-
-.menu_container a:link, .menu_container a:visited {
-	text-decoration: none;
-	color: #49654E;
-	
-}
-
-.header_memberBar a:link, .header_memberBar a:visited {
-	text-decoration: none;
-	color: #49654E;
-}
-a:hover {
-	text-decoration: none;
-	color: #d3d3d3;
-}
-
-.menu_container > ul > li {
-    list-style: none;
-    float: left;        
-    height: 3rem;
-    line-height: 3rem;
-    width: 25%;
-    text-align: center;
-    color: #d3d3d3;
-    font-size: 2rem;
-}
-
-.menu_container > ul > li > a:hover {
-    color: #49654E;
-    font-weight: bolder;
-    cursor:pointer; 
-}
-
-.quickMenu {
-	position: absolute;
-	width: 4rem;
-	top: 30rem;
-	right: -5rem;
-	z-index:99999;
-}
-
-.quick {
-	width: 4rem;
-}
-
-#goTop {
-    cursor: pointer;
-}
-
-#goBottom {
-    cursor: pointer;
-}
-
-.modal{
-	max-width: 900px;
-	height: 900px;
-	text-align: center;
-	margin: 0 auto;
-	background-color : #E4E6D9; 
-	pont-size : 15px;
-}
-    
-.main {
-	width: 75rem;
-
-}
-</style>
-<script type="text/javascript">
-$(document).ready(function(){
-  var currentPosition = parseInt($(".quickMenu").css("top"));
-  $(window).scroll(function() {
-    var position = $(window).scrollTop(); 
-    $(".quickMenu").stop().animate({"top":position+currentPosition+"px"},500);
-  });
-  
-});
-
-function courseView() {
-	$.ajax({
-		type: 'GET',
-		url:'/tobe/user/common/modal.do',
-		data:{
-			a : 1
-		},
-		success:function(res) {
-			console.log(res);
-			$('#ex1').html(res);
-			
-			$('#ex1').modal();
-			
-		}
-	})
-}
-
-// $("#goTop").click(function() {
-// 	$('html').animate({scrollTop:0}, 2000);
-// });
-
-//document.querySelect("#goTop").onclick = () => {
-//	window.scroppTop({top:0, behavior:"smooth"});
-//};
-//$('#ex1').modal({
-//  closeExisting: false
-//});
-
-
-	
-</script>
-
+<link rel="stylesheet" href="/tobe/css/reset.css" />
+<link rel="stylesheet" href="/tobe/css/common.css" />
+<link rel="stylesheet" href="/tobe/css/main.css" />
+<link rel="stylesheet" href="/tobe/css/contents.css" />
+<link rel="stylesheet" href="/tobe/css/swiper.css" />
+<link
+     href="https://fonts.googleapis.com/css?family=Sintony:400,700"
+     rel="stylesheet"
+/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/tobe/js/function.js" type="text/javascript"></script>
+<script src="/tobe/js/function_jquery.js" type="text/javascript"></script>
 </head>
 <body>
-
-<div class="header">
-	<span class="header_memberBar">
-		<c:if test="${empty loginInfo }">
-		    <a href="/tobe/user/login.do">로그인</a> |
-		    <a href="/tobe/user/joinPolicy.do">회원가입</a>
-		</c:if>
-		
-		<c:if test="${!empty loginInfo }">
-		    <a href="/tobe/user/logout.do">로그아웃</a> |
-		    <a href="/tobe/user/mypage.do">마이페이지</a>
-		</c:if>
-	</span>
-	
-	
-	<span><a href="/tobe/user/main.do"><img src="/tobe/img/header_tobe_logo.png" class="tobe_logo"></a></span>
-	<div class="menu_container">
-		<ul>
-			<li><a href="/tobe/user/userCourseIndex.do">수강신청</a></li>
-			<li><a href="/tobe/user/userTestSchedule.do">시험일정</a></li>
-			<li><a href="/tobe/user/review/userReviewIndex.do">수강후기</a></li>
-			<li><a href="/tobe/user/customer/userCustomer.do">고객센터</a></li>
-		</ul>
-	</div>
-
-
-	<span class="quickMenu">
-		<span><img src="/retobe/img/top.png" class="quick" id="goTop" style="width: 27px; height: 20px; margin-left: 17px;"></span>
-		<span><a href="/tobe/user/customer/userCustomer.do"><img src="/retobe/img/customer.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
-		<span><a href="/tobe/user/common/userBasket.do"><img src="/retobe/img/basket.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
-<!-- 		<span><a href="/tobe/user/common/modal.do" id="manual-ajax" ><img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;"></a></span> -->
-		<span>
-		<img src="/retobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;" onclick="courseView();"></span>
-		<span><img src="/retobe/img/bottom.png" class="quick" id="goBottom" style="width: 28px; height: 20px; margin-left: 18px;" onclick=""></span>
-	</span>
-
-</div>
-	<div id="ex1" class="modal">
-		
-	</div> 
-
+   <script type="text/javascript" src="/tobe/js/swiper.min.js"></script>
+   <script>
+      $(function() {
+         $(".depth1 > li").mouseover(function() {
+            $(this).find(".depth2").stop().slideDown(300);
+         });
+         $(".depth1 > li").mouseleave(function() {
+            $(this).find(".depth2").stop().slideUp(300);
+         });
+         $("#login_click").click(function() {
+            $(".login_info").toggle();
+            useremail_chk();
+         });
+         $(".login_info > .top_area > img").click(function() {
+            $(".login_info").hide();
+         });
+      });
+      
+      function loginCheck() {
+         if($("#loginEmail").val().length < 1) {
+            alert("아이디를 입력해주세요.");
+            $("#loginEmail").focus();
+            return false;
+         }
+         var f = document.loginFrm;
+         if(f.reg.checked){
+            document.cookie=
+               "cookie_usermail=" +
+               $("#loginEmail").val() +
+               ";path=/;expires=Sat, 31 Dec 2050 23:59:59 GMT;";
+          } else{
+             var now = new Date();
+             document.cookie="cookie_useremail=null;path=/;expires="+now;
+          }
+         return true;
+      }
+      
+      function useremail_chk(){
+         var f = document.loginFrm;
+         var useremail = CookieVal("cookie_useremail");
+         
+         if(useremail=="null"){
+            f.loginEmail.focus();
+            f.loginEmail.value="";
+         } else{
+            f.loginPw.focus();
+            f.loginEmail.value=useremail;
+            f.reg.checked=true;
+            $("#loginPw").focus();
+         }
+      }
+      
+      function CookieVal(cookieName) {
+         thisCookie=document.cookie.split("; ");
+         for(var i = 0; i < thisCookie.length; i++){
+            if(cookieName==thisCookie[i].split("=")[0]){
+               return thisCookie[i].split("=")[1];
+            }
+         }
+         return "null";
+      }
+   </script>
+      <div id = "header">
+         <div class = "head_top">
+            <div class = "size">
+               <div class = "header_call">
+                  <div class = "txt">
+                     <a href = ""></a>
+                  </div>
+               </div>
+               <h1 class = "logo">
+                  <a href = "/tobe/user/main.do"><img src = "/tobe/img/logo.png"/></a>
+               </h1>
+               <div class = "util clear">
+	               <c:if test ="${empty loginInfo }"> 
+	                  <a href = "#;" id = "login_click">로그인</a>
+	                  <a href = "/tobe/user/joinForm.do">회원가입</a>
+	               </c:if>
+                  <c:if test ="${!empty loginInfo }">
+	                  <a href="/tobe/user/logout.do">로그아웃</a>
+	                  <a href="/tobe/user/mypage.do">마이페이지</a>
+                  </c:if>
+               </div>
+               
+               
+               <form 
+                 action = "/tobe/user/login.do"
+                 id = "loginFrm"
+                 name = "loginFrm"
+                 method = "post"
+                 onsubmit="return loginCheck();"
+               >
+               <div class = "login_info">
+                  <div class = "top_area"><img src = "/tobe/img/btn_del.gif"/></div>
+                  <div class = "title_area"><span>TOBE 로그인</span></div>
+                  <div class = "middle_area">
+                     <div class="input_area">
+                        <input 
+                           type = "text"
+                           id="loginId"
+                           name="id"
+                           value=""
+                           placeholder="아이디"
+                        />
+                        <input
+                           type = "password"
+                           id="loginPw"
+                           name="pwd"
+                           value=""
+                           placeholder="비밀번호"
+                        />
+                     </div>
+                     <div class = "login_btn">
+                        <input type = "submit" value = "로그인"/>
+                     </div>
+                  </div>
+                  <div class = "bottom_area">
+                     <input type="checkbox" id="reg" name="reg"/>
+                     <label for="reg">아이디 저장</label>
+                     &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                     <a href="#;">아이디 찾기</a>&nbsp;/&nbsp;<a href="#;">비밀번호 찾기</a>
+                  </div>
+               </div>
+               </form>
+            </div>
+         </div>
+         <div class="head_bot">
+            <div class="size">
+               <div class="gnb">
+                  <ul class="depth1 clear">
+                     <li>
+                        <a href="/tobe/user/course.do">수강신청</a>
+                     </li>
+                     <li>
+                        <a href="#;">일정</a>
+                        <ul class="depth2">
+                           <li><a href="/tobe/user/schedule.do">시험일정</a></li>
+                           <li><a href="#;">개강일정</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href = "#;">수강후기</a>
+                        <ul class="depth2">
+                           <li><a href = "/tobe/user/reviewIndex.do">수강후기</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href = "#;">고객센터</a>
+                        <ul class="depth2">
+                           <li><a href="/tobe/user/notice.do">공지사항</a></li>
+                           <li><a href="/tobe/user/qna.do">1:1문의</a></li>
+                           <li><a href="/tobe/user/faq.do">FAQ</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>      
+      </div>
 </body>
 </html>

@@ -652,7 +652,7 @@ function setCourseComp(no) {
 	    		<div class = "childSelectBox1">
 	    			<table>
 	    				<tr>
-	    					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
+	    					<td><button type="button" onclick="location.href='/tobe/user/basket.do?course_no=${courseInfo.course_no}'" class="SelectBtn">장바구니 담기</button></td>
 	    					<td><button type="button" onclick="setCourseComp(23);" class="SelectBtn">비교함 담기</button></td>
 	    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?'+" class="payBtn">결제 하기</button></td>
 	    				</tr>

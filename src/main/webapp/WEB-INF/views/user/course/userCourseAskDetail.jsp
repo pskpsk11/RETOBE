@@ -112,7 +112,7 @@ hr{
    			<tr>
    				<td>
 	   				<c:if test="${!empty loginInfo}">
-	                     <a class="btn" href="/tobe/user/course/userCourseModAskForm.do?cqna_no=${vo.cqna_no }">수정</a>
+	                     <a class="btn" href="/tobe/user/userCourseModAskForm.do?cqna_no=${vo.cqna_no }">수정</a>
 	                </c:if>
                 </td>
    				<td>

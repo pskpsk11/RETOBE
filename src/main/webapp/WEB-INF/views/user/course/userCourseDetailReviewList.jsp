@@ -45,7 +45,7 @@
 			<c:forEach var="vo" items="${reviewList }">       
                   <tr>
                       <td>${vo.review_no }</td>
-                      <td><a href ="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title }</a></td>                     
+                      <td><a href ="/tobe/user/reviewDetail.do?review_no=${vo.review_no}">${vo.r_title }</a></td>                     
                       <td class="date"><fmt:formatDate value="${vo.r_writedate }" pattern="YYYY-MM-dd"/></td>
                   </tr>
              </c:forEach>

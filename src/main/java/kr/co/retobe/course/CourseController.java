@@ -22,7 +22,7 @@ import kr.co.retobe.vo.ReviewVO;
 @Controller
 public class CourseController {
 	
-	@GetMapping("/user/userTestSchedule.do")
+	@GetMapping("/user/schedule.do")
 	public String userTestSchedule() {
 		return "user/common/userTestSchedule";
 	}
@@ -50,7 +50,7 @@ public class CourseController {
 		return "success";
 	}
 		
-	@GetMapping("/user/userCourseIndex.do")
+	@GetMapping("/user/course.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
 		int pageSize = 10; // 페이지당 아이템 개수
 	    courseVO.setPage(pageSize);
@@ -67,7 +67,7 @@ public class CourseController {
 		return "user/course/userCourseIndex";
 	}
 	
-	@GetMapping("/user/userCourseIndex2.do")
+	@GetMapping("/user/course2.do")
 	@ResponseBody
 	public Map<String, Object> getLectureList2(Model model, CourseVO courseVO) {
 		System.out.println("Received request: " + courseVO);

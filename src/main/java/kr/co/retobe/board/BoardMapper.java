@@ -18,6 +18,7 @@ public interface BoardMapper {
 	int updateCouse(@Param("rating") String userId, @Param("no") String ownerId);
 	List<Map<String, Object>> selectReviewNo();
 	ReviewVO ReviewDetail(int review_no);
+	int updateReview(ReviewVO vo);
 	
 	//qna
 	int insert(QnaVO vo);

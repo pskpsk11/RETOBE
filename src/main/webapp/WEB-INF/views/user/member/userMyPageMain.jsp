@@ -355,7 +355,7 @@ table {
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
-		                            <td><form action="/tobe/user/write.do" method="get">
+		                            <td><form action="/tobe/user/reviewWrite.do" method="get">
 		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
@@ -369,7 +369,7 @@ table {
 										%>
 										
 										<c:if test="${vo.review_cnt gt 0 }">
-											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/userReviewDetail.do?review_no=${rvo.review_no}'" >
+											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/reviewDetail.do?review_no=${rvo.review_no}'" >
 										</c:if>
 										<c:if test="${currentTime gt vo.i_endday and vo.review_cnt eq 0}">
 											<input type="submit" value="후기작성">
@@ -461,7 +461,7 @@ table {
 		                        <tr>
 		                            <td>${vo.review_no}</td>
 		                            <td><a class="url" href="/tobe/user/userCourseDetail.do?course_no=${vo.course_no}">${vo.cname}</a></td>
-		                            <td><a class="url" href="/tobe/user/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
+		                            <td><a class="url" href="/tobe/user/reviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
 		                            <td>${vo.r_writedate}</td>  
 		                        </tr>
 		                    </c:forEach>

@@ -15,6 +15,8 @@ public interface BoardService {
 	List<Map<String, Object>> getSelectReviewNo();
 	ReviewVO getReviewDetail(int review_no);
 	
+	int updateReview(ReviewVO vo);
+	
 	//qna
 	Map<String, Object> qnaList(QnaVO vo);
 	

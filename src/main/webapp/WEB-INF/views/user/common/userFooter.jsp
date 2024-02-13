@@ -5,62 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-.footer { 
-   background-color:#d3d3d3;
-   width:75rem;
-   height:8rem;
-
-}
-
-.footer_content {
-   display: grid;
-     place-items: center;
-     color: #A4A4A4;
-     display: inline-block;
-     margin: 40px 0 0 40px;
-}
-
-.footer_logo {
-   width: 6rem;
-   display: grid;
-     float: left;
-   height: 5rem;
-   font-size: 10px;
-}
-
-.footer_info{
-   width: 37.5rem;
-   display: grid;
-    place-items: center;
-    float: left;
-    height: 3rem;
-    color: #A4A4A4;
-    font-size: 12px;
-   
-}
-
-</style>
+<link rel="stylesheet" href="/tobe/css/reset.css" />
+<link rel="stylesheet" href="/tobe/css/common.css" />
+<link rel="stylesheet" href="/tobe/css/main.css" />
+<link rel="stylesheet" href="/tobe/css/contents.css" />
+<link rel="stylesheet" href="/tobe/css/swiper.css" />
 </head>
 <body>
-<div class="footer">
-	<div class="footer_content">
-		<span class="footer_logo">
-			<img src="/retobe/img/footer_img1.png">
-			토비 retobe
-		</span>
-		<span class="footer_info">
-			<div>(주)토비retobe 주소: 서울특별시 마포구 월드컵북로4길77</div>
-			<div>사업자등록번호 : 139_00_55223 무료 상담문의 : 010-2944-4173</div>
-			<div>회사소개 개인정보처리방침 Copyright ⓒ(주)토비retobe All rights reserved</div>
-		</span>
-
-	</div>
-
-
-</div>
-
-
+   <div id="footer">
+      <div class="size">
+        <div class="inner">
+          <div class="address">
+            <div class="f_logo">
+              <a href="#;"><img class="footer_logo" src="/tobe/img/logo.png" /></a>
+            </div>
+            <ul>
+              <li>
+                <span class="c_name">TOBE</span>
+              </li>
+              <li>
+                <span>서울시 마포구 월드컵북로4길 77</span>
+                <span class="width100">Tel : 031-111-2222</span>
+              </li>
+              <li>
+                <span>대표이사 : 박은주, 박상건, 박모훈</span>
+                <span>사업자등록번호 : 123-45-67890</span>
+              </li>
+            </ul>
+            <div class="copy">Copyright 2019 tobe. All Rights Reserved</div>
+            <div class="util">
+              <a href="#;">개인정보취급방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

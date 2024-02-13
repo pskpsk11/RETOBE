@@ -25,7 +25,7 @@ public class BoardController {
 	@Autowired
 	BoardService service;
 	
-	@GetMapping("/user/review/write.do")
+	@GetMapping("/user/reviewWrite.do")
 	public String write( @RequestParam("infoCourse_no") String infoCourse_no,
 						 @RequestParam("infoDetail_no") String infoDetail_no,
 						 @RequestParam("infoCourseName") String infoCourseName,
@@ -39,7 +39,7 @@ public class BoardController {
 		return "/user/review/userReviewForm";
 	}
 	
-	@PostMapping("/user/review/insert.do")
+	@PostMapping("/user/reviewInsert.do")
 	public String insert(HttpServletRequest request, ReviewVO rvo, Model model) {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
@@ -61,10 +61,19 @@ public class BoardController {
 	}
 	
 	
-//	@GetMapping("/user/review/edit.do")
-//	public String edit() {
-//		return "/user/review/userModReviewForm";
-//	}
+	@GetMapping("/user/reviewEdit.do")
+	public String reviewEdit(Model model,ReviewVO vo) {
+		int r = service.updateReview(vo);//, file, request);
+		if (r > 0) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+			model.addAttribute("url", "??");
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "등록 오류");
+		}
+		return "/user/review/userModReviewForm";
+	}
 	
 	//후기 수정
 //	@PostMapping("/user/course/qna/update.do")
@@ -81,20 +90,20 @@ public class BoardController {
 //		return "user/common/userAlert";
 //	}
 	
-	@GetMapping("/user/review/userReviewIndex.do")
+	@GetMapping("/user/reviewIndex.do")
 	public String getSelectReviewNo(Model model, ReviewVO rvo) {
 		List<Map<String, Object>> ReviewList = service.getSelectReviewNo();
 		model.addAttribute("ReviewList", ReviewList);
 		return "user/review/userReviewIndex";
 	}
 	
-	@GetMapping("/user/review/userReviewDetail.do")
+	@GetMapping("/user/reviewDetail.do")
     public String getReviewDetail(Model model, @RequestParam("review_no") int review_no) {
         ReviewVO review = service.getReviewDetail(review_no);
         model.addAttribute("review", review);
         return "user/review/userReviewDetail";
     }
-	
+	//수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	@GetMapping("/user/review/userModReviewForm.do")
 	public String getModReviewDetail(Model model, @RequestParam("reviewNo") int reviewNo) {
 		ReviewVO review = service.getReviewDetail(reviewNo);
@@ -102,31 +111,31 @@ public class BoardController {
 		return "user/review/userModReviewForm";
 	}
 	
-	@GetMapping("/user/customer/userQna.do")
+	@GetMapping("/user/qna.do")
 	public String userQna(Model model, QnaVO vo) {
 		model.addAttribute("map", service.qnaList(vo));
 		return "user/customer/userQna";
 	}
 	
-	@GetMapping("/user/customer/userCustomer.do")
+	@GetMapping("/user/notice.do")
 	public String userCustomer(Model model, NoticeVO vo) {
 		model.addAttribute("map", service.noticeList(vo));
 		return "user/customer/userCustomer";
 	}
 	
-	@GetMapping("/user/customer/userFaq.do")
+	@GetMapping("/user/faq.do")
 	public String userFaq(Model model, FaqVO vo) {
 		model.addAttribute("map", service.faqList(vo));
 		return "user/customer/userFaq";
 	}
 	//상세
-	@GetMapping("/user/customer/userNoticeDetail.do")
+	@GetMapping("/user/noticeDetail.do")
 	public String view(Model model,  NoticeVO vo) {
 		model.addAttribute("vo", service.noticeDetail(vo));
 		return "user/customer/userNoticeDetail";
 	}
 	//문의 상세
-	@GetMapping("/user/customer/userQnaDetail.do")
+	@GetMapping("/user/qnaDetail.do")
 	public String viewQnaDetail(Model model,  QnaVO vo) {
 		model.addAttribute("vo", service.qnaDetail(vo));
 		return "user/customer/userQnaDetail";

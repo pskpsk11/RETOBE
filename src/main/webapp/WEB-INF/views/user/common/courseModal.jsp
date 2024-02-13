@@ -89,7 +89,7 @@ $(function(){
 
 		$.ajax({
 			type: 'GET',
-			url:'/tobe/user/common/modalRemove.do',
+			url:'/tobe/user/modalRemove.do',
 			data:{
 				remove : $(this).val()
 			},
@@ -117,8 +117,8 @@ $(function(){
 			    		<button class="removeBtn " value="cosComp1">삭제하기</button>				
 					</c:if>
 					<c:if test="${empty map.cosComp1 }">
-						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';" ><br><br><br>
-						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" >강좌추가</a>
+						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/course.do';" ><br><br><br>
+						<a href="/tobe/user/course.do" class="bnt" >강좌추가</a>
 					</c:if>
 				</div>
 				<div class="child">
@@ -130,8 +130,8 @@ $(function(){
 			    		<button class="removeBtn " value="cosComp2" >삭제하기</button>				
 					</c:if>
 					<c:if test="${empty map.cosComp2 }" >
-						<img class="cImg"  src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';"><br><br><br>
-						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" >강좌추가</a>
+						<img class="cImg"  src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course.do';"><br><br><br>
+						<a href="/tobe/user/course.do" class="bnt" >강좌추가</a>
 					</c:if>
 				</div>
 	  	 	</div>

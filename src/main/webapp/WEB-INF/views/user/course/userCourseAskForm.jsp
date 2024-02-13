@@ -61,7 +61,7 @@
             	<div class="size">
 					<h3 class="sub_title">강좌문의 수정</h3>
 					<div class="bbs">
-						<form method="post" name="frm" id="frm" action="/tobe/user/course/qna/insert.do" enctype="multipart/form-data" >
+						<form method="post" name="frm" id="frm" action="/tobe/user/qna/insert.do" enctype="multipart/form-data" >
 							<input type="hidden" name="course_no" value="${infoCourse_no}">
 						    <table class="board_write">
 						        <tbody>

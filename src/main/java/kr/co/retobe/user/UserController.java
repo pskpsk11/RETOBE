@@ -176,7 +176,7 @@ public class UserController {
 		return "user/member/userMyPageMain";
 	}
 	
-	@GetMapping("/user/userBasket.do")
+	@GetMapping("/user/basket.do")
 	public String userBasket(Model model, HttpServletRequest request, BasketVO vo) {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
@@ -192,7 +192,7 @@ public class UserController {
 	}
 	
 	//장바구니 삭제
-	@GetMapping("/user/userBasketDelete.do")
+	@GetMapping("/user/basketDelete.do")
 	public String delete(Model model, int[] cartNo) {
 		int r = 0;
 		
@@ -207,11 +207,11 @@ public class UserController {
 		}
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-			model.addAttribute("url", "userBasket.do");
+			model.addAttribute("url", "basket.do");
 		return "user/common/userAlert";
 	}
 	
-	@GetMapping("/user/userCompareCourse.do")
+	@GetMapping("/user/compare.do")
 	public String userCompareCourse() {
 		return "user/common/userCompareCourse";
 	}
@@ -248,6 +248,8 @@ public class UserController {
 		  
 		return "user/common/courseModal"; 
 	}
+	
+	
 	
 	@GetMapping("/user/modalRemove.do")
 	public String modalRemove (HttpSession sess, Model model, String remove) {

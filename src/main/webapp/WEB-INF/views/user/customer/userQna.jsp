@@ -124,103 +124,95 @@
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
-		<div class="top">
-			<div class="main">
-				<table class="select">
-					<tr>
-						<td id="click1">
-							<p>공지사항</p>
-							<a href="/retobe/user/customer/userCustomer.do"><img src="/retobe/img/chiefAdmin_notice.png"></a>
-						</td>
-						<td id="click2">
-							<p>1:1 문의사항</p>
-							<a href="/retobe/user/customer/userQna.do"><img src="/retobe/img/chiefAdmin_qna.png"></a>
-						</td>
-						<td id="click3">
-							<p>FAQ</p>
-							<a href="/retobe/user/customer/userFaq.do"><img src="/retobe/img/chiefAdmin_faq.png"></a>
-						</td>
-					</tr>
-				</table>
-			</div>
-
-			<!-- <h3 class="sub_title" style="border-bottom:1px solid; width: 200px;">공지사항</h3> -->
-
-			<div class="container">
-				<div class="search-wrap">
-					<span class="dSelect" style="margin: 0 1rem 1rem;"><strong>문의사항</strong></span>
-					<form method="get" name="searchForm" id="searchForm" action="userQna.do">    
-						<span class="srchSelect">
-							<select class="dSelect" name="searchType" title="검색분류 선택" style="margin: 0 0.25rem;">
-								<option value="all">전체</option>
-								<option value="n_title">
-									<c:if test="${NoticeVO.searchType == 'n_title'}">selected</c:if>제목
-								</option>
-								<option value="n_writedate">
-									<c:if test="${NoticeVO.searchType == 'n_writedate'}">selected</c:if>작성일
-								</option>
-							</select>
-						</span>
-						<span class="searchWord">
-							<input class="dSelect" type="search" name="searchWord" value="${QnaVO.searchWord }" placeholder="검색어를 입력하세요.">
-							<button type="submit" class="dSelect" id="searchBtn">검색</button>
-						</span>
-					</form>
-				</div>
-			</div>
-
-
-			<div class="board_head">
-				<table class="list">
-					<thead>
-						<tr>
-							<th style="width: 20%;">번호</th>
-							<th style="width: 50%;">제목</th>
-							<th style="width: 30%;">작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:if test="${empty map.list }">
-							<tr>
-								<td class="first" colspan="8">등록된 글이 없습니다.</td>
-							</tr>
-						</c:if>
-						<c:forEach var="vo" items="${map.list }">
-							<tr>
-								<td>${vo.qna_no }</td>
-								<td><a href="userQnaDetail.do?qna_no=${vo.qna_no }">${vo.q_title }</a></td>
-								<td class="date"><fmt:formatDate value="${vo.q_writedate }" pattern="YYYY-MM-dd" /></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
-				<div class="btnSet" style="text-align: right;">
-					<c:if test="${!empty loginInfo}">
-						<a class="btn" href="userAskForm.do">작성하기</a>
-					</c:if>
-					
-					<div class="pagenate clear">
-						<ul class='paging'>
-							<c:if test="${map.prev }">
-								<li><a href="index.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> << </a></li>
-							</c:if>
-							<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-								<c:if test="${p == QnaVO.page}">
-									<li><a href='#;' class='current'>${p}</a></li>
-								</c:if>
-								<c:if test="${p != QnaVO.page}">
-									<li><a href='userQna.do?page=${p}&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}'>${p}</a></li>
-								</c:if>
-							</c:forEach>
-							<c:if test="${map.next }">
-								<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+		
+		<div class="main">
+      <div class="sub">
+        <div class="size">
+          <h3 class="sub_title">1:1문의</h3>
+  
+          <div class="bbs">
+            <table class="list">
+              <p>
+                <span><strong>총 100개</strong> | 1/10페이지</span>
+              </p>
+              <caption>
+                게시판 목록
+              </caption>
+              <colgroup>
+                <col width="80px" />
+                <col width="*" />
+                <col width="100px" />
+                <col width="100px" />
+                <col width="100px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>조회수</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+                </tr>
+              </thead>
+              <tbody>
+              <c:if test="${empty map.list }">
+                <tr>
+                  <td class="first" colspan="8">등록된 글이 없습니다.</td>
+                </tr>
+  			  </c:if>
+  			  <c:forEach var="vo" items="${map.list }">
+                <tr>
+                   <td>${vo.qna_no }</td>
+                   <td><a href="qnaDetail.do?qna_no=${vo.qna_no }">${vo.q_title }</a></td>
+                   <td>조회수</td>
+                  <td class="writer">${vo.member_no }</td>
+                   <td class="date"><fmt:formatDate value="${vo.q_writedate }" pattern="YYYY-MM-dd" /></td>
+                </tr>
+              </c:forEach>
+              </tbody>
+            </table>
+            <div class="btnSet" style="text-align: right">
+              <a class="btn" href="write.html">글작성 </a>
+            </div>
+            <div class="pagenate clear">
+              <ul class="paging">
+                <li><a href="javascript:;" class="current">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+              </ul>
+            </div>
+  
+            <!-- 페이지처리 -->
+            <div class="bbsSearch">
+              <form method="get" name="searchForm" id="searchForm" action="">
+                <span class="srchSelect">
+                  <select
+                    id="stype"
+                    name="stype"
+                    class="dSelect"
+                    title="검색분류 선택"
+                  >
+                    <option value="all">전체</option>
+                    <option value="title">제목</option>
+                    <option value="contents">내용</option>
+                  </select>
+                </span>
+                <span class="searchWord">
+                  <input
+                    type="text"
+                    id="sval"
+                    name="sval"
+                    value=""
+                    title="검색어 입력"
+                  />
+                  <input type="button" id="" value="검색" title="검색" />
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+		
 		<div class="footerBox">
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>

@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function ajaxFuncDetail(page) {
 	$.ajax({
-		url: "/tobe/user/course/userCourseDetailList.do?course_no=${courseInfo.course_no}&page="+page,
+		url: "/tobe/user/userCourseDetailList.do?course_no=${courseInfo.course_no}&page="+page,
 		type: 'GET',
 		success: function(courseInfoList){
 			console.log("반가워");
@@ -194,7 +194,7 @@ function ajaxFuncDetail(page) {
     
 function ajaxFuncQna(page) {
 	$.ajax({
-		url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=${courseInfo.course_no}&page="+page,
+		url: "/tobe/user/userCourseDetailQnaList.do?course_no=${courseInfo.course_no}&page="+page,
 		type: 'GET',
 		success: function(courseInfoList){
 			console.log("반가워");
@@ -209,7 +209,7 @@ function ajaxFuncQna(page) {
 
 function ajaxFuncReview(page) {
 	$.ajax({
-		url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=${courseInfo.course_no}&page="+page,
+		url: "/tobe/user/userCourseDetailReviewList.do?course_no=${courseInfo.course_no}&page="+page,
 		type: 'GET',
 		success: function(courseInfoList){
 			console.log("반가워");
@@ -269,7 +269,7 @@ function setCourseComp(no) {
             <div class = "subContentBar">
                 <table>
                    <tr>
-					  <td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do?course_no=${courseInfo.course_no}'" class="SelectBtn">장바구니 담기</button></td>
+					  <td><button type="button" onclick="location.href='/tobe/user/basket.do?course_no=${courseInfo.course_no}'" class="SelectBtn">장바구니 담기</button></td>
 					  <td><button type="button" onclick="setCourseComp('${courseInfo.course_no}');" class="SelectBtn">비교함 담기</button></td>
 					  <td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?course_no=${courseInfo.course_no}'" class="payBtn">결제 하기</button></td>
                    </tr>

@@ -22,7 +22,12 @@ public class BoardServiceImpl implements BoardService{
 	public int insertReview(ReviewVO rvo) {
 		return mapper.insert(rvo);
 	}
-
+	
+	@Override
+	public int updateReview(ReviewVO vo) {
+		int r = mapper.updateReview(vo);
+		return r;
+	}
 	@Override
 	public double selectCourseRating(int no) {
 		return mapper.selectCourse(no);

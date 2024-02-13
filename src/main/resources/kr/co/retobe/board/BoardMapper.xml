@@ -36,6 +36,12 @@
         WHERE review_no = #{review_no};
     </select>
 
+	<update id="updateReview" parameterType="kr.co.retobe.vo.ReviewVO">
+		UPDATE review SET 
+			r_title=#{r_title},
+			r_content=#{r_content}
+		WHERE review_no=#{review_no}
+	</update>
 
 	<!-- 고객센터 -->
 	<sql id="noticeSql">
