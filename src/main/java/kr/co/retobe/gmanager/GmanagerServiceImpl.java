@@ -95,7 +95,7 @@ public class GmanagerServiceImpl implements GmanagerService{
 	}
 	//customer
 	@Override
-	public boolean insert(NoticeVO vo) {
+	public boolean customerinsert(NoticeVO vo) {
 //		if (!file.isEmpty()) {
 //	          // 파일명
 //	          String org = file.getOriginalFilename();
@@ -110,7 +110,7 @@ public class GmanagerServiceImpl implements GmanagerService{
 //	          vo.setTeacher_img_real(real);
 //	       }
 
-		return mapper.insert(vo) > 0 ? true : false;
+		return mapper.customerinsert(vo) > 0 ? true : false;
 	}
 
 	@Override

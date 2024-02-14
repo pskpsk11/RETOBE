@@ -59,8 +59,8 @@
 }
 
 #searchBtn {
-	background-color: #ECEDE8;
-	color: #44546A;
+	background-color: #fa0318f0;
+	color:  #fff;
 	border-width: 1px;
 	border-radius: 7px;
 	margin: 0 0.25rem;
@@ -79,7 +79,8 @@
 
 .list th {
 	border-bottom: 1px solid black;
-	background: #ECEDE8;
+	background: #fa0318f0;
+	
 }
 
 .list a {
@@ -141,11 +142,11 @@
               </colgroup>
               <thead>
                 <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>조회수</th>
-                  <th>작성자</th>
-                  <th>작성일</th>
+                  <th style="color:white">번호</th>
+                  <th style="color:white">제목</th>
+                  <th style="color:white">조회수</th>
+                  <th style="color:white">작성자</th>
+                  <th style="color:white">작성일</th>
                 </tr>
               </thead>
               <tbody>
@@ -158,48 +159,57 @@
                 <tr>
                    <td>${vo.notice_no }</td>
                    <td><a href="noticeDetail.do?notice_no=${vo.notice_no }">${vo.n_title }</a></td>
-                   <td>조회수</td>
-                  <td class="writer">작성자</td>
+                   <td>${vo.n_viewcnt }</td>
+                  <td class="writer">관리자</td>
                    <td class="date"><fmt:formatDate value="${vo.n_writedate }" pattern="YYYY-MM-dd" /></td>
                 </tr>
               </c:forEach>
               </tbody>
             </table>
-            <div class="btnSet" style="text-align: right">
-              <a class="btn" href="write.html">글작성 </a>
-            </div>
+
             <div class="pagenate clear">
               <ul class="paging">
-                <li><a href="javascript:;" class="current">1</a></li>
-                <li><a href="javascript:;">2</a></li>
-                <li><a href="javascript:;">3</a></li>
+				<c:if test="${map.prev }">
+					<li><a href="notice.do?page=${map.startPage-1 }&searchType=${NoitceVO.searchType}&searchWord=${NoticeVO.searchWord}"></a></li>
+				</c:if>
+				<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+					<c:if test="${p == NoticeVO.page}">
+						<li><a href='#;' class='current'>${p}</a></li>
+					</c:if>
+					<c:if test="${p != NoticeVO.page}">
+						<li><a href='notice.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${map.next }">
+					<li><a href="notice.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"></a></li>
+				</c:if>
               </ul>
             </div>
   
             <!-- 페이지처리 -->
             <div class="bbsSearch">
-              <form method="get" name="searchForm" id="searchForm" action="">
+              <form method="get" name="searchForm" id="searchForm" action="notice.do">
                 <span class="srchSelect">
                   <select
                     id="stype"
-                    name="stype"
+                    name="searchType"
                     class="dSelect"
                     title="검색분류 선택"
                   >
                     <option value="all">전체</option>
-                    <option value="title">제목</option>
-                    <option value="contents">내용</option>
+                    <option value="n_title"<c:if test="${noticeVO.searchType == 'title'}">selected</c:if>>제목</option>
+                    <option value="n_content"<c:if test="${noticeVO.searchType == 'content'}">selected</c:if>>내용</option>
                   </select>
                 </span>
                 <span class="searchWord">
                   <input
                     type="text"
                     id="sval"
-                    name="sval"
-                    value=""
-                    title="검색어 입력"
+                    name="searchWord"
+                    value="${noticeVO.searchWord}"
+                    placeholder="검색어를 입력하세요."
                   />
-                  <input type="button" id="" value="검색" title="검색" />
+                  <button type="submit" class="dSelect" id="searchBtn">검색</button>
                 </span>
               </form>
             </div>

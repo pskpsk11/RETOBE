@@ -29,7 +29,7 @@ public interface GmanagerMapper {
 	int courseCount(CourseVO vo);
 	List<CourseVO> courseList(CourseVO vo);
 	//customer
-	public int insert(NoticeVO vo);
+	public int customerinsert(NoticeVO vo);
 	public int faqinsert(FaqVO vo);
 	public int noticeCount(NoticeVO vo);
 

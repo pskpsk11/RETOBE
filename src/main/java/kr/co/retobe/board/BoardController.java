@@ -111,12 +111,13 @@ public class BoardController {
 		return "user/review/userModReviewForm";
 	}
 	
+	
 	@GetMapping("/user/qna.do")
 	public String userQna(Model model, QnaVO vo) {
 		model.addAttribute("map", service.qnaList(vo));
 		return "user/customer/userQna";
 	}
-	
+	//고객센터 공지사항
 	@GetMapping("/user/notice.do")
 	public String userCustomer(Model model, NoticeVO vo) {
 		model.addAttribute("map", service.noticeList(vo));
@@ -141,7 +142,7 @@ public class BoardController {
 		return "user/customer/userQnaDetail";
 	}
 	
-	@GetMapping("/user/customer/userAskForm.do")
+	@GetMapping("/user/userAskForm.do")
 	public String userAskForm() {
 		return "user/customer/userAskForm";
 	}

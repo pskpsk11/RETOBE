@@ -182,6 +182,10 @@
 		</selectKey>
 	</insert>
 	
+	<update id="updateViewcnt" parameterType="int">
+		UPDATE notice SET n_viewcnt = n_viewcnt+1 WHERE notice_no =#{notice_no}
+	</update>
+	
 	<!-- <update id="updateGno" parameterType="int">
 		UPDATE qna SET gno=#{no} WHERE qna_no=#{no}
 	</update> -->

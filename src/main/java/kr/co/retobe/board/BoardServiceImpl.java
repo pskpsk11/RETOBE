@@ -132,6 +132,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public NoticeVO noticeDetail(NoticeVO vo) {
+		mapper.updateViewcnt(vo.getNotice_no());
 		NoticeVO data = mapper.detail(vo.getNotice_no());
 		// TODO Auto-generated method stub
 		return data;
@@ -142,6 +143,15 @@ public class BoardServiceImpl implements BoardService{
 	public int noticeInsert(NoticeVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public NoticeVO view(NoticeVO vo, boolean isViewcntIncrease) {
+		NoticeVO data = mapper.detail(vo.getNotice_no());
+		if (isViewcntIncrease) {
+			mapper.updateViewcnt(vo.getNotice_no());
+		}
+		return data;
 	}
 
 

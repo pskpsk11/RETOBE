@@ -30,6 +30,8 @@ public interface BoardService {
 	int noticeInsert (NoticeVO vo);
 	NoticeVO noticeDetail(NoticeVO vo);
 	
+	NoticeVO view(NoticeVO vo, boolean isViewcntIncrease);
+	
 	//faq
 	Map<String, Object> faqList(FaqVO vo);
 	

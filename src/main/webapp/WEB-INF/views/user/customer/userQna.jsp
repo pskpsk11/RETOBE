@@ -172,7 +172,7 @@
               </tbody>
             </table>
             <div class="btnSet" style="text-align: right">
-              <a class="btn" href="write.html">글작성 </a>
+              <a class="btn" href="userAskForm.do">글작성 </a>
             </div>
             <div class="pagenate clear">
               <ul class="paging">

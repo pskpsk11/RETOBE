@@ -136,11 +136,11 @@ public class GmanagerController {
 
 	@PostMapping ("/gmanager/noticeAdd.do")
 	public String insert(NoticeVO vo, Model model) {
-		boolean r = service.insert(vo);
+		boolean r = service.customerinsert(vo);
 	      if (r) { // 정상적으로 DB에 insert 
 	          model.addAttribute("cmd", "move");         
 	          model.addAttribute("msg", "공지사항 등록이 완료되었습니다.");
-	          model.addAttribute("url", "/tobe/gmanager/customer/chiefNoticeForm.do");
+	          model.addAttribute("url", "/tobe/gmanager/customer.do");
 	       } else { // 등록안됨
 	          model.addAttribute("cmd", "back");
 	          model.addAttribute("msg", "공지사항 등록에 실패하였습니다.");    

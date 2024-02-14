@@ -30,7 +30,7 @@ public interface GmanagerService {
 	Map<String, Object> courseListS(CourseVO vo);
 
 	//customer
-	public boolean insert(NoticeVO vo);
+	public boolean customerinsert(NoticeVO vo);
 	public boolean faqinsert(FaqVO vo);
 
 	NoticeVO getNoticeDetail(int noticeNo);

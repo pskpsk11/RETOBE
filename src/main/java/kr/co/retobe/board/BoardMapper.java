@@ -39,6 +39,8 @@ public interface BoardMapper {
 	//상세페이지
 	NoticeVO detail(int no);
 	
+	int updateViewcnt(int notice_no);
+	
 	//faq
 	int faqCount(FaqVO vo);
 	List<FaqVO> faqList(FaqVO vo);

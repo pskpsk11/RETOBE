@@ -23,4 +23,6 @@ public class NoticeVO {
 	public int getStartIdx() {
 		return (page-1) * 10;
 	}
+	
+	private int n_viewcnt;
 }
