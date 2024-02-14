@@ -18,13 +18,13 @@
 <style>
 .calendarWrap{
 	
-	width:75rem;
-
+	width:80%;
+	margin: 0 auto;
 }
 
 #calendar {
-  width: 75rem;
-  margin: 3rem auto;
+  width: 80%;
+  margin: 10px auto;
 }
 	
 /*
@@ -44,7 +44,6 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
 	}
     
 	.fc-col-header-cell{
-		background-color: #E4E6D9;
 	}
 	.fc-day-sun a {
     color: red;

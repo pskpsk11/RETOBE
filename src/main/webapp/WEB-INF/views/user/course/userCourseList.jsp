@@ -26,9 +26,7 @@
 		display: contents;
 	}
 	.pagenate.clear{
-		position:absolute;
-		bottom:10rem;
-		margin-left: 27rem;
+		display: ruby;	
 	}
 	a{
 		text-decoration: none;

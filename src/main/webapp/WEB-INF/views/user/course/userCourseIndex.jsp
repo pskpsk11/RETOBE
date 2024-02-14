@@ -13,20 +13,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <style>
-
+p{
+	font-size: medium;
+}
+body {
+	word-break: keep-all;
+}
 .choiceBG {
    display: block;
    justify-content: center;
    align-items: center;
-   background-color: #E4E6D9;
-   width: 75rem;
+   background-color: #fff;
+   width: 100%;
    /* height:20rem; */
 
 }
 
 .choice {
-   width: 80rem;
-   margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1280px;
 }
 
 .choice>ul {
@@ -71,8 +78,8 @@ caption {
 
 .condition {
    cursor: pointer;
-   color: white;
-   border: 0;
+   color: black;
+   border: 1px solid #222222;
    /* display: flex; */
    /*align-items: center;
    justify-content: center;
@@ -80,12 +87,14 @@ caption {
    font-size: 16px;
    /* padding: 8px 16px; */
    margin: 5px 10px;
+   padding : 0 20px;
    height: 34px;
    border-radius: 20px;
-   background-color: #8ba888;
+   /*background-color: #8ba888;*/
    border-color: #000;
    /* text-align: center; */
    letter-spacing: -0.5px;
+   /*justify-content: center;*/
 }
 
 .condition:before{
@@ -104,24 +113,27 @@ caption {
    opacity:0.48;
 }
 .condition.on{
-   background-color: #253528;
+   background-color: #fa0318f0;
+   color : white;
    opacity: 1;
 }
 .condition.on:before{
    height:100%;
 }
 .sort {
-   width: 75rem;
-   align-items: center;
-   /* text-align: center; */
-	margin: 0 0 1rem 0;
+	position: relative;
+	padding: 12px 12px 12px 12px;
+    width: 100%;
+    max-width:1280px;
+	margin: 0 auto;
+	display: flex;
 }
 
 .sort>ul {
-   list-style: none;
-   display: flex;
-   margin: 0;
-   padding: 0;
+	width: 100%;
+	max-width: 1280px;
+    list-style: none;
+    display: flex;
 }
 
 .sort>ul>li {
@@ -141,18 +153,21 @@ caption {
    font-weight: bold;
 }
 .container {
-	width:75rem;
+	max-width: 1280px;
+	margin: 0 auto;
+	width:100%;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 }
 
 .SelectBtn{
+	padding: 0 16px;
 	cursor: pointer;
    	color: black;
-   	border: 0;
+   	border: 1px solid #222222;
    	/* display: flex; */
    	/*align-items: center;
    	justify-content: center;
@@ -162,13 +177,20 @@ caption {
    	margin: 5px 10px;
    	height: 34px;
    	border-radius: 20px;
-   	background-color: #8ba888;
    	border-color: #000;
    	/* text-align: center; */
    	letter-spacing: -0.5px;
    	position: relative;
 }
+
+.SelectBtn:hover{
+	font-weight: bold;
+}
+
 .payBtn{
+	padding: 0 16px;
+	cursor: pointer;
+   	border: 1px solid #222222;
 	cursor: pointer;
    	color: white;
    	border: 0;
@@ -180,13 +202,18 @@ caption {
    	/* padding: 8px 16px; */
    	margin: 5px 10px;
    	height: 34px;
-   	border-radius: 20px;
-	background-color: #253528; 
+   	border-radius: 30px;
+	background-color: #fa0318f0; 
 	border-color: #000;
    	/* text-align: center; */
    	letter-spacing: -0.5px;
    	position: relative;
 }
+
+.payBtn:hover{
+	font-weight: bold;
+}
+
 #se{
 	margin-left: 500px;
 	cursor: pointer;
@@ -631,12 +658,12 @@ function setCourseComp(no) {
 	   	</div>
 	   	<div class="sort">
 	   		<ul>
-	   			<li><button name="sortbtn" class="sortcon">마감임박순</button></li>
-	         	<li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp마감느린순</button></li>
-		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격낮은순</button></li>
-		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격높은순</button></li>
-		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp리뷰많은순</button></li>
-		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp베스트강좌순</button></li>
+	   			<li><button name="sortbtn" class="sortcon">마감임박순&nbsp&nbsp&nbsp</button></li>|
+	         	<li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp마감느린순&nbsp&nbsp&nbsp</button></li>|
+		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp가격낮은순&nbsp&nbsp&nbsp</button></li>|
+		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp가격높은순&nbsp&nbsp&nbsp</button></li>|
+		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp리뷰많은순&nbsp&nbsp&nbsp</button></li>|
+		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp베스트강좌순</button></li>
 	        </ul>
 	   	</div>
 	    <div class = "container">

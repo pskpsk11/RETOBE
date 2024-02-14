@@ -19,8 +19,7 @@
 	}
 	
 	.list th {
-		border-bottom: 1px solid black;
-		background: #ECEDE8;
+		border-bottom: 1px solid #222222;
 	}
 	
 	.list a {

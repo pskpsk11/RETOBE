@@ -17,11 +17,14 @@ p{
 	font-size: large;
 }
 .mainContent{
-   width: 75rem;
+   width: 100%;
    display: block;
 }
 .subContentBar{
    margin-left: 800px;
+   height: auto;
+   display: table-row-group;
+   position: absolute;
 }
 .DetailSelectBtn{
 	  cursor: pointer;
@@ -62,18 +65,17 @@ p{
 	position: relative;
 }
 .reviewQnA{
-	width: 1200px;
-	border-collapse: collapse;
+	width: 100%;
 }
 
 .reviewQnA td {
     padding: 10px; /* 셀 안의 내용과 셀 경계 간의 간격 설정 */
-    border: 1px solid #ddd; /* 셀 경계 선 설정 */
+    /*border: 1px solid #ddd;*/ /* 셀 경계 선 설정 */
     text-align: center; /* 셀 내용 가운데 정렬 */
 }
 
 .reviewQnA tr:first-child {
-    background-color: #8ba888; /* 첫 번째 행 배경색 설정 */
+    /*background-color: #8ba888;*/ /* 첫 번째 행 배경색 설정 */
 }
 .reviewCol, .cqnaCol{
    display: none;
@@ -82,8 +84,8 @@ p{
    width:100%;
    height:100%;
    cursor: pointer;
-      color: white;
-      border: 0;
+      color: black;
+      border: 1px solid #222222;
       /* display: flex; */
       /*align-items: center;
       justify-content: center;
@@ -93,7 +95,6 @@ p{
       margin: 5px 10px;
       height: 34px;
       border-radius: 20px;
-      background-color: #8ba888;
       border-color: #000;
       /* text-align: center; */
       letter-spacing: -0.5px;
@@ -101,9 +102,29 @@ p{
 }
 .subContent{
 	margin: 0 auto;
-	width: 75rem;
-	height: 35rem;
-	background-color: #f8f9fa;
+	width: 100%;
+	height: auto;
+}
+
+.subContentInfo{
+	margin: 30px auto;
+	width:100%;
+	height: auto;
+	max-width: 1280px;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: stretch;
+	flex-wrap: nowrap;
+}
+
+.subContentLecture{
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 20px 20px 20px 20px;
+	position: relative;
 }
 
 a {
@@ -111,9 +132,10 @@ a {
 	color: #000;
 }
 .SelectBtn{
+	padding: 0 16px;
 	cursor: pointer;
    	color: black;
-   	border: 0;
+   	border: 1px solid #222222;
    	/* display: flex; */
    	/*align-items: center;
    	justify-content: center;
@@ -123,13 +145,19 @@ a {
    	margin: 5px 10px;
    	height: 34px;
    	border-radius: 20px;
-   	background-color: #8ba888;
    	border-color: #000;
    	/* text-align: center; */
    	letter-spacing: -0.5px;
    	position: relative;
 }
+
+.SelectBtn:hover{
+	font-weight: bold;
+}
 .payBtn{
+	padding: 0 16px;
+	cursor: pointer;
+   	border: 1px solid #222222;
 	cursor: pointer;
    	color: white;
    	border: 0;
@@ -141,18 +169,26 @@ a {
    	/* padding: 8px 16px; */
    	margin: 5px 10px;
    	height: 34px;
-   	border-radius: 20px;
-	background-color: #253528; 
+   	border-radius: 30px;
+	background-color: #fa0318f0; 
 	border-color: #000;
    	/* text-align: center; */
    	letter-spacing: -0.5px;
    	position: relative;
+}
+
+.payBtn:hover{
+	font-weight: bold;
 }
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
    
     var course_no = <%= request.getParameter("course_no") %>;
+    
+    $(document).ready(function() {
+        document.getElementById('detailButton').click();
+    });
     
     function showDetail() {
         $('#showReviewContent, #showQnaContent').hide();

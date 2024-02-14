@@ -16,8 +16,66 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style>
-	.list{
+	.paging{
+		list-style: none;
+	}
+	.paging > li{
+		float:left;
+		display: contents;
+	}
+	.list {
 		margin: 0 auto;
+		width: 100%;
+		border-top: 1px solid black;
+		text-align: center;
+	}
+	
+	.list th {
+		border-bottom: 1px solid #222222;
+	}
+	
+	.list a {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.context td {
+		text-align: center;
+		border-bottom: 1px solid black;
+	}
+	
+	.search-wrap {
+		margin: 10px;
+	}
+	
+	.page {
+		text-align: center;
+		margin: 20px auto 0;
+	}
+	
+	.page li {
+		display: inline-block;
+	}
+	button.btn{
+		position: relative;
+		left: 550px;
+		top: 20px;
+		cursor: pointer;
+	   	color: white;
+	   	border: 0;
+	   	/* display: flex; */
+	   	/*align-items: center;
+	   	justify-content: center;
+	   	/* position: inherit; */
+	   	font-size: 16px;
+	   	/* padding: 8px 16px; */
+	   	margin: 5px 10px;
+	   	height: 34px;
+	   	border-radius: 20px;
+	   	background-color: #8ba888;
+	   	border-color: #000;
+	   	/* text-align: center; */
+	   	letter-spacing: -0.5px;
 	}
 </style>
   <div class="board_head">
