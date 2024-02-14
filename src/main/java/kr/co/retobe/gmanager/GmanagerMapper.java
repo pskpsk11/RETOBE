@@ -21,7 +21,7 @@ public interface GmanagerMapper {
 
 	List<Map<String, Object>> qna(QnaVO qvo);
 	//course
-	int insert(CourseVO vo);
+	int courseinsert(CourseVO vo);
 	int courseUpdate (CourseVO vo);
 	CourseVO modcourse(int no);
 

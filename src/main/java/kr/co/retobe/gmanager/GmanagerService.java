@@ -22,7 +22,7 @@ public interface GmanagerService {
 
 	List<Map<String, Object>> qna(QnaVO qvo);
 	//course
-	boolean insert(CourseVO vo, MultipartFile file, HttpServletRequest request);
+	boolean courseinsert(CourseVO vo, MultipartFile file, HttpServletRequest request);
 	int update(CourseVO vo);
 	CourseVO modcourse(int no);
 

@@ -48,9 +48,9 @@
 		<div class="email_sub">
 			<div class="mail" style="background-color:#F8FFF5;">
 				<div class="mailImg" >
-					<img class="image" src="/tobe/img/emailSend.png" onclick="location.href='/tobe/emailForm.do';" >
+					<img class="image" src="/tobe/img/emailSend.png" onclick="location.href='/tobe/gmanager/emailForm.do';" >
 				</div>
-			     <a href="/tobe/emailForm.do"><b>메일작성하기</b></a></font>
+			     <a href="/tobe/gmanager/emailForm.do"><b>메일작성하기</b></a></font>
 			</div>
 			<div class="mail" style="background-color:#FDFFF3;">
 				<div class="mailImg" >

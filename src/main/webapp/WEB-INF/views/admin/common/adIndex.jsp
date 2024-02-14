@@ -178,7 +178,7 @@ p {
 	</div>
 	
 	<div class="sbox" id="pay_box" style="position: absolute; left: 29.1rem;">
-		<a href="/retobe/admin/adPayIndex.do">주문/결제관리 →</a>
+		<a href="/retobe/manager/pay.do">주문/결제관리 →</a>
 		<div id="today_pay">
 			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #766CE8">${tpc.count }</span>
 			<span style="position:absolute; left: 1rem; bottom: 1rem;">금일결제</span>
@@ -191,14 +191,14 @@ p {
 	</div>
 	
 	<div class="sbox" id="qna_box" style="position: absolute; left: 48.2rem;">
-		<a href="/retobe/admin/adQnaIndex.do">문의관리 →</a>
+		<a href="/tobe/manager/qna.do">문의관리 →</a>
 		<div style="overflow-y:scroll; height: 12rem; width: 15.5rem; position: absolute; left: 1rem; top: 3rem;">
 			<c:if test="${!empty cq}">
 				<table style="width: 100%; text-align: center;">
 				<c:forEach var="vo" items="${cq}">
 					<tr>
 					    <td style="width: 20%;">${vo.cqna_no}</td>
-						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/retobe/user/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
+						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/user/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
 					</tr>
 				</c:forEach>
 				</table>
@@ -209,7 +209,7 @@ p {
 	</div>
 	
 	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 67.3rem;">
-		<a href="/retobe/user/common/userIndex.do" style="position:absolute; width: 13rem; top: 5rem; left: 2.5rem;">
+		<a href="/tobe/user/common/userIndex.do" style="position:absolute; width: 13rem; top: 5rem; left: 2.5rem;">
 			<img src="/retobe/img/header_tobe_logo.png" style="width: 13rem;">
 			<span style="position: absolute; left: 0.25rem; top: 4rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">사용자 홈페이지 바로가기</span>
 		</a>

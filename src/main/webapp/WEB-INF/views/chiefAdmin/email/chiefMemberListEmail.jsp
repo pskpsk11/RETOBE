@@ -229,7 +229,7 @@ border:solid 1px #A4A4A4;
 <div class="container">
 	<div class="member_sub">
 		<div class="form_sub">
-			<form action="chiefMemberListEmail.do" method="get" >
+			<form action="memberListEmail.do" method="get" >
 				<table class="table">
 					<tr>
 					    <td width="100px;">검색어</td>
@@ -257,7 +257,7 @@ border:solid 1px #A4A4A4;
 					</tr>
 					</table>
 			   	 	<div class="searchOrReset">
-						<input type="reset" value="초기화" onclick="window.location.href='/retobe/chiefAdmin/chiefMemberListEmail.do'">
+						<input type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/memberListEmail.do'">
 						<input type="submit" id="" value="검색">
 					</div>  
 				</form>

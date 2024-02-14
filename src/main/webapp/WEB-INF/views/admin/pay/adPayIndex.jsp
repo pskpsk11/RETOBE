@@ -217,7 +217,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 <div class="container">
 	<div class="member_sub">
 		<div class="form_sub">
-			<form action="adPayIndex.do" method="get" >
+			<form action="pay.do" method="get" >
 		<table class="table">
 			<tr>
 				<td width="100px;">검색어</td>

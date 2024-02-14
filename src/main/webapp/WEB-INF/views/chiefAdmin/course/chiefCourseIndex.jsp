@@ -197,7 +197,7 @@ margin-bottom:10px;
 <div class="container">
 	<div class="member_sub">
 		<div class="form_sub">
-			<form action="chiefCourseIndex.do" method="get" >
+			<form action="course.do" method="get" >
 			<div class= "add">
 			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='courseForm.do'">
 			</div>

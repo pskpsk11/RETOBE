@@ -40,7 +40,7 @@ public class GmanagerServiceImpl implements GmanagerService{
 	}
 	//course
 	@Override
-	public boolean insert(CourseVO vo, MultipartFile file, HttpServletRequest request) {
+	public boolean courseinsert(CourseVO vo, MultipartFile file, HttpServletRequest request) {
 		if (!file.isEmpty()) {
 	          // 파일명
 	          String org = file.getOriginalFilename();
@@ -55,7 +55,7 @@ public class GmanagerServiceImpl implements GmanagerService{
 	          vo.setTeacher_img_real(real);
 	       }
 
-		return mapper.insert(vo) > 0 ? true : false;
+		return mapper.courseinsert(vo) > 0 ? true : false;
 	}
 	@Override
 	public int update (CourseVO vo) {

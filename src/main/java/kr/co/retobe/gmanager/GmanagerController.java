@@ -51,7 +51,7 @@ public class GmanagerController {
 	@PostMapping ("/gmanager/courseAdd.do")
 	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request, String educationName) {
 		System.out.println(vo);
-		boolean r = service.insert(vo, file, request);
+		boolean r = service.courseinsert(vo, file, request);
 	      if (r) { // 정상적으로 DB에 insert 
 	          model.addAttribute("cmd", "back");         
 	          model.addAttribute("msg", "수업등록이 완료되었습니다.");
@@ -77,7 +77,7 @@ public class GmanagerController {
 	public String cheifModForm(CourseVO vo, Model model) {
 		int r = service.update(vo);
 		String msg="";
-		String url="chiefCourseIndex.do";
+		String url="course.do";
 		if (r > 0) {
 			msg = "정상적으로 수정되었습니다.";
 		} else {
