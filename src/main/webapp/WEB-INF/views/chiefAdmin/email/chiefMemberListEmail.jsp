@@ -93,7 +93,7 @@
 		    });
 
 		    if (selectedNoList.length > 0) {
-				 window.location.href= '/retobe/chiefAdmin/chiefEmailForm.do?member_no='+selectedNoList.join(',');
+				 window.location.href= '/tobe/gmanager/emailForm.do?member_no='+selectedNoList.join(',');
    			 
 		    }
 	 }

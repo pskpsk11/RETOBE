@@ -173,12 +173,12 @@
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">
 		</div>
 		<div id="f">
 		<br>
 			<b style="margin-left:65px;">FAQ</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefFaqList.do';">
+			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/faqList.do';">
 		</div>
 	</div>
 </div>
@@ -186,7 +186,7 @@
      <div id="search">
 				<div class="search-wrap">
 					<span class="dSelect" style="margin: 0 1rem 1rem;"></span>
-					<form method="get" name="searchForm" id="searchForm" action="chiefCustomerIndex.do">    
+					<form method="get" name="searchForm" id="searchForm" action="customer.do">    
 						<span class="srchSelect">
 							<select class="dSelect" name="searchType" title="검색분류 선택" style="margin: 0 0.25rem;">
 								<option value="all">전체</option>
@@ -232,7 +232,7 @@
 						    <tr>
 						        <td>${notice.notice_no}</td>
 						        <td>
-						            <a href="/tobe/chiefAdmin/customer/chiefNoticeDetail.do?noticeNo=${notice.notice_no}" class="SelectBtn">${notice.n_title}</a>
+						            <a href="/tobe/gmanager/noticeDetail.do?noticeNo=${notice.notice_no}" class="SelectBtn">${notice.n_title}</a>
 						        </td>
 						        <td colspan="8">
 						            <fmt:formatDate value="${notice.n_writedate}" pattern="yyyy-MM-dd" />
@@ -242,23 +242,23 @@
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
-                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefNoticeForm.do">글작성 </a>
+                    <a class="btn" href="/tobe/noticeForm.do">글작성 </a>
            		</div>
                 		<div class="pagenate clear">
                     		<ul class='paging'>
 			                    <c:if test="${map.prev }">
-			                    	<li><a href="chiefCustomerIndex.do?page=${map.startPage-1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
+			                    	<li><a href="customer.do?page=${map.startPage-1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
 			                    </c:if>
 			                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 			                    	<c:if test="${p == NoticeVO.page}">
 			                        <li><a href='#;' class='current'>${p}</a></li>
 			                        </c:if>
 			                        <c:if test="${p != NoticeVO.page}">
-			                        <li><a href='chiefCustomerIndex.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
+			                        <li><a href='customer.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
 			                        </c:if>
 			                    </c:forEach>
                     			<c:if test="${map.next }">
-                    				<li><a href="chiefCustomerIndex.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
+                    				<li><a href="customer.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
                     			</c:if>
                     		</ul> 
                 		</div>

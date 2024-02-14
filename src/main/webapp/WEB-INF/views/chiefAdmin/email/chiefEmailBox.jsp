@@ -133,18 +133,18 @@ $(function(){
                    	
                       <ul class='paging'>
                       <c:if test="${map.prev }">
-                      	<li><a href="/tobe/chiefAdmin/email/chiefEmailBox.do?page=${map.startPage-1 }"> << </a></li>
+                      	<li><a href="/tobe/gmanager/emailBox.do?page=${map.startPage-1 }"> << </a></li>
                       </c:if>
                       <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
                       	<c:if test="${p == emailVO.page}">
                           <li><a href='#;' class='current'>${p}</a></li>
                           </c:if>
                           <c:if test="${p != emailVO.page}">
-                          <li><a href='/tobe/chiefAdmin/email/chiefEmailBox.do?page=${p}'>${p}</a></li>
+                          <li><a href='/tobe/gmanager/emailBox.do?page=${p}'>${p}</a></li>
                           </c:if>
                       </c:forEach>
                       <c:if test="${map.next }">
-                      	<li><a href="/tobe/chiefAdmin/email/chiefEmailBox.do?page=${map.endPage+1 }"> >> </a></li>
+                      	<li><a href="/tobe/gmanager/emailBox.do?page=${map.endPage+1 }"> >> </a></li>
                       </c:if>
                       </ul> 
                      

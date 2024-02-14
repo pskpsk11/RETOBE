@@ -28,7 +28,7 @@ function ProcessDelete() {
     });
 
     if (selectedNoList.length > 0) {
-		 window.location.href= '/tobe/admin/course/delete.do?courseNo='+selectedNoList.join(',');
+		 window.location.href= '/tobe/manager/delete.do?courseNo='+selectedNoList.join(',');
     }
 }
 
@@ -199,7 +199,7 @@ margin-bottom:10px;
 		<div class="form_sub">
 			<form action="chiefCourseIndex.do" method="get" >
 			<div class= "add">
-			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'">
+			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='courseForm.do'">
 			</div>
 				
 				<table class="table">
@@ -269,11 +269,11 @@ margin-bottom:10px;
 	       	</table>
 	       	
 	   	 	<div class="resetOrSearch">   	 			
-				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do'">
+				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/gmanager/course.do'">
 				<input class ="bnt" type="submit" id="" value="검색">
 			</div>    
 			<div class="modOrDelete">   	 			
-	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/chiefAdmin/course/chiefModCourseForm.do'">
+	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/gmanager/courseMod.do'">
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div> 
 		
@@ -331,18 +331,18 @@ margin-bottom:10px;
         	 <div class="pagenate clear">
                        <ul class='paging'>
                        <c:if test="${map.prev }">
-                       	<li><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${map.startPage-1 }"> << </a></li>
+                       	<li><a href="/tobe/gmanager/course.do?page=${map.startPage-1 }"> << </a></li>
                        </c:if>
                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
                        	<c:if test="${p == courseVO.page}">
                            <li><a href='#;' class='current'>${p}</a></li>
                            </c:if>
                            <c:if test="${p != courseVO.page}">
-                           <li><a href='/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${p}'>${p}</a></li>
+                           <li><a href='/tobe/gmanager/course.do?page=${p}'>${p}</a></li>
                            </c:if>
                        </c:forEach>
                        <c:if test="${map.next }">
-                       	<li><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${map.endPage+1 }"> >> </a></li>
+                       	<li><a href="/tobe/gmanager/course.do?page=${map.endPage+1 }"> >> </a></li>
                        </c:if>
                        </ul> 
               </div> 

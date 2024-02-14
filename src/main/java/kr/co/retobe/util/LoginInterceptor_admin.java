@@ -24,7 +24,7 @@ public class LoginInterceptor_admin implements HandlerInterceptor{
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('로그인 후 사용가능합니다.');");
-			out.print("location.href='/retobe/admin/adLogin.do';");
+			out.print("location.href='/tobe/manager/login.do';");
 			out.print("</script>");
 			out.close();
 			return false; // 못가

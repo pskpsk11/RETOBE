@@ -157,7 +157,7 @@
   			  <c:forEach var="vo" items="${map.list }">
                 <tr>
                    <td>${vo.notice_no }</td>
-                   <td><a href="userNoticeDetail.do?notice_no=${vo.notice_no }">${vo.n_title }</a></td>
+                   <td><a href="noticeDetail.do?notice_no=${vo.notice_no }">${vo.n_title }</a></td>
                    <td>조회수</td>
                   <td class="writer">작성자</td>
                    <td class="date"><fmt:formatDate value="${vo.n_writedate }" pattern="YYYY-MM-dd" /></td>

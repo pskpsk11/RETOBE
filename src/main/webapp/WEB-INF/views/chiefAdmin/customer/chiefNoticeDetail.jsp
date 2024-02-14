@@ -86,7 +86,7 @@ a:hover {
 		   	</div>
 		   	<div id="comBack">
 		  			<!-- <a type="button" style="background-color: #E5D1E3; border-radius: 15px; width: 70px; padding: 5px 15px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do'">목록</a> -->
-					<a class="bnt" class="btn" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do'">목록</a>
+					<a class="bnt" class="btn" onclick="location.href='/tobe/gmanager/customer.do'">목록</a>
 		 	
 		 	</div>
 	</form>

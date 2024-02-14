@@ -196,7 +196,7 @@ border:solid 1px #A4A4A4;
 <div class="container">
 	<div class="member_sub">
 		<div class="form_sub">
-			<form action="chiefMemberIndex.do" method="get" >
+			<form action="member.do" method="get" >
 				<table class="table">
 					<tr>
 						<td width="100px;">검색어</td>
@@ -265,7 +265,7 @@ border:solid 1px #A4A4A4;
 						<td>${MemberVO.birthday }</td>
 						<td>${MemberVO.email }</td>
 						<td>${MemberVO.hp }</td>
-						<td><a href="chiefMemberDetail.do?no=${MemberVO.member_no }">
+						<td><a href="memberDetail.do?no=${MemberVO.member_no }">
 						<input type="text" name="point" id="point" style="float: left;" value="${MemberVO.point }"></a>point</td>
 						<td style="border-right:none;">${MemberVO.addr1 }</td>						
 					</tr>
@@ -279,7 +279,7 @@ border:solid 1px #A4A4A4;
 		<div class="pagenate clear">
 			<ul class='paging'>
 				<c:if test="${map.prev }">
-					<li><a href="chiefMemberIndex.do?page=${map.startPage-1 }"> << </a></li>
+					<li><a href="member.do?page=${map.startPage-1 }"> << </a></li>
 				</c:if>
 				<c:forEach var="p" begin="${map.startPage ge 0 ? map.startPage : 0}"
 					end="${map.endPage}">
@@ -287,11 +287,11 @@ border:solid 1px #A4A4A4;
 						<li><a href='#;' class='current'>${p}</a></li>
 					</c:if>
 					<c:if test="${p != MemberVO.page}">
-						<li><a href="chiefMemberIndex.do?page=${p}">${p}</a></li>
+						<li><a href="member.do?page=${p}">${p}</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${map.next }">
-					<li><a href="chiefMemberIndex.do?page=${map.endPage+1 }">
+					<li><a href="member.do?page=${map.endPage+1 }">
 							>> </a></li>
 				</c:if>
 			</ul>

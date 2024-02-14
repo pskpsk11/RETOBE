@@ -29,7 +29,7 @@ public class GmanagerController {
 	@Autowired
 	GmanagerService service;
 	//common
-	@GetMapping ("/chiefAdmin/chiefIndex.do")
+	@GetMapping ("/gmanager/main.do")
 	public String index(HttpSession sess, Model model,QnaVO qvo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
 		model.addAttribute("totalCount", service.totalCount());
@@ -37,18 +37,18 @@ public class GmanagerController {
 		return "chiefAdmin/common/chiefIndex";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefSalesIndex.do")
+	@GetMapping ("/gmanager/sales.do")
 	public String chiefSalesIndex(Model model) {
 //		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
 	//cousre
-	@GetMapping ("/chiefAdmin/chiefCourseForm.do")
+	@GetMapping ("/gmanager/courseForm.do")
 	public String chiefClassForm() {
 		return "chiefAdmin/course/chiefCourseForm";
 	}
 
-	@PostMapping ("/chiefAdmin/chiefCourseInsert.do")
+	@PostMapping ("/gmanager/courseAdd.do")
 	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request, String educationName) {
 		System.out.println(vo);
 		boolean r = service.insert(vo, file, request);
@@ -66,14 +66,14 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefModCourseForm.do")
+	@GetMapping ("/gmanager/courseMod.do")
 	public String modcourse(Model model, int no) {
 
 		model.addAttribute("map", service.modcourse(no));
 		return "chiefAdmin/course/chiefModCourseForm"; 
 	}
 
-	@PostMapping ("/chiefAdmin/chiefCourseIndex.do")
+	@PostMapping ("/gmanager/course.do")
 	public String cheifModForm(CourseVO vo, Model model) {
 		int r = service.update(vo);
 		String msg="";
@@ -91,7 +91,7 @@ public class GmanagerController {
 	}
 
 	//
-	@GetMapping ("/chiefAdmin/chiefCourseIndex.do")
+	@GetMapping ("/gmanager/course.do")
 	public String chiefCourseIndex(HttpSession sess, Model model, CourseVO vo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		model.addAttribute("admin", admin);
@@ -102,45 +102,45 @@ public class GmanagerController {
 		return "chiefAdmin/course/chiefCourseIndex";
 	}
 	//customer
-	@GetMapping ("/chiefAdmin/chiefCustomerIndex.do")
+	@GetMapping ("/gmanager/customer.do")
 	public String index(Model model, NoticeVO vo) {
 		Map<String, Object> NoticeList = service.noticeList(vo);
 		model.addAttribute("map", NoticeList);
 	return "chiefAdmin/customer/chiefCustomerIndex";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefNoticeDetail.do")
+	@GetMapping ("/gmanager/noticeDetail.do")
 	public String Detail(Model model, @RequestParam("noticeNo") int noticeNo) {
 		NoticeVO notice = service.getNoticeDetail(noticeNo);
 	        model.addAttribute("notice", notice);
 	return "chiefAdmin/customer/chiefNoticeDetail";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefNoticeForm.do")
+	@GetMapping ("/gmanager/noticeForm.do")
 	public String Notice() {
 	return "chiefAdmin/customer/chiefNoticeForm";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefQnaList.do")
+	@GetMapping ("/gmanager/qnaList.do")
 		public String QnaList(Model model, QnaVO vo) {
 		List<QnaVO> QnaList = service.getqnalist(vo);
 		model.addAttribute("list", QnaList);
 		return "chiefAdmin/customer/chiefQnaList";
 	}
-	@GetMapping ("/chiefAdmin/chiefQnaDetail.do")
+	@GetMapping ("/gmanager/qnaDetail.do")
 	public String QnaDtail(Model model, @RequestParam("qnaNo") int qnaNo) {
 		QnaVO qna = service.getQnaDetail(qnaNo);
 		model.addAttribute("qna", qna);
 		return "chiefAdmin/customer/chiefQnaDetail";
 	}
 
-	@PostMapping ("/chiefAdmin/chiefNoticeInsert.do")
+	@PostMapping ("/gmanager/noticeAdd.do")
 	public String insert(NoticeVO vo, Model model) {
 		boolean r = service.insert(vo);
 	      if (r) { // 정상적으로 DB에 insert 
 	          model.addAttribute("cmd", "move");         
 	          model.addAttribute("msg", "공지사항 등록이 완료되었습니다.");
-	          model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefNoticeForm.do");
+	          model.addAttribute("url", "/tobe/gmanager/customer/chiefNoticeForm.do");
 	       } else { // 등록안됨
 	          model.addAttribute("cmd", "back");
 	          model.addAttribute("msg", "공지사항 등록에 실패하였습니다.");    
@@ -148,30 +148,30 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefReplyForm.do")
+	@GetMapping ("/gmanager/replyForm.do")
 	public String chiefReply() {
 	return "chiefAdmin/customer/chiefReplyForm";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefFaqList.do")
+	@GetMapping ("/gmanager/faqList.do")
 	public String FaqList(Model model, FaqVO vo) {	
 		List<FaqVO> FaqList = service.getfaqlist(vo);
 		model.addAttribute("list", FaqList);
 	return "chiefAdmin/customer/chiefFaqList";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefFaqForm.do")
+	@GetMapping ("/gmanager/faqForm.do")
 	public String FaqForm() {
 	return "chiefAdmin/customer/chiefFaqForm";
 	}
 
-	@PostMapping ("/chiefAdmin/chiefFaqInsert.do")
+	@PostMapping ("/gmanager/faqAdd.do")
 	public String insert(FaqVO vo, Model model) {
 		boolean r = service.faqinsert(vo);
 	      if (r) { // 정상적으로 DB에 insert 
 	          model.addAttribute("cmd", "move");         
 	          model.addAttribute("msg", "FAQ 등록이 완료되었습니다.");
-	          model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefFaqForm.do");
+	          model.addAttribute("url", "/tobe/gmanager/customer/chiefFaqForm.do");
 	       } else { // 등록안됨
 	          model.addAttribute("cmd", "back");
 	          model.addAttribute("msg", "FAQ 등록에 실패하였습니다.");    
@@ -179,14 +179,14 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert";
 	}
 
-	@PostMapping("/chiefAdmin/reply.do")
+	@PostMapping("/gmanager/reply.do")
 	public String insert(Model model, QnaVO vo ) {
 		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		int r = service.QnaReply(vo);//, request);
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/gmanager/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -194,14 +194,14 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert";
 	}
 
-	@PostMapping("/chiefAdmin/edit.do")
+	@PostMapping("/gmanager/edit.do")
 	public String edit(Model model, QnaVO vo ) {
 		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		int r = service.QnaReply(vo);//, request);
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/gmanager/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -212,7 +212,7 @@ public class GmanagerController {
 	@Autowired
 	SendMail sendEmail;
 
-	@GetMapping("/chiefAdmin/chiefEmailForm.do")
+	@GetMapping("/gmanager/emailForm.do")
 	public String emailWrite(int[] member_no, Model model) {
 		String email="";
 		System.out.println(member_no + "member_no");
@@ -232,7 +232,7 @@ public class GmanagerController {
 		return "chiefAdmin/email/chiefEmailForm"; 
 	}
 
-	@PostMapping("/chiefAdmin/send.do")
+	@PostMapping("/gmanager/send.do")
 	public String emailSend(String[] email, EmailVO vo, Model model, int[] no ) {
 		System.out.println("vo!!!" + vo);
 
@@ -248,7 +248,7 @@ public class GmanagerController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으 메일이 전송되었습니다.");
-			model.addAttribute("url", "/tobe/chiefAdmin/email/chiefEmailBox.do"); 
+			model.addAttribute("url", "/tobe/gmanager/email/chiefEmailBox.do"); 
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "전송 오류");
@@ -257,7 +257,7 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert"; 
 	}
 
-	@GetMapping("/chiefAdmin/chiefEmailBox.do")
+	@GetMapping("/gmanager/emailBox.do")
 	public String emailBox(Model model, EmailVO vo) {
 		//db에서 보낸 메일함 가져오기 
 		//member이름,제목, 보낸날
@@ -265,30 +265,30 @@ public class GmanagerController {
 		return "chiefAdmin/email/chiefEmailBox"; 
 	}
 
-	@GetMapping("/chiefAdmin/chiefMemberListEmail.do")
+	@GetMapping("/gmanager/memberListEmail.do")
 	public String eMemberList(Model model, MemberVO vo ) {
 		model.addAttribute("map", service.memberListS(vo));
 		System.out.println( service.memberListS(vo));
 		return "chiefAdmin/email/chiefMemberListEmail"; 
 	}
 
-	@GetMapping("/chiefAdmin/chiefEmailIndex.do")
+	@GetMapping("/gmanager/email.do")
 	public String index() {
 
 		return "chiefAdmin/email/chiefEmailIndex"; 
 	}
 	//member
-	@GetMapping ("/chiefAdmin/chiefMemberIndex.do")
+	@GetMapping ("/gmanager/member.do")
 	public String cheifMemberIndex(Model model, MemberVO vo) {
 		model.addAttribute("map", service.cmemberList(vo));		
 		return "chiefAdmin/member/chiefMemberIndex"; 
 	}
 
-	@PostMapping ("/chiefAdmin/chiefMemberIndex.do")
+	@PostMapping ("/gmanager/member.do")
 	public String cheifMemberindex(MemberVO vo, Model model) {
 		int r = service.update(vo);
 		String msg="";
-		String url="chiefMemberIndex.do";
+		String url="member.do";
 		if (r > 0) {
 			msg = "정상적으로 수정되었습니다.";
 		} else {
@@ -301,7 +301,7 @@ public class GmanagerController {
 		return "chiefAdmin/common/alert";
 	}
 
-	@GetMapping ("/chiefAdmin/chiefMemberDetail.do")
+	@GetMapping ("/gmanager/memberDetail.do")
 	public String cheifMemberDetail(Model model, int no) {
 		model.addAttribute("map", service.detail(no));
 		return "chiefAdmin/member/chiefMemberDetail"; 

@@ -148,23 +148,23 @@ a:hover {
 <div id="main">
 	<div id="contain">
     	<div id="logo">
-        	<img src="/retobe/img/admin_logo.png" onclick="location.href='/retobe/admin/adIndex.do';">
+        	<img src="/tobe/img/admin_logo.png" onclick="location.href='/tobe/manager/main.do';">
 			<hr style="border: solid 1px pink;">
 		</div>
 	
 		<div>
-		   	<button id="btn" onclick="location.href='/retobe/admin/adCourseIndex.do';"> 	
-		   		<img src="/retobe/img/admin_course.png">
+		   	<button id="btn" onclick="location.href='/tobe/manager/course.do';"> 	
+		   		<img src="/tobe/img/admin_course.png">
 		    </button>
 	   	</div>
 		<div>
-			<button id="btno" onclick="location.href='/retobe/admin/adPayIndex.do';">
-				<img src="/retobe/img/admin_order.png">
+			<button id="btno" onclick="location.href='/tobe/manager/pay.do';">
+				<img src="/tobe/img/admin_order.png">
 			</button>
 		</div>
 		<div>
-		   	<button id="btno" onclick="location.href='/retobe/admin/adQnaIndex.do';">
-		      	<img src="/retobe/img/admin_qna.png">
+		   	<button id="btno" onclick="location.href='/tobe/manager/qna.do';">
+		      	<img src="/tobe/img/admin_qna.png">
 		   	</button>
 		</div>
 		<div id="btna"></div>
@@ -176,26 +176,26 @@ a:hover {
 	<div id="mainlogo">
      <c:if test="${admin.ad_type == 1}">
 		<div class="hackers_logo admin_logo">
-			<img src="/retobe/img/HACKERS_logo.png" style="width: 13rem;">
+			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
 		</div>
 	</c:if>
 	<c:if test="${admin.ad_type == 2}">
 		<div class="PAGODA_logo admin_logo">
-			<img src="/retobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
+			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
 		</div>
 	</c:if>
 	<c:if test="${admin.ad_type == 3}">
 		<div class="YBM_logo admin_logo">
-			<img src="/retobe/img/YBM_logo.png" style="position: absolute;  width: 13rem;">
+			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
 		</div>
 	</c:if>
 	</div>
 	
 	<div id="logout">
-		<a href="/retobe/admin/adLogout.do" >로그아웃</a>
+		<a href="/tobe/manager/logout.do" >로그아웃</a>
 	</div>
 	
 

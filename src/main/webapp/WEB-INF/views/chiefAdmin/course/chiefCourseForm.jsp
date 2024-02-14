@@ -211,7 +211,7 @@
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
   
   
-   <form name="insert" method="post" action="chiefCourseInsert.do" enctype="multipart/form-data" onsubmit="return goSave()">   
+   <form name="insert" method="post" action="courseAdd.do" enctype="multipart/form-data" onsubmit="return goSave()">   
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">

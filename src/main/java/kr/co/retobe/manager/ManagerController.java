@@ -22,7 +22,7 @@ public class ManagerController {
 	@Autowired
 	ManagerService service;
 	
-	@GetMapping("/admin/adIndex.do")
+	@GetMapping("/manager/main.do")
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		
@@ -42,12 +42,12 @@ public class ManagerController {
 	}
 	
 	//login
-		@GetMapping("/admin/adLogin.do")
+		@GetMapping("/manager/login.do")
 		public String adLogin() {
 			return "admin/common/adLogin";
 		}
 		
-		@PostMapping("/admin/adLogin.do")
+		@PostMapping("/manager/login.do")
 		public String loginProcess(AdminVO vo, HttpSession sess, Model model) {
 			AdminVO login = service.login(vo);
 			if (login == null) { // 로그인실패
@@ -57,27 +57,27 @@ public class ManagerController {
 			} else if(login.getAd_type()== 999){ // 총관리자로 로그인
 				sess.setAttribute("adLoginInfo", login);
 				System.out.println(999);
-				return "redirect:/chiefAdmin/chiefIndex.do";
+				return "redirect:/gmanager/main.do";
 			} else if((login.getAd_type() == 1) || (login.getAd_type() == 2) || (login.getAd_type() == 3)){ // 학원관리자로 로그인
 				sess.setAttribute("adLoginInfo", login);
-				return "redirect:/admin/adIndex.do";
+				return "redirect:/manager/main.do";
 			} else {
 				System.out.println("튕김");
-				return "redirect:/user/userIndex.do";
+				return "redirect:/user/main.do";
 			}
 		}
 
 		
-		@GetMapping("/admin/adLogout.do")
+		@GetMapping("/manager/logout.do")
 		public String logout(Model model, HttpSession sess) {
 			sess.invalidate();
 			model.addAttribute("msg", "로그아웃되었습니다.");
-			model.addAttribute("url", "/retobe/admin/adLogin.do");
+			model.addAttribute("url", "/tobe/manager/login.do");
 			model.addAttribute("cmd", "move");
 			return "admin/common/adAlert";
 		}
 		
-		@GetMapping("/admin/adCourseIndex.do")
+		@GetMapping("/manager/course.do")
 		public String adCourseIndex(HttpSession sess, Model model, CourseVO vo) {
 			AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 			model.addAttribute("admin", admin);
@@ -88,7 +88,7 @@ public class ManagerController {
 			return "admin/course/adCourseIndex"; 
 		}	
 
-		@GetMapping("/admin/adQnaIndex.do")
+		@GetMapping("/manager/qna.do")
 		public String adQnaIndex(HttpSession sess, Model model, CqnaVO cqvo) {
 			AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 			Map<String, Object> map = new HashMap<>();
@@ -103,13 +103,13 @@ public class ManagerController {
 			return "admin/customer/adQnaIndex"; 
 		}
 		
-		@GetMapping("/admin/adCourseForm.do") 
+		@GetMapping("/manager/courseForm.do") 
 		public String adCourseForm(HttpSession sess, Model model) {
 			AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 			model.addAttribute("admin", admin);
 			return "admin/course/adCourseForm"; 
 		}
-		@GetMapping("/admin/adCourseModForm.do") 
+		@GetMapping("/manager/courseMod.do") 
 		public String adCourseModForm(HttpSession sess, Model model) {
 			AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 			model.addAttribute("admin", admin);

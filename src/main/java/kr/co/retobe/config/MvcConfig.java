@@ -141,9 +141,9 @@ public class MvcConfig implements WebMvcConfigurer{
 						.addPathPatterns("/user/review/insert.do");
 		
 		registry.addInterceptor(loginIntercepton_admin())
-						.addPathPatterns("/admin/**")
-						.addPathPatterns("/chiefAdmin/**")
-						.excludePathPatterns("/admin/adLogin.do");
+						.addPathPatterns("/manager/**")
+						.addPathPatterns("/gamanager/**")
+						.excludePathPatterns("/manager/login.do");
 						
 	}
 			

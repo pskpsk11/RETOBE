@@ -92,7 +92,7 @@ $(function(){
 	    });
 
 	    if (selectedNoList.length > 0) {
-			 window.location.href= '/tobe/chiefAdmin/email/chiefEmailForm.do?member_no='+selectedNoList.join(',');
+			 window.location.href= '/tobe/gmanager/emailForm.do?member_no='+selectedNoList.join(',');
 			 
 	    }
  }
@@ -215,7 +215,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 	<div class="container">
 	<div class="member_sub">
 		<div class="form_sub">
-			<form action="chiefPayIndex.do" method="get" >
+			<form action="pay.do" method="get" >
 		<table class="table">
 			<tr>
 				<td width="100px;">검색어</td>

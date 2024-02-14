@@ -214,7 +214,7 @@
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
   
   
-   <form name="cheifModForm" method="post" action="chiefCourseIndex.do" enctype="multipart/form-data" onsubmit="return goSave()">   
+   <form name="cheifModForm" method="post" action="course.do" enctype="multipart/form-data" onsubmit="return goSave()">   
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">

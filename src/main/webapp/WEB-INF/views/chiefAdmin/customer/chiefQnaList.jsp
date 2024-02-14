@@ -125,17 +125,17 @@ $('.viewRe').click(function () {
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do';">
+			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/customer.do';">
 		</div>
 		<div id="fi">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnalist.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">
 		</div>
 		<div id="f">
 		<br>
 			<b style="margin-left:65px;">FAQ</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefFaqList.do';">
+			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/faqList.do';">
 		</div>
 	</div>
 </div>
@@ -143,7 +143,7 @@ $('.viewRe').click(function () {
 <div id="search">
 				<div class="search-wrap">
 					<span class="dSelect" style="margin: 0 1rem 1rem;"></span>
-					<form method="get" name="searchForm" id="searchForm" action="chiefQnaList.do">    
+					<form method="get" name="searchForm" id="searchForm" action="qnaList.do">    
 						<span class="srchSelect">
 							<select class="dSelect" name="searchType" title="검색분류 선택" style="margin: 0 0.25rem;">
 								<option value="all">전체</option>
@@ -201,7 +201,7 @@ $('.viewRe').click(function () {
 	                           			
 	                           			
 	                         			 <div class="edit" style="display:none;">
-		                         			 <form action="/tobe/chiefAdmin/customer/edit.do" method="post" >
+		                         			 <form action="/tobe/gmanager/edit.do" method="post" >
 			                           	 		  <input type="hidden" id="qna_no" name="qna_no" value="${qna.qna_no} ">
 											      <textarea name="q_reply" cols="100" rows="10">${qna.q_reply }</textarea>
 											      <input type="submit" value="수정">

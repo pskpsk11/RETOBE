@@ -92,7 +92,7 @@
             <div class="size">
                 <h2 class="sub_title">회원정보</h2>
                	<br></br>
-                <form name="frm" id="frm" method="post" action="chiefMemberIndex.do">
+                <form name="frm" id="frm" method="post" action="member.do">
                 <table class="board_write" cellspacing = "0">
                     <!-- <caption style="float:left;">필수입력</caption> -->
                     <colgroup>

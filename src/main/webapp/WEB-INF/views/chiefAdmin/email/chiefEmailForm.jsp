@@ -121,10 +121,10 @@ a:hover {
 		<div class="email_sub">
 			<div class="email_title">
 				<h3>메일 쓰기</h3>
-				<a class="bnt" href="/tobe/chiefAdmin/email/chiefMemberListEmail.do">회원목록</a>	
+				<a class="bnt" href="/tobe/gmanager/memberListEmail.do">회원목록</a>	
 			</div>
 			<div class="email_form">
-				<form method="post" name="frm" id="frm" action="/tobe/chiefAdmin/email/send.do" enctype="multipart/form-data" >
+				<form method="post" name="frm" id="frm" action="/tobe/gmanager/send.do" enctype="multipart/form-data" >
 					<div class="title_con">
 						<label><b>제 목</b></label><input type="text" name="e_title" value="" class="title"/><br>
 						<c:if test="${empty email}">

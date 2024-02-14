@@ -34,7 +34,7 @@
 	                            <dd class="date"><c:out value="${review.r_writedate}" /></dd>
 	                        </dl>
 	                    </div>
-	                    <div class="cont"><p><c:out value="${review.r_content}"/></p> </div>
+	                    <div class="cont"><p>${review.r_content}</p> </div>
 	                    <dl class="file">
 	                        <dt>첨부파일 </dt>
 	                        <dd>

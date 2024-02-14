@@ -48,21 +48,21 @@
 		<div class="email_sub">
 			<div class="mail" style="background-color:#F8FFF5;">
 				<div class="mailImg" >
-					<img class="image" src="/retobe/img/emailSend.png" onclick="location.href='/retobe/chiefAdmin/chiefEmailForm.do';" >
+					<img class="image" src="/tobe/img/emailSend.png" onclick="location.href='/tobe/emailForm.do';" >
 				</div>
-			     <a href="/retobe/chiefAdmin/chiefEmailForm.do"><b>메일작성하기</b></a></font>
+			     <a href="/tobe/emailForm.do"><b>메일작성하기</b></a></font>
 			</div>
 			<div class="mail" style="background-color:#FDFFF3;">
 				<div class="mailImg" >
-					<img class="image" src="/retobe/img/eamilBoxpng.png" onclick="location.href='/retobe/chiefAdmin/chiefEmailBox.do';" id="mail"><br>
+					<img class="image" src="/tobe/img/eamilBoxpng.png" onclick="location.href='/tobe/gmanager/emailBox.do';" id="mail"><br>
 				</div>  	
-				<a href="/retobe/chiefAdmin/chiefEmailBox.do" ><b>보낸메일함</b></a>
+				<a href="/tobe/gmanager/emailBox.do" ><b>보낸메일함</b></a>
 			</div>
 			<div class="mail" style="background-color:#F9FFFE;">
 				<div class="mailImg">
-				   <img class="image" src="/retobe/img/emailMember.png" onclick="location.href='/retobe/chiefAdmin/chiefMemberListEmail.do';"><br>
+				   <img class="image" src="/tobe/img/emailMember.png" onclick="location.href='/tobe/gmanager/memberListEmail.do';"><br>
 				</div>
-				   <a href="/retobe/chiefAdmin/chiefMemberListEmail.do" ><b>회원목록바로가기</b></a>
+				   <a href="/tobe/gmanager/memberListEmail.do" ><b>회원목록바로가기</b></a>
 			</div>
 		</div>
 	</div>  

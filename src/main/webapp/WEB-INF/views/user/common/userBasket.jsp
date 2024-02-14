@@ -255,7 +255,7 @@ button:hover {
 						</div>
 					<div class="bx_btn">
 						<button type="button" name="button1" class="bnt" onclick="removeSelectedItems();">선택상품삭제</button>
-	                    <a href="/tobe/user/course/userCourseIndex.do"><button type="button" name="button2" class="bnt">쇼핑계속하기</button></a>
+	                    <a href="/tobe/user/course.do"><button type="button" name="button2" class="bnt">쇼핑계속하기</button></a>
 					</div>
 				</div>
 				<div class="payment ">

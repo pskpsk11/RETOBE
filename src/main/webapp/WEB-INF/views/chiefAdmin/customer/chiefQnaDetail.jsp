@@ -34,7 +34,7 @@
 		   		</div>
 		   	</div>
 		   	<div class = "combackBtn">
-		  			<button type="button" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do'" class="comBack">목록</button></td>
+		  			<button type="button" onclick="location.href='/tobe/gmanager/qnaList.do'" class="comBack">목록</button></td>
 		 	</div>
 	</form>
 </body>

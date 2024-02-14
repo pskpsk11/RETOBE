@@ -156,17 +156,17 @@
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do';">
+			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/customer.do';">
 		</div>
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">
 		</div>
 		<div id="fi">
 		<br>
 			<b style="margin-left:65px;">FAQ</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefFaqList.do';">
+			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/faqList.do';">
 		</div>
 	</div>
 </div>
@@ -226,7 +226,7 @@
                 </table>
                 <div class="btnSet"  style="text-align:right;">
 	                <c:if test="${!empty adLoginInfo}">
-	                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
+	                    <a class="btn" href="/tobe/gmanager/faqForm.do">글작성 </a>
 	                </c:if>
            		</div>
                 		<div class="pagenate clear">

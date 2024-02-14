@@ -129,7 +129,8 @@
 		    DATE_FORMAT(i_endday, '%Y-%m-%d') AS i_endday,
 		   teacher_img_org,
 		   pay_cancel, DATE_FORMAT(pay_cancel_date, '%Y-%m-%d') AS pay_cancel_date, pay_refund, pay_refund_date,
-           (SELECT count(*) FROM review WHERE detail_no=pd.detail_no) AS review_cnt
+           (SELECT count(*) FROM review WHERE detail_no=pd.detail_no) AS review_cnt,
+           (SELECT review_no FROM review WHERE member_no = #{member_no} and detail_no=pd.detail_no) AS review_no
 		FROM member m
 		JOIN pay p ON m.member_no = p.member_no
 		JOIN pay_detail pd ON p.order_no = pd.order_no

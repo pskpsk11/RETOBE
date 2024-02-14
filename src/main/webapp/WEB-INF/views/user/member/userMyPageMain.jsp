@@ -369,7 +369,7 @@ table {
 										%>
 										
 										<c:if test="${vo.review_cnt gt 0 }">
-											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/reviewDetail.do?review_no=${rvo.review_no}'" >
+											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/reviewDetail.do?review_no=${vo.review_no}'" >
 										</c:if>
 										<c:if test="${currentTime gt vo.i_endday and vo.review_cnt eq 0}">
 											<input type="submit" value="후기작성">

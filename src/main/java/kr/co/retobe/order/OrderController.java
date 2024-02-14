@@ -17,29 +17,29 @@ public class OrderController {
 	@Autowired
 	OrderService service;
 	
-	@GetMapping("/admin/adPayIndex.do")
+	@GetMapping("/manager/pay.do")
 	public String adPayIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
+			return "redirect:/manager/login.do";
 		}
 		model.addAttribute("admin", admin);
 		model.addAttribute("list", service.getlistm());
 		return "admin/pay/adPayIndex"; 
 	}
 	
-	@GetMapping ("/chiefAdmin/chiefPayIndex.do")
+	@GetMapping ("/gmanager/pay.do")
 	public String chiefPayindex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
+			return "redirect:/manager/login.do";
 		}
 		model.addAttribute("admin", admin);
 		model.addAttribute("list", service.getlistgm());
 	return "chiefAdmin/pay/chiefPayIndex";
 	}
 	
-	@GetMapping("/chiefAdmin/payList.do")
+	@GetMapping("/gmanager/payList.do")
 	public String payList(@RequestParam Map<String, Object> condition, Model model) {
 		model.addAttribute("payList", service.payList(condition));
 		model.addAttribute("conEduTotal", service.conEduTotal(condition));
