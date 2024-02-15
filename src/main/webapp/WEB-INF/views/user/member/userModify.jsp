@@ -22,37 +22,42 @@
 
 <style>
 .main {
-	width: 75rem;
-	height: 50rem;
+	margin: 0 auto;
+	width: 100%;
+	height: auto;
+	position: relative;
+	max-width: 100%;
 }
 
 .userMain {
-	width: 75rem;
-	height: 10rem;
-	background-color: #E4E6D9;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	max-width: 1280px;
 }
 
 .userMain a:link, a:visited {
 	text-decoration: none;
-	color: #49654E;
 }
 
-
 .part1 {
-	position: absolute;
-	width: 10rem;
-	height: 10rem;
+	position: relative;
+	width: 100%;
+	height: auto;
 	text-align: center;
-	font-color: #000;
+	font-color: #fff;
 	font-size: 1.5rem;
 	left: 1rem;
-	color: #49654E;
 }
 
 #userName {
 	position: absolute;
 	top: 0.75rem;
 	left: 1.5rem;
+}
+
+#userName > b {
+	color: #ff5050;
 }
 #userId {
 	position: absolute;
@@ -61,37 +66,39 @@
 }
 
 .part2 {
-	position: absolute;
-	width: 20rem;
-	height: 10rem;
-	font-size: 1.25rem;
-	left: 15rem;
-	color: #49654E;
+	margin: 0 0 0 200px;
+    position: absolute;
+    /* width: 100%; */
+    height: auto;
+    font-size: 25px;
 }
 
 #set {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	margin: 0 auto;
-	padding: 0;
-	top: 1rem;
+	position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
 
 }
 
 #quit {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	top: 4.5rem;
-	margin: 0 auto;
-	padding: 0;
+	position: relative;
+    width: 100%;
+    height: auto;
+    top: 65px;
+    margin: 0 auto;
 }
 
-#setImg, #quitImg {
+#setImg {
 	position: absolute;
 	width: 2.5rem;
 	top: 1rem;
+}
+
+#quitImg {
+	position: relative;
+	width: 40px;
 }
 
 #setText{
@@ -102,16 +109,9 @@
 }
 
 #quitText {
-	position: absolute;
-	text-align: center;
-	left: 3.5rem;
-	top: 1.25rem;
-}
-
-.pointContainer {
-	margin: 0 0 0 53rem;
-	width: 22rem;
-	height: 10rem;
+    margin: 56px;
+    position: relative;
+    text-align: center;
 }
 
 #pointImg {
@@ -124,24 +124,38 @@
 	margin: 3rem 0 0 1rem;
 	width: 13rem;
 	height: 4rem;
-	color: #49654E;
 }
 
 #userPointText {
 	width: 13rem;
 	font-size: 1.25rem;
 }
+
+#userPointText > b{
+	color: #ff5050;
+}
 #numPointText {
 	width: 11.5rem;
 	font-size: 1.25rem;
 }
 
+#numPointText > b {
+	color: #ff5050;
+}
+
 .modifyMain {
-	position: absolute;
-	top: 30em;
-	width: 40rem; 
-	left: 16rem;
-	height: 30rem;
+	height: 500px;
+    position: relative;
+    /* top: 30em; */
+    width: 100%;
+    /* left: 16rem; */
+    /* height: 30rem; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
 }
 
 #pwdCheckBox {
@@ -157,18 +171,19 @@
 }
 
 #pwdCheckBtn {
-	position: absolute;
-	width: 6rem;
-	height: 2rem;
-	font-size: 1.25rem;
-	top: 17.5rem;
-	left: 16.5rem;
+	position: relative;
+	width: 100px;
+	height: 35px;
+	font-size: 20px;
 	background-color: #000;
 	color: #fff;
     cursor: pointer;
+    margin: 0 260px;
 }
 
-
+#pointul{
+	float: right;
+}
 
 </style>
 
@@ -189,24 +204,28 @@
 				<div class="part2">
 					<div id="set">
 						<a href="/tobe/user/modify.do">
-							<img src="/retobe/img/set.png" id="setImg">
+							<img src="/tobe/img/set.png" id="setImg">
 							<span id="setText">회원정보수정</span>
 						</a>
 					</div>
 					<div id="quit">
 						<a href="/tobe/user/cancel.do">
-							<img src="/retobe/img/quit.png" id="quitImg">
+							<img src="/tobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
-				
-				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
-					<span id="point">
-						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
-						<span id="numPointText"><b>${user.point } </b> 포인트</span>
-					</span>
-				</div>
+
+				<ul id = "pointul">
+					<li>
+						<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+							<span id="point">
+								<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span><br>
+								<span id="numPointText"><b>${user.point } </b> 포인트</span>
+							</span>
+						</div>
+					</li>
+				</ul>
 			</div>
 			
 			<div class="modifyMain">
@@ -218,7 +237,7 @@
 				<form method="post" action="modifyForm.do" id="frm">
 					<div id="pwdCheckBox">
 						<input type="text" id="idCheck" value="${user.id }" disabled><br>
-						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
+						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력해주세요'" required><br>
 					</div>
 					<input type="submit" id="pwdCheckBtn" value="확인">
 				</form>

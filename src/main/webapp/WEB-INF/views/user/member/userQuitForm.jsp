@@ -23,37 +23,47 @@
 
 <style>
 .main {
-	width: 75rem;
-	height: 55rem;
+	display: flex;
+	margin: 0 auto;
+	width: 100%;
+	height: auto;
+	position: relative;
+	max-width: 100%;
+	flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
 }
 
 .userMain {
-	width: 75rem;
-	height: 10rem;
-	background-color: #E4E6D9;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	max-width: 1280px;
 }
 
 .userMain a:link, a:visited {
 	text-decoration: none;
-	color: #49654E;
 }
 
-
 .part1 {
-	position: absolute;
-	width: 10rem;
-	height: 10rem;
+	position: relative;
+	width: 600px;
+	height: auto;
 	text-align: center;
-	font-color: #000;
+	font-color: #fff;
 	font-size: 1.5rem;
 	left: 1rem;
-	color: #49654E;
 }
 
 #userName {
 	position: absolute;
 	top: 0.75rem;
 	left: 1.5rem;
+}
+
+#userName > b {
+	color: #ff5050;
 }
 #userId {
 	position: absolute;
@@ -62,37 +72,39 @@
 }
 
 .part2 {
-	position: absolute;
-	width: 20rem;
-	height: 10rem;
-	font-size: 1.25rem;
-	left: 15rem;
-	color: #49654E;
+	margin: 0 0 0 200px;
+    position: absolute;
+    width: 600px;
+    height: auto;
+    font-size: 25px;
 }
 
 #set {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	margin: 0 auto;
-	padding: 0;
-	top: 1rem;
+	position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
 
 }
 
 #quit {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	top: 4.5rem;
-	margin: 0 auto;
-	padding: 0;
+	position: relative;
+    width: 100%;
+    height: auto;
+    top: 65px;
+    margin: 0 auto;
 }
 
-#setImg, #quitImg {
+#setImg {
 	position: absolute;
 	width: 2.5rem;
 	top: 1rem;
+}
+
+#quitImg {
+	position: relative;
+	width: 40px;
 }
 
 #setText{
@@ -103,16 +115,9 @@
 }
 
 #quitText {
-	position: absolute;
-	text-align: center;
-	left: 3.5rem;
-	top: 1.25rem;
-}
-
-.pointContainer {
-	margin: 0 0 0 53rem;
-	width: 22rem;
-	height: 10rem;
+    margin: 56px;
+    position: relative;
+    text-align: center;
 }
 
 #pointImg {
@@ -125,16 +130,23 @@
 	margin: 3rem 0 0 1rem;
 	width: 13rem;
 	height: 4rem;
-	color: #49654E;
 }
 
 #userPointText {
 	width: 13rem;
 	font-size: 1.25rem;
 }
+
+#userPointText > b{
+	color: #ff5050;
+}
 #numPointText {
 	width: 11.5rem;
 	font-size: 1.25rem;
+}
+
+#numPointText > b {
+	color: #ff5050;
 }
 
 .quitMain {
@@ -168,21 +180,25 @@
 }
 
 .quitNotice {
-	position: absolute;
-	top: 24rem;
-	left: 1rem;
+	width: 100%;
+    position: relative;
+    /* top: 24rem; */
+    /* left: 1rem; */
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .quitBox {
-	position: absolute;
-	width: 71rem;
-	left: 1rem;
-	top: 42.5rem;
+	position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 10px;
+    /* top: 42.5rem;*/
 }
 
 .line {
 	position: absolute;
-	background-color: #49654E;
+	background-color: #606060;
 	width: 72rem;
 	height: 2px;
 	top: 4rem;
@@ -190,19 +206,25 @@
 }
 
 #quitAgree {
-	position: absolute;
-	width: 8rem;
-	height: 2rem;
-	font-size: 1.25rem;
+	position: relative;
+	width: 100px;
+	height: 35px;
+	font-size: 20px;
 	background-color: #000;
 	color: #fff;
     cursor: pointer;
-    left: 31rem;
+    margin: 0 590px;
+}
+
+#pointul{
+	float: right;
+}
+
+h2{
+	color: #ff5050;
 }
 
 </style>
-
-
 </head>
 <body>
 	<div class="wrap">
@@ -217,25 +239,29 @@
 				</div>
 				<div class="part2">
 					<div id="set">
-						<a href="/tobe/user/member/userModify.do">
+						<a href="/tobe/user/modify.do">
 							<img src="/tobe/img/set.png" id="setImg">
 							<span id="setText">회원정보수정</span>
 						</a>
 					</div>
 					<div id="quit">
-						<a href="/tobe/user/member/cancel.do">
-							<img src="/retobe/img/quit.png" id="quitImg">
+						<a href="/tobe/user/cancel.do">
+							<img src="/tobe/img/quit.png" id="quitImg">
 							<span id="quitText">회원탈퇴</span>
 						</a>
 					</div>
 				</div>
 				
-				<div class="pointContainer"><img src="/retobe/img/point.png" id="pointImg">
-					<span id="point">
-						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
-						<span id="numPointText"><b>${user.point } </b> 포인트</span>
-					</span>
-				</div>
+				<ul id = "pointul">
+					<li>
+						<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+							<span id="point">
+								<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span><br>
+								<span id="numPointText"><b>${user.point } </b> 포인트</span>
+							</span>
+						</div>
+					</li>
+				</ul>
 			</div>
 			
 			<div class="quitNotice">
@@ -252,13 +278,13 @@
 			</div>
 			
 			<div class="quitBox">
-				<h2 id="q">회원 탈퇴 사유</h2>
+				<h2 id="q">회원 탈퇴 사유</h2><br>
 				<div class="line"></div>
 				<form class="quitForm" method="post" action="cancel.do">
 					<table>
 						<tr>
 							<th style="width: 10rem; font-size: 1.25rem;" >회원 탈퇴 사유</th>
-							<td >
+							<td>
 								<select id="quitReason" style="width: 15rem; height: 2rem; font-size: 1rem;" required>
 									<option value="1">강의종류 불만</option>
 									<option value="2">강의가격 불만</option>
