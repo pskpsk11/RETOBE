@@ -92,19 +92,27 @@
 			</if>
 		</where>
 	</sql>
-	
+ 		
 	<select id="qnaList" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
-		SELECT *
-		FROM qna
-		<include refid="qnaSql"/>
-		<!-- ORDER BY gno DESC, ono ASC  -->
-		LIMIT #{startIdx}, 10
+	    <include refid="qnaSql"/>
+	    SELECT qna.*, member.name AS member_name
+	    FROM qna
+	    JOIN member ON member.member_no = qna.member_no
+	    LIMIT #{startIdx}, 10
+		
 	</select>
+
+	
+	
 	<select id="qnaCount" parameterType="kr.co.retobe.vo.QnaVO" resultType="int">
 		SELECT COUNT(*)
 		FROM qna
 		<include refid="qnaSql"/>
 	</select>
+	
+	<update id="updateQviewcnt" parameterType="int">
+		UPDATE qna SET q_viewcnt = q_viewcnt+1 WHERE qna_no =#{qna_no}
+	</update>
 	
 	<!-- <insert id="insert" parameterType="kr.co.retobe.vo.QnaVO">
 		INSERT INTO qna(
@@ -178,6 +186,38 @@
 			NOW()
 		)
 		<selectKey keyProperty="qna_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<update id="updateQgno" parameterType="int">
+		UPDATE qna SET gno=#{no} WHERE no=#{no}
+	</update>
+	<update id="updateQono" parameterType="kr.co.retobe.vo.QnaVO">
+		UPDATE qna SET ono=ono+1 WHERE gno=#{gno} AND ono > #{ono}
+	</update>
+	<insert id="reply" parameterType="kr.co.retobe.vo.QnaVO">
+		INSERT INTO qna (
+			`q_title`,
+			`q_content`,
+			`q_writedate`,
+			`q_viewcnt`,
+			`member_no`,
+			`gno`,
+			`ono`,
+			`nested`
+		) VALUES (
+			#{q_title},
+			#{q_content},
+			NOW(),
+			0,
+			0,
+			#{member_no},
+			#{gno},
+			#{ono},
+			#{nested}
+		)
+		<selectKey keyProperty="no" order="AFTER" resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>

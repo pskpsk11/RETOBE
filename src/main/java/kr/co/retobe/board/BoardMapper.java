@@ -31,6 +31,14 @@ public interface BoardMapper {
 	List<QnaVO> qnaList(QnaVO vo);
 	QnaVO qnaDetail(int no);
 	
+	//문의 조회수
+	int updateQviewcnt(int qna_no);
+	//문의 답변형
+	int updateQgno(int qna_no);
+	int updateQono(QnaVO vo);
+	int reply(QnaVO vo);
+	
+	
 	
 	//notice
 	int noticeInsert(NoticeVO vo);

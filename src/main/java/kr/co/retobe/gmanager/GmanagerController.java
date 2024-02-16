@@ -128,7 +128,7 @@ public class GmanagerController {
 		return "chiefAdmin/customer/chiefQnaList";
 	}
 	@GetMapping ("/gmanager/qnaDetail.do")
-	public String QnaDtail(Model model, @RequestParam("qnaNo") int qnaNo) {
+	public String QnaDtail(Model model, @RequestParam("qna_no") int qnaNo) {
 		QnaVO qna = service.getQnaDetail(qnaNo);
 		model.addAttribute("qna", qna);
 		return "chiefAdmin/customer/chiefQnaDetail";

@@ -95,9 +95,18 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public QnaVO qnaDetail(QnaVO vo) {
+	public QnaVO qView(QnaVO vo, boolean isViewcntIncrease) {
 		QnaVO data = mapper.qnaDetail(vo.getQna_no());
-		// TODO Auto-generated method stub
+		if (isViewcntIncrease) {
+			mapper.updateQviewcnt(vo.getQna_no());
+		}
+		return data;
+	}
+	
+	@Override
+	public QnaVO qnaDetail(QnaVO vo) {
+		mapper.updateQviewcnt(vo.getQna_no());
+		QnaVO data = mapper.qnaDetail(vo.getQna_no());
 		return data;
 	}
 	
@@ -153,6 +162,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return data;
 	}
+	
+	
 
 
 //	@Override

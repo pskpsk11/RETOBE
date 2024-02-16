@@ -111,7 +111,7 @@ public class BoardController {
 		return "user/review/userModReviewForm";
 	}
 	
-	
+	//고객센터 문의
 	@GetMapping("/user/qna.do")
 	public String userQna(Model model, QnaVO vo) {
 		model.addAttribute("map", service.qnaList(vo));
@@ -192,7 +192,7 @@ public class BoardController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-			model.addAttribute("url", "/tobe/user/customer/userQna.do");
+			model.addAttribute("url", "/tobe/user/qna.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");

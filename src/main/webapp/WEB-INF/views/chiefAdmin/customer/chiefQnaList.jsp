@@ -185,7 +185,8 @@ $('.viewRe').click(function () {
                     <c:forEach var="qna" items="${list}">      
 						    <tr>
 						        <td>${qna.qna_no}</td>
-						        <td class ="tog">${qna.q_title }</td>
+						        <td><a href="qnaDetail.do?qna_no=${qna.qna_no}">${qna.q_title}</a></td>
+						        
                                <td class="date"><fmt:formatDate value="${qna.q_writedate }" pattern="YYYY-MM-dd"/></td>
                                <td> <c:if test="${empty qna.q_reply}"> 미답변</c:if>
                                		<c:if test="${!empty qna.q_reply}"> 답변 완료</c:if>

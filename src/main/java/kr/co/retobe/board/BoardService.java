@@ -24,6 +24,7 @@ public interface BoardService {
 	int qnaUpdate(QnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int qnaDelete(QnaVO vo);//, HttpServletRequest request);
 	QnaVO qnaDetail(QnaVO vo);
+	QnaVO qView(QnaVO vo, boolean isViewcntIncrease);
 	//notice
 	Map<String, Object> noticeList(NoticeVO vo);
 	

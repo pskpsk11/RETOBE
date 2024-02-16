@@ -28,4 +28,11 @@ public class QnaVO {
 	public int getStartIdx() {
 		return (page-1) * 10;
 	}
+	
+	private int q_viewcnt;
+	
+	private int gno;
+	private int ono;
+	private int nested;
+	
 }

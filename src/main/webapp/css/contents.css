@@ -451,17 +451,7 @@
   border: 1px solid #c7c8cc;
   vertical-align: middle;
 }
-.bbsSearch input[type="button"] {
-  border: 0;
-  height: 32px;
-  width: 32px;
-  text-indent: -9999em;
-  position: absolute;
-  top: 0;
-  right: 5px;
-  background: url("/img/ico_search.png") no-repeat center center;
-  display: inline-block;
-}
+
 .bbsSearch .srchSelect .selectric-dSelect {
   float: left;
   width: 148px;
@@ -503,7 +493,7 @@
   position: absolute;
   top: 0;
   right: 5px;
-  background: url("/img/ico_search.png") no-repeat center center;
+  background: url("../img/ico_search.png") no-repeat center center;
   display: inline-block;
 }
 .bbsSearch .srchSelect .selectric-dSelect {

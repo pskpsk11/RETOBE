@@ -90,12 +90,18 @@ hr{
 		   	<div class = "textBox">
 	   			<input type="text" value="${vo.q_content}" readonly id="realTextBox">
 		   	</div>
+		   	
+		   	<div class="btnSet clear">
+               <div class="fl_l">
+               	<a href="qna.do" class="btn">목록</a>
+               </div>
+       		</div>
 	   	
 		   	<div class="correction">
 		   		<table>
 		   			<tr>
 		   				<td>
-			   				<c:if test="${!empty loginInfo}">
+			   				<c:if test="${!empty loginInfo and loginInfo.member_no == vo.member_no}">
 			                     <a class="btn" href="userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
 			                </c:if>
 		                </td>
@@ -108,19 +114,7 @@ hr{
 		   		</table>
 		   	</div>
 	   	
-		   	<div id="secondLine">
-		   		<div class = "answer">
-		   			<h1>답변</h1>
-		   		</div>
-			   	<hr>
-		   	</div>
-		   	<div class = "textBoxAnswer">
-	   			<input type="text" value="${vo.q_reply}" readonly id="realTextBox">
-		   	</div>
-		   	<div class = "combackBtn">
-		  			<button type="button" onclick="location.href='/tobe/user/customer/userCustomer.do'" class="comBack">목록</button>
-		 	</div>
-	 	</div>
+		   	
 		<div class="footerBox">
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
