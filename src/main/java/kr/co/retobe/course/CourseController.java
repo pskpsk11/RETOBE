@@ -1,5 +1,6 @@
 package kr.co.retobe.course;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +22,6 @@ import kr.co.retobe.vo.ReviewVO;
 
 @Controller
 public class CourseController {
-	
-	@GetMapping("/user/schedule.do")
-	public String userTestSchedule() {
-		return "user/common/userTestSchedule";
-	}
 	
 	@Autowired
 	CourseService service;
@@ -209,5 +205,20 @@ public class CourseController {
         model.addAttribute("courseInfo", courseInfo);
         return "/user/course/userCourseDetailList";
     }
+	
+	@GetMapping("/user/schedule.do")
+	public String userTestSchedule() {
+		return "user/common/userTestSchedule";
+	}
+	
+	@ResponseBody
+	@GetMapping("/user/common/calendar/list")
+	public Map<String,Object>  calendarList() {
+		service.calendarList();
+		Map<String,Object> map = new HashMap<String, Object>();
+		
+		map.put("list", service.calendarList());
+		return map;
+	}
 
 }

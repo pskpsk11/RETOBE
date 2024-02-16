@@ -35,12 +35,12 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
 
 	:root {
 		--fc-small-font-size: .95em;
-		--fc-button-bg-color: #49654E;
-	    --fc-button-border-color: #49654E;
-	    --fc-button-hover-bg-color: #253528;
-	    --fc-button-hover-border-color: #253528;
-	    --fc-button-active-bg-color: #253528;
-	    --fc-button-active-border-color: #253528;
+		--fc-button-bg-color: #ff5050;
+	    --fc-button-border-color: #ff5050;
+	    --fc-button-hover-bg-color: #fa0318f0;
+	    --fc-button-hover-border-color: #fa0318f0;
+	    --fc-button-active-bg-color: #fa0318f0;
+	    --fc-button-active-border-color: #fa0318f0;
 	}
     
 	.fc-col-header-cell{
@@ -181,7 +181,7 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
        events: function(info, successCallback, failureCallback){
     	   $.ajax({
    			type: 'GET',
-   			url:'/retobe/user/calendar/list',
+   			url:'/tobe/user/calendar/list',
    			dataType:"json",  
    			success:function(res) {
 				var jsonArray = [];
