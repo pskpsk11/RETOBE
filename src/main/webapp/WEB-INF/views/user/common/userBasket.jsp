@@ -78,7 +78,7 @@ function removeSelectedItems() {
     });
 
     if (selectedNoList.length > 0) {
-		 window.location.href= 'userBasketDelete.do?cartNo='+selectedNoList.join(',');
+		 window.location.href= 'basketDelete.do?cartNo='+selectedNoList.join(',');
         //$.ajax ({
 		//	url: 'userBasketDelete.do?cartNo='+selectedNoList.join(','),
 		/* 	success: function(res) {
@@ -100,7 +100,7 @@ function ProcessOrder() {
     });
 
     if (selectedNoList.length > 0) {
-		 window.location.href= '/tobe/user/pay/userPayDetail.do?cartNo='+selectedNoList.join(',');
+		 window.location.href= '/tobe/user/payDetail.do?cartNo='+selectedNoList.join(',');
     }
 }
 
@@ -109,9 +109,10 @@ function ProcessOrder() {
 <style>
 
 .cart_wrap {
-	width: 75rem;
-	height: 50rem;
-    
+	width: 100%;
+	height: 800px;
+	max-width: 1280px;
+	margin: 20px auto;
 }
 .cart_box {
 	width: 100%;
@@ -122,10 +123,8 @@ function ProcessOrder() {
 	float:left;
 }
 .payment{
-	width:30%;	
 	float:left;
 	padding-left: 30px;
-
 }
 .cart_product {
 	overflow-y:scroll;
@@ -143,14 +142,14 @@ function ProcessOrder() {
 }
 
 .finalpay{
+	margin: 20px auto;
 	border: 0.5px solid #000;
-	position: absolute;
-	top: 17rem;
-	left: 56rem;
-	width:  15rem;
-	border-top: 1px solid #ddd;
-	margin-left : 50px;
-	text-align:center;
+    position: relative;
+    /* top: 17rem; */
+    /* left: 56rem; */
+    /* width: 15rem; */
+    /* border-top: 1px solid #ddd; */
+    text-align: center;
 	
 }
 
@@ -159,15 +158,15 @@ function ProcessOrder() {
 
 }
 
-  .order{
-	position: absolute;
-	top: 42rem;
-	left: 59rem;
-	width:  15rem;
-	height: 2.5rem;
-	color: #fff;
-	background-color: #000;
-	border : 0;
+.order{
+	position: relative;
+    /* top: 42rem; */
+    /* left: 59rem; */
+    width: 200px;
+    height: 40px;
+    color: #fff;
+    background-color: #000;
+    border: 0;
 }
 
 .bnt{

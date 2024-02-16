@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+f<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="kr.co.retobe.util.CodeToString"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -228,9 +228,6 @@ function re() {
                           지점 : ${CodeToString.branchToString(cart.branch)} <br>
                        	  시간 : ${cart.time} <br>
                           요일 : ${CodeToString.dateToStirng(cart.mon, cart.tue, cart.wed, cart.thu, cart.fri, cart.sat, cart.sun)}<br></td>
-                       
-					</td>
-				
 					<td class="price">${cart.price }</td>
 				</tr>	
 					

@@ -44,7 +44,7 @@
 		   				<tr>
 							<td><button type="button" onclick="location.href='/tobe/user/basket.do?course_no=${lecture.course_no}'" class="SelectBtn">장바구니 담기</button></td>
 							<td><button type="button" onclick="setCourseComp('${lecture.course_no}');" class="SelectBtn">비교함 담기</button></td>
-							<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?course_no=${lecture.course_no}'" class="payBtn">결제 하기</button></td>
+							<td><button type="button" onclick="location.href='/tobe/user/mainPayDetail.do?course_no=${lecture.course_no}'" class="payBtn">결제 하기</button></td>
 		   				</tr>
 		   			</table>
 				</div>
