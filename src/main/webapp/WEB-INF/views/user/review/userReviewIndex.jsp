@@ -35,9 +35,7 @@
      
              <div class="bbs">
                <table class="list">
-                 <p>
-                   <span><strong>총 100개</strong> | 1/10페이지</span>
-                 </p>
+				<p><span><strong>총 ${map.count }개</strong>  |  ${reviewVO.page }/${map.totalPage }페이지</span></p>
                  <caption>
                    게시판 목록
                  </caption>
@@ -75,26 +73,28 @@
                </table>
                <div class="pagenate clear">
                    <ul class='paging'>
-                      <c:if test="${map.prev }">
-                         <li><a href="index.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
+                   <c:forEach var="review" items="${ReviewList}">
+                      <c:if test="${review.prev }">
+                         <li><a href="reviewIndex.do?page=${reveiw.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
                         </c:if>
-                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+                        <c:forEach var="p" begin="${review.startPage}" end="${review.endPage}">
                            <c:if test="${p == ReviewVO.page}">
                               <li><a href='#;' class='current'>${p}</a></li>
                            </c:if>
                            <c:if test="${p != ReviewVO.page}">
-                              <li><a href='index.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
+                              <li><a href='reviewIndex.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
                            </c:if>
                         </c:forEach>
-                        <c:if test="${map.next }">
-                           <li><a href="index.do?page=${map.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> >> </a></li>
+                        <c:if test="${review.next }">
+                           <li><a href="reviewIndex.do?page=${review.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> >> </a></li>
                         </c:if>
+                      </c:forEach>
                    </ul> 
              </div>
      
                <!-- 페이지처리 -->
                <div class="bbsSearch">
-                 <form method="get" name="searchForm" id="searchForm" action="">
+                 <form method="get" name="searchForm" id="searchForm" action="reviewIndex.do">
                    <span class="srchSelect">
                      <select
                        id="stype"
@@ -103,8 +103,8 @@
                        title="검색분류 선택"
                      >
                        <option value="all">전체</option>
-                       <option value="title" <c:if test="${replyVO.searchType == 'title'}">selected</c:if>>제목</option>
-                         <option value="content" <c:if test="${replyVO.searchType == 'content'}">selected</c:if>>내용</option>
+                       <option value="r_title" <c:if test="${replyVO.searchType == 'title'}">selected</c:if>>제목</option>
+                         <option value="r_content" <c:if test="${replyVO.searchType == 'content'}">selected</c:if>>내용</option>
                      </select>
                    </span>
                    <span class="searchWord">

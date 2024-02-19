@@ -35,15 +35,8 @@
 	                        </dl>
 	                    </div>
 	                    <div class="cont"><p>${review.r_content}</p> </div>
-	                    <dl class="file">
-	                        <dt>첨부파일 </dt>
-	                        <dd>
-	                        <a href="#" 
-	                        target="_blank">첨부파일.pptx [38.07KB] </a></dd>
-	                    </dl>
-	                                
 	                    <div class="btnSet clear">
-	                        <div class="fl_l"><a href="index.html" class="btn">목록으로</a></div>
+	                        <div class="fl_l"><a href="/tobe/user/reviewIndex.do" class="btn">목록으로</a></div>
 	                    </div>
 	            
 	                </div>
@@ -69,37 +62,12 @@
 	                      </table>
 	                      </form>
 	
-	                      <p><span><strong>총 2개</strong>  |  1/1페이지</span></p>
-	                  <table class="list">
-	                      <colgroup>
-	                          <col width="80px" />
-	                          <col width="*" />
-	                          <col width="100px" />
-	                          <col width="100px" />
-	                      </colgroup>
-	                      <tbody>
-	
-	                          <tr>
-	                              <td class="first" colspan="8">등록된 글이 없습니다.</td>
-	                          </tr>
-	
-	                                  
-	                          <tr>
-	                              <td>10</td>
-	                              <td class="txt_l">
-	                                  <a href="board_view.html">게시글 제목</a>
-	                              </td>
-	                              <td class="writer">
-	                                  홍길동
-	                              </td>
-	                              <td class="date">2021-01-01</td>
-	                          </tr>
-	                      </tbody>
-	                  </table>
 	                  </div>
 		            </div>
 		        </div>
 		    </div>
+		  </div>
+		   
 			
 
 		<div class="footerBox">

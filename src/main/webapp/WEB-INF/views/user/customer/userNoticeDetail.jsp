@@ -13,90 +13,41 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
-<style>
-.footer{
-	position: relative;
-	top: 50rem;
-}
-.NoticeDetailTitle{
-	position: relative;
-	top:13rem;
-	margin: 0 auto;
-	width: 1200px;
-}
-#firstLine{
-	width: 1200px;
-	margin: 0 auto;
-	position: relative;
-	top:13rem;
-}
-#secondLine{
-	width: 1200px;
-	margin: 0 auto;
-	position: relative;
-	top: 15rem;
-}
-hr{
-	border: 1px solid #000;
-}
-.textBox{
-	width: 1200px;
-	position: relative;
-	margin: 0 auto;
-	top: 18rem;
-}
-#realTextBox{
-	width: 1200px;
-	height: 700px;
-	background-color: #f1f3f5;
-	border: 0;
-}
-.combackBtn{
-	position:relative;
-	margin: 0 auto;
-	width: 1200px;
-	top: 20rem;
-}
-.comBack{
-	width: 70px;
-	cursor: pointer;
-   	color: white;
-   	border: 0;
-   	/* display: flex; */
-   	/*align-items: center;
-   	justify-content: center;
-   	/* position: inherit; */
-   	font-size: 16px;
-   	/* padding: 8px 16px; */
-   	margin: 5px 10px;
-   	height: 34px;
-   	border-radius: 20px;
-   	background-color: #8ba888;
-   	border-color: #000;
-   	/* text-align: center; */
-   	letter-spacing: -0.5px;
-   	position: relative;
-}
-</style>
+
 <body>
 	<div class="wrap">
-      	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-   	<div class = "NoticeDetailTitle">
-   		<h1>공지사항 | ${vo.n_title}</h1>
+    	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
    	</div>
-   	<div id="firstLine">
-	   	<hr>
-	   	<c:out value="${vo.n_writedate}" />
-   	</div>
-   	<div class = "textBox">
-   		<div class = "subContainer">
-   			<input type="text" value="${vo.n_content}" readonly id="realTextBox">
-   		</div>
-   	</div>
-   	<div class = "combackBtn">
-  			<button type="button" onclick="location.href='/tobe/user/customer/userCustomer.do'" class="comBack">목록</button></td>
- 	</div>
-   	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+   	<div class="main">
+      <div class="sub">
+        <div class="size">
+            <h3 class="sub_title">공지사항</h3>
+            <div class="bbs">
+                <div class="view">
+                    <div class="title">
+                        <dl>
+                            <dt>공지사항 | ${vo.n_title}</dt>
+                            <dd class="date"><c:out value="${vo.n_writedate}" /> </dd>
+                        </dl>
+                    </div>
+                    <div class="cont"><p>${vo.n_content}</p></div>
+                    <dl class="file">
+                        <dt>첨부파일 </dt>
+                        <dd>
+                        <a href="#" 
+                        target="_blank">첨부파일.pptx [38.07KB] </a></dd>
+                    </dl>
+                                
+                    <div class="btnSet clear">
+                        <div class="fl_l"><a href="/tobe/user/notice.do" class="btn">목록으로</a></div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
    	</div>
 </body>
 </html>

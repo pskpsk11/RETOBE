@@ -124,18 +124,15 @@ $('.viewRe').click(function () {
 	<div id="topb">
 		<div id="f">
 		<br>
-			<b style="margin-left:55px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/customer.do';">
+			<b style="margin-left:55px;" onclick="location.href='/tobe/gmanager/customer.do';">공지사항</b><br>
 		</div>
 		<div id="fi">
 		<br>
-			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">
+			<b style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">1:1문의</b><br>
 		</div>
 		<div id="f">
 		<br>
-			<b style="margin-left:65px;">FAQ</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/faqList.do';">
+			<b style="margin-left:65px;" onclick="location.href='/tobe/gmanager/faqList.do';">FAQ</b><br>
 		</div>
 	</div>
 </div>

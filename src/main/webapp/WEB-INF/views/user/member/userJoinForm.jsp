@@ -117,112 +117,7 @@
 	        }).open();
 	    }
 	</script>
-	<style>
-		.size{
-	    position:absolute;
-	    top:40%;
-	    left:45%;
-	    transform:translate(-50%, -50%);
-        }
-
-        
-		table{
-		border: 1px solid;
-		width: 1080px;
-		}
-		th, td{
-		border:1px solid;
-		font-size:15px;
-		border-width: thin;
-		}
-		th{
-			background-color:#E4E6D9;
-			text-align:left;
-		}
-		.wrap {
-		width: 85rem;
-		height: 70rem;
-		margin: 0 auto;
-		position: relative;
-		}
-		
-		.footer {
-		background-color: #d3d3d3;
-		width: 100%;
-		height: 12.5rem;
-		position: absolute;
-		top: 65rem;
-		}
-		
-		.board_write{
-		width:700px;
-		}
-		
-		input#name, input#id, input#pwd, input#pw_check,
-		input#email,input#birthday,input#hp,input#zipcode,
-		input#addr1,input#addr2{
-		border-radius:7px;
-		border-width:thin;
-		
-		}
-		 
-		a#idCheck, a#zipNum{
-		background-color:#E7E7E7;
-		border:solid;
-		border-radius:7px;
-		border-width:thin;
-		font-size:13px;
-		text-decoration-line:none;
-		border-color:#D9D9D9;
-		color:#44546A;
-		}
-		a:link{
-		color:black;
-		}
-		.content th{
-		color:#44546A;
-		}
-	
-		.btnSet_clear{
-		text-align:right;
-		}
-		.btnSet_clear .btn{
-		background-color:#49654E;
-		border:solid;
-		border-radius:7px;
-		border-width:thin;
-		font-size:13px;
-		color:white;
-		display:inline-block;
-		width:50px;
-		text-align:center;
-		text-decoration-line:none;
-		}
-		.ptxt{
-		font-size:10px;
-		}
-		.sub_title, h4{
-		color:#44546A;
-		}
-		.container{
-	   position: relative;
-	   margin: -845px 0 0 160px;
-	   width : 1340px ;
-	   height : 850px;  
-	   }
-.main {
-	width: 75rem;
-	height: 50rem;
-}
-	.wrap {
-	width: 85rem;
-	height: 70rem;
-	margin: 0 auto;
-	position: relative;
-}
-			
-	</style>
-</head> 
+	</head> 
 <body>
      <div class="wrap">
 		<div class="headerBox">
@@ -305,7 +200,7 @@
 	                </form>
 	                <!-- //write--->
 	                <div class="btnSet_clear">
-	                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+	                    <div style="text-align:center; margin:20px"><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
 	                </div>
 	            </div>
 	        </div>

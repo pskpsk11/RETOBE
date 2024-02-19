@@ -19,4 +19,14 @@ public class ReviewVO {
 	private int startIdx;
 	private int page;
 	
+	private String searchType;
+	private String searchWord;
+	
+	public ReviewVO() {
+		this.page = 1;
+	}
+	public int getStartIdx() {
+		return (page-1) * 10;
+	}
+	
 }
