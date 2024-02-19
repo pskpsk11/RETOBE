@@ -117,101 +117,6 @@
        }).open();
    }
 </script>
-<style>
-.size{
-    position: relative;
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    margin: 0 auto;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-      
-table{
-	border: 1px solid;
-	width: 1080px;
-}
-th, td{
-	border:1px solid;
-	font-size:15px;
-	border-width: thin;
-}
-th{
-	background-color:#E4E6D9;
-	text-align:left;
-}
-
-.board_write{
-	width:700px;
-}
-
-input#name, input#id, input#pwd, input#pw_check,
-input#email,input#birthday,input#hp,input#zipcode,
-input#addr1,input#addr2{
-	border-radius:7px;
-	border-width:thin;
-
-}
- 
-a#idCheck, a#zipNum{
-	background-color:#E7E7E7;
-	border:solid;
-	border-radius:7px;
-	border-width:thin;
-	text-decoration-line:none;
-	border-color:#D9D9D9;
-	color:#44546A;
-}
-a:link{
-	color:black;
-}
-.content th{
-	color:#44546A;
-}
-
-.btnSet_clear{
-	text-align:right;
-}
-.btnSet_clear .btn{
-	background-color:#ff5050;
-	border:solid;
-	border-radius:7px;
-	border-width:thin;
-	font-size:13px;
-	color:white;
-	display:inline-block;
-	width:50px;
-	text-align:center;
-	text-decoration-line:none;
-}
-.ptxt{
-	font-size:10px;
-}
-.sub_title, h4{
-	color:#ff5050;
-}
-.container{
-	position: relative;
-	margin: -845px 0 0 160px;
-	width : 1340px ;
-	height : 850px;  
-}
-.btn_duplication{
-	background: #ff5050 !important;
-    border: none !important;
-    color: #fff !important;
-    text-decoration: none !important;
-    height: 28px;
-    line-height: 28px;
-    padding: 2px 10px;
-}
-
-</style>
 </head> 
 <body>
      <div class="wrap">
@@ -295,7 +200,7 @@ a:link{
 	                </form>
 	                <!-- //write--->
 	                <div class="btnSet_clear">
-	                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+	                    <div style="text-align:center; margin:20px"><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
 	                </div>
 	            </div>
 	        </div>

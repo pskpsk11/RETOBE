@@ -43,15 +43,6 @@
 	display: flex;
 	margin: 50px 0 -50px -160px;
 }
-#f{
-	border: solid 0.5px;
-	width:170px; 
-	height:140px;
-}
-
-#f> img{
-	margin: 10px 0 0 0;
-}
 #f:hover{
 	 color: #49654E;
     font-weight: bolder;
@@ -59,14 +50,7 @@
     background-color: #F1F8E0;
 }
 #fi{
-	border: solid 0.5px;
-	width:170px; 
-	height:140px;
 	background-color:#F1F8E0;
-}
-
-#fi> img{
-	margin: 10px 0 0 0;
 }
 		/* list */
 		.bbs {height:20px;}
@@ -155,18 +139,15 @@
 	<div id="topb">
 		<div id="f">
 		<br>
-			<b style="margin-left:55px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/customer.do';">
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/customer.do';">공지사항</b><br>
 		</div>
 		<div id="f">
 		<br>
-			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/qnaList.do';">
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/qnaList.do';">1:1문의</b><br>
 		</div>
 		<div id="fi">
 		<br>
-			<b style="margin-left:65px;">FAQ</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/gmanager/faqList.do';">
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/faqList.do';">FAQ</b><br>
 		</div>
 	</div>
 </div>
