@@ -3,8 +3,15 @@
 <mapper namespace="kr.co.retobe.order.OrderMapper">
 
 	<!-- chiefpay -->
-	<select id="getlistgm" resultType="map" >
+	<select id="getlistgm" parameterType="map" resultType="map" >
 		SELECT p.order_no, m.hp, m.member_no, m.name, m.id, m.email, d.i_subject, d.i_cname, p.pay_total, p.point_usage, p.pay_date,d.product_no, p.pay_by  
+		FROM tobe.member m   
+		inner join tobe.pay p on m.member_no = p.member_no
+		inner join tobe.pay_detail d on p.order_no = d.order_no
+		LIMIT #{startIdx}, 10
+	</select>
+	<select id="payCount" resultType="int" parameterType="map">
+		SELECT COUNT(*)
 		FROM tobe.member m 
 		inner join tobe.pay p on m.member_no = p.member_no
 		inner join tobe.pay_detail d on p.order_no = d.order_no

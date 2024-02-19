@@ -12,7 +12,7 @@ import kr.co.retobe.vo.PayDetailVO;
 import kr.co.retobe.vo.PayVO;
 
 public interface OrderService {
-	List<Map> getlistgm();
+	Map getlistgm(Map param);
 	List<Map> getlistm();
 	
 	List<Map<String, Object>> payList(Map<String, Object> map);

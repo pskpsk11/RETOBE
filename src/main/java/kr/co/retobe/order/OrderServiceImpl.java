@@ -1,5 +1,6 @@
 package kr.co.retobe.order;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,10 +20,33 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	OrderMapper mapper;
 	
-	@Override
-	public List<Map> getlistgm() {	
-		return mapper.getlistgm();
+	@Override //관리자pay
+	public Map getlistgm(Map param) {	
+		int count = mapper.payCount(param); //총개수
+        int totalPage = count / 10; //총 페이지
+        if (count % 10 > 0) totalPage++;
+        System.out.println(param.get("page"));
+        System.out.println(param.get("StartIdx"));
+        List<Map> list = mapper.getlistgm(param); //목록
+        
+        Map<String, Object> map = new HashMap<>();
+        param.put("count", count);
+        param.put("totalPage", totalPage);
+        param.put("list", list);
+        
+        //페이징
+        int endPage = (int)(Math.ceil(Integer.parseInt((String)param.get("page"))/10.0)*10);
+        int startPage = endPage - 9;
+        if (endPage > totalPage) endPage = totalPage;
+        boolean prev = startPage > 1;
+        boolean next = endPage < totalPage;
+        map.put("endPage", endPage);
+        map.put("startPage", startPage);
+        map.put("prev", prev);
+        map.put("next", next);
+		return map;
 	}
+	
 	@Override
 	public List<Map> getlistm() {	
 		return mapper.getlistm();

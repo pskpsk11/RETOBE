@@ -11,8 +11,11 @@ import kr.co.retobe.vo.PayVO;
 
 @Mapper
 public interface OrderMapper {
-	List<Map> getlistgm();
+	//gmanager pay
+	List<Map> getlistgm(Map param);
 	List<Map> getlistm();
+	int payCount(Map param);
+	
 	
 	List<Map<String, Object>> payList(Map<String, Object> map);
 	List<Map<String, Object>> conEduTotal(Map<String, Object> map);

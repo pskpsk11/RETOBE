@@ -273,7 +273,7 @@ margin-bottom:10px;
 				<input class ="bnt" type="submit" id="" value="검색">
 			</div>    
 			<div class="modOrDelete">   	 			
-	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/gmanager/courseMod.do'">
+	   	 		<!-- <input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/gmanager/courseMod.do'"> -->
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div> 
 		
@@ -290,13 +290,12 @@ margin-bottom:10px;
       	 		<input type="checkbox" name="checkAll" class="check_all" onclick="courseAllSelect(this);">
           		<label for="checkAll">&nbsp;</label> </span>
 			</th>
-			<th>no</th>
-         	<th>학원<th>
+			<th>학원</th>
          	<th>과목</th>
          	<th>지역</th>
          	<th>지점</th>
          	<th>강좌명</th>
-         	<th>수준</th>
+         	<th>레벨</th>
          	<th>강사명</th>
          	<th>가격</th>
          	<th>요일</th>
@@ -313,7 +312,7 @@ margin-bottom:10px;
 					<td> ${CodeToString.subjectToString(vo.subject)}</td>
 					<td> ${CodeToString.areaToString(vo.area)} </td>
 					<td> ${CodeToString.branchToString(vo.branch)} </td>
-					<td> ${vo.cname}</td>
+					<td onClick="location.href='courseMod.do?no=${vo.course_no }'" >${vo.cname }</td>
 					<td> ${CodeToString.levelToString(vo.level)} </td>
 					<td> ${vo.teacher1} ${vo.teacher2 } </td>
 					<td> ${vo.price }</td>

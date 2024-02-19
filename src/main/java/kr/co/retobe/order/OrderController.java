@@ -37,13 +37,17 @@ public class OrderController {
 	}
 	
 	@GetMapping ("/gmanager/pay.do")
-	public String chiefPayindex(HttpSession sess, Model model) {
+	public String chiefPayindex(HttpSession sess, Model model, @RequestParam Map map) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
+		if (map.get("page") == null) {
+			map.put("page", "1");
+		} 
+		map.put("startIdx", (Integer.parseInt((String)map.get("page"))-1 )* 10 );
 		if(admin == null) {
 			return "redirect:/manager/login.do";
 		}
 		model.addAttribute("admin", admin);
-		model.addAttribute("list", service.getlistgm());
+		model.addAttribute("list", service.getlistgm(map));
 	return "chiefAdmin/pay/chiefPayIndex";
 	}
 	
