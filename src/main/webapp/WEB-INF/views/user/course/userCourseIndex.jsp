@@ -215,13 +215,16 @@ caption {
 }
 
 #se{
-	margin-left: 500px;
+	width: 70px;
 	cursor: pointer;
 	height: 34px;
    	border-radius: 20px;
-   	background-color: #8ba888;
+   	background-color: #fa0318f0;
    	border: thin;
    	color: white;
+}
+#se:hover{
+	font-weight: bold;
 }
 #td_city button[data-cicycd="11"]{
 	display: none;
