@@ -30,9 +30,9 @@ public class OrderServiceImpl implements OrderService{
         List<Map> list = mapper.getlistgm(param); //목록
         
         Map<String, Object> map = new HashMap<>();
-        param.put("count", count);
-        param.put("totalPage", totalPage);
-        param.put("list", list);
+        map.put("count", count);
+        map.put("totalPage", totalPage);
+        map.put("list", list);
         
         //페이징
         int endPage = (int)(Math.ceil(Integer.parseInt((String)param.get("page"))/10.0)*10);

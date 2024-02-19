@@ -205,7 +205,7 @@ function re() {
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
 <div class="title">
-<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+<h1 style="margin: 1rem; padding: 0;">주문상품</h1>
 </div>
 	<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
 		<input type="hidden" name="cartNo" value="${param.cartNo}">
@@ -236,10 +236,10 @@ function re() {
 					
 				</c:forEach>
 		</table>
-		<c:forEach var="cart" items="${basket}"> 
+	
 			<div class="title2">
 			
-				<h2 style="margin: 1rem; padding: 0;">포인트 사용</h2>
+				<h1 style="margin: 1rem; padding: 0;">포인트 사용</h1>
 				<hr width="800px;" style="margin-left:15px;">
 				<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 				<hr width="800px;">
@@ -248,7 +248,7 @@ function re() {
 				<br><hr width="800px;">
 			</div>
 			<div class="title3">
-				<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
+				<h1 style="margin: 1rem; padding: 0;">결제 수단</h1>
 				<hr width="800px;" >
 				<input type="radio" name="myRadio" style="margin-left:30px;"> 무통장입금
 				<hr width="800px;">
@@ -280,7 +280,6 @@ function re() {
 				</tr>
 			
 			</table>
-		</c:forEach>
 		<div class="agree">
 			<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전<br>&nbsp;&nbsp;&nbsp; 체에 동의합니다.<br>
 			<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의 &nbsp;(필수)<br>

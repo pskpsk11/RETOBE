@@ -274,7 +274,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 				<th style="border-right:none;">결제총액</th>
 			</thead>
 			<tbody>
-	         	<c:forEach var="member" items="${list}"> 
+	         	<c:forEach var="member" items="${list.list}"> 
 	         	<c:set var="pay_by" value="${CodeToString.paybyToString(member.pay_by)}" />      
 	         	<c:set var="i_subject" value="${CodeToString.subjectToString(member.i_subject)}" />      
 				    <tr>
@@ -294,6 +294,24 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 				</c:forEach>
          	</tbody>
          </table>
+         	<div class="pagenate clear">
+                       <ul class='paging'>
+                       <c:if test="${list.prev }">
+                       	<li><a href="/tobe/gmanager/pay.do?page=${list.startPage-1 }"> << </a></li>
+                       </c:if>
+                       <c:forEach var="p" begin="${list.startPage}" end="${list.endPage}">
+                       	<c:if test="${p == param.page}">
+                           <li><a href='#;' class='current'>${p}</a></li>
+                           </c:if>
+                           <c:if test="${p != param.page}">
+                           <li><a href='/tobe/gmanager/pay.do?page=${p}'>${p}</a></li>
+                           </c:if>
+                       </c:forEach>
+                       <c:if test="${list.next }">
+                       	<li><a href="/tobe/gmanager/pay.do?page=${list.endPage+1 }"> >> </a></li>
+                       </c:if>
+                       </ul> 
+              </div> 
           </div>  
    </div>
   </div> 
