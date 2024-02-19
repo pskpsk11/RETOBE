@@ -101,36 +101,37 @@
 	margin: -870px 0 0 150px; 
 }
 #boxa{
-	display: flex;
-	width:1200px; 
+	/*display: flex;*/
+	width:500px; 
 	height:610px; 
 }
 .filebox {
- 	height: 200px;
+ 	height: 100px;
+ 	display: flex;
 }
 .filebox .upload-name {
-    display: inline-block;
-    height: 200px;
-    padding: 0 10px;
+    /*display: inline-block;*/
+    height: 100px;
+   /* padding: 0 10px;*/
     vertical-align: middle;
     border: 1px solid #81BEF7;
-    width: 45%;
+    width: 40%;
     color: #999999;
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 10px;
     text-align: center;
 }
 .filebox label {
-    display: inline-block;
-    padding: 10px 20px;
+    /*display: inline-block;*/
+    /*padding: 10px 20px;*/
     color: #fff;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     background-color: #999999;
     cursor: pointer;
-    height: 20px;
-    margin: 10px 0 0 60px;
+    height: 23px;
+    margin: 120px 0 0 -150px;
 }
 .filebox input[type="file"] {
-    position: absolute;
+    /*position: absolute;*/
     width: 0;
     height: 0;
     padding: 0;
@@ -214,14 +215,15 @@
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
   
   
-   <form name="cheifModForm" method="post" action="course.do" enctype="multipart/form-data" onsubmit="return goSave()">   
+   <form name="cheifModForm" method="post" action="course.do" enctype="multipart/form-data" onsubmit="return goSave()">  
+   <input type="hidden" name="course_no" value="${map.course_no }"> 
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">
-	        <input type="file" onchange="readURL(this);"> 
-			<img id="preview" class="upload-name" value="강사이미지" />
+			<input type="file" onchange="readURL(this);">
+			<img id="preview" class="upload-name" src="/tobe/upload/${map.teacher_img_real }" />
 			    <label for="file">파일첨부</label> 
-			    <input type="file" id="teacher_img_orgS" name="file" onchange="readURL(this);">
+			    <input type="file" id="file" name="file" onchange="readURL(this);">
 			</div>
 		</div>
 		<div id="boxb">
@@ -326,10 +328,10 @@
 					<b style="margin-right:10px">가격</b> <input type="text" name="price" value="${map.price}">원
 				</div>
 				<div id="st">
-					<b>개강일</b>	<input type="date" name="startday" id="startdayS">			
+					<b>개강일</b>	<input type="date" name="startday" id="startdayS" value="${map.startday}">			
 				</div>
 				<div id="en">
-					<b>종강일</b> <input type="date" name="endday" id="enddayS">
+					<b>종강일</b> <input type="date" name="endday" id="enddayS" value="${map.endday}">
 				</div>
 			</div>
 			<div>
@@ -360,15 +362,15 @@
 			</div>
 		</div>
 		<div id="de">
-			<textarea name="detail" id="detail" value="${map.detail}"></textarea> <!-- name이랑 id는 컬럼명 -->
+			<textarea name="detail" id="detail">${map.detail}</textarea> <!-- name이랑 id는 컬럼명 -->
 		</div>
 	 </div>
 	 
 	       	 <div >
 	            <div align="center">
-		            <div colspan="2" id="put">
+		            <div id="put">
 			            <input type="submit" value="수정하기"> 
-			            <input type="button" value="목록보기" onclick="backToList(this.form)">
+			            <input type="button" value="목록보기" onclick="history.back();">
 		            </div>
 	            </div>
 	         </div>

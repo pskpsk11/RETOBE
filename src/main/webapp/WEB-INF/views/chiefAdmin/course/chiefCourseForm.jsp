@@ -12,6 +12,7 @@
       obj.action = "list.do";
       obj.submit();
    }
+   //스마트에디터
    var oEditors = [];
    $(function() {
        nhn.husky.EZCreator.createInIFrame({
@@ -32,6 +33,7 @@
            fCreator: "createSEditor2"
        });
    })
+   
    function goSave() {
 	   if ($("#cname").val() == "") {
 		   alert('과목명을 입력하세요');
@@ -77,6 +79,8 @@
    	oEditors.getById['detail'].exec('UPDATE_CONTENTS_FIELD',[]); /*getById에 컬럼명또는 아이디*/
    	
    }
+   
+   
    function readURL(input) {
 	   if (input.files && input.files[0]) {
 	     var reader = new FileReader();
@@ -89,6 +93,91 @@
 	   }
 	 }
    
+   $(document).ready(function() {
+       // 초기에 토익이 선택되도록 설정
+       $('#td_lecture option[data-lecturecd="1"]').click();
+    });
+   
+   function updateLevel(lecturecd){
+ 	  var levels = getLevelsByLecture(lecturecd);
+ 	  
+ 	  //레벨 버튼 업데이트
+ 	  var leveloptions = $('#td_level option');
+ 	  leveloptions.removeClass('on').hide(); //모든 버튼에서 on 클래스 제거
+ 	  
+ 	  //해당 과목에 속하는 레벨에 on 클래스 추가
+ 	  levels.forEach(function(level){
+ 		  leveloptions.filter('[data-levelcd="' + level.levelcd + '"]').removeClass('on').show();
+ 	  });
+   }
+   
+   function getLevelsByLecture(lecturecd){
+			// 각 과목에 속하는 레벨들의 정보
+	  var levels = [];
+	
+	  switch (lecturecd) {
+	    case 1: //토익
+	      levels = [
+	        { levelcd: '1500', levelName: '500+' },
+	        { levelcd: '1600', levelName: '600+' },
+	        { levelcd: '1700', levelName: '700+' },
+	        { levelcd: '1800', levelName: '800+' },
+	        { levelcd: '1900', levelName: '900+' },
+	      ];
+	      break;
+	    case 2: //토스
+	      levels = [
+	        { levelcd: '21', levelName: 'IM+' },
+	        { levelcd: '22', levelName: 'IH+' },
+	        { levelcd: '23', levelName: 'AL+' },
+	      ];
+	      break;
+	    case 3: //토플
+	      levels = [
+	        { levelcd: '360', levelName: '60+' },
+	        { levelcd: '370', levelName: '70+' },
+	        { levelcd: '380', levelName: '80+' },
+	        { levelcd: '390', levelName: '90+' },
+	      ];
+	      break;
+	    case 4: //아이엘츠
+	      levels = [
+	        { levelcd: '45', levelName: '5.5+' },
+	        { levelcd: '46', levelName: '6.0+' },
+	        { levelcd: '47', levelName: '7.0+' },
+	      ];
+	      break;
+	    case 5: //텝스
+	      levels = [
+	        { levelcd: '5300', levelName: '300+' },
+	        { levelcd: '5350', levelName: '350+' },
+	        { levelcd: '5400', levelName: '400+' },
+	        { levelcd: '500', levelName: '500+' },
+	      ];
+	      break;
+	    case 6: //오픽
+	      levels = [
+	        { levelcd: '61', levelName: 'IM+' },
+	        { levelcd: '62', levelName: 'IH+' },
+	        { levelcd: '63', levelName: 'AL+' },
+	      ];
+	      break;
+	    case 7: //gre
+	      levels = [
+	        { levelcd: '71', levelName: '기본' },
+	        { levelcd: '72', levelName: '실전' },
+	        { levelcd: '73', levelName: '특강' },
+	      ];
+	      break;
+	    case 8: //g-telp
+	      levels = [
+	        { levelcd: '81', levelName: '32+' },
+	        { levelcd: '82', levelName: '65+' },
+	      ];
+	      break;
+	  }
+	  return levels;
+	}
    </script>
 <style>
 #in{
@@ -98,36 +187,37 @@
 	margin: -870px 0 0 150px; 
 }
 #boxa{
-	display: flex;
-	width:1200px; 
+	/*display: flex;*/
+	width:500px; 
 	height:610px; 
 }
 .filebox {
- 	height: 200px;
+ 	height: 100px;
+ 	display: flex;
 }
 .filebox .upload-name {
-    display: inline-block;
-    height: 200px;
-    padding: 0 10px;
+    /*display: inline-block;*/
+    height: 100px;
+   /* padding: 0 10px;*/
     vertical-align: middle;
     border: 1px solid #81BEF7;
-    width: 45%;
+    width: 40%;
     color: #999999;
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 10px;
     text-align: center;
 }
 .filebox label {
-    display: inline-block;
-    padding: 10px 20px;
+    /*display: inline-block;*/
+    /*padding: 10px 20px;*/
     color: #fff;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     background-color: #999999;
     cursor: pointer;
-    height: 20px;
-    margin: 10px 0 0 60px;
+    height: 23px;
+    margin: 120px 0 0 -150px;
 }
 .filebox input[type="file"] {
-    position: absolute;
+    /*position: absolute;*/
     width: 0;
     height: 0;
     padding: 0;
@@ -209,8 +299,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-  
-  
+
    <form name="insert" method="post" action="courseAdd.do" enctype="multipart/form-data" onsubmit="return goSave()">   
 	  <div id="con">
 	    <div id="boxa">      
@@ -276,7 +365,7 @@
 				</div>
 			</div>
 			<div>
-				<div id="le">
+				<div id="le">		            
 					<b>수준</b> <b>토익</b>
 					<label><input type="checkbox" name="level" value="1500"> 500</label>
 					<label><input type="checkbox" name="level" value="1600"> 600</label> 
@@ -354,17 +443,19 @@
 					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="time">
 				</div>
 			</div>
+			
+			
+			
 		</div>
 		<div id="de">
 			<textarea name="detail" id="detail"></textarea> <!-- name이랑 id는 컬럼명 -->
 		</div>
 	 </div>
-	       	 <div >
+	       	 <div>
 	            <div align="center">
-		            <div colspan="2" id="put">
-			            <input type="submit" value="등록하기"> 
-			            <input type="button" value="목록보기" onclick="backToList(this.form)">
-		            </div>
+		            <div id="put">
+		            <input type="submit" value="등록하기"> 
+		            <input type="button" value="목록보기" onclick="history.back();">
 	            </div>
 	         </div>
    </form>

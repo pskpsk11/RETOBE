@@ -176,6 +176,12 @@ public class UserController {
 		return "user/member/userMyPageMain";
 	}
 	
+	@PostMapping("/user/basketInsert.do")
+	public String basketInsert(BasketVO vo) {
+		service.basketInsert(vo);
+		return "redirect:/user/basket.do";
+	}
+	
 	@GetMapping("/user/basket.do")
 	public String userBasket(Model model, HttpServletRequest request, BasketVO vo) {
 		HttpSession sess = request.getSession();
