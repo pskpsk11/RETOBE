@@ -12,7 +12,7 @@ public interface BoardService {
 	int insertReview (ReviewVO rvo);
 	double selectCourseRating(int no);
 	int updateCourseRating(String no, String rating);
-	List<Map<String, Object>> getSelectReviewNo();
+	Map<String, Object> getSelectReviewNo(ReviewVO rvo);
 	ReviewVO getReviewDetail(int review_no);
 	
 	int updateReview(ReviewVO vo);

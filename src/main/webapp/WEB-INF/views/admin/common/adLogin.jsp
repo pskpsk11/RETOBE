@@ -40,34 +40,72 @@ function loginCheck() {
 body {
 	position: relative;
 }
+
+.sub{
+	width: 100%;
+	max-width: 1280px;
+	margin: 200px auto;
+}
 .admin_logo {
-	position: absolute;
-	width: 40rem;
-	height: 5rem;
-	top: 2rem;
-	left: 15rem;
+    display: flex;
+    max-width: 1280px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* top: 2rem; */
+    /* left: 15rem; */
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
 }
 
+.login_form{
+	width: 400px;
+}
+
+.no_dot{
+	list-style: none;
+}
 .box {
-	position: absolute;
-	width: 75rem;
-	height: 22rem;
-	top: 6rem; 
-	left: 15.5rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: relative;
+    height: auto;
+    /* top: 6rem; */
+    /* left: 15.5rem; */
+    /*border: 1px solid #ddd;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);*/
+    margin: 0 auto;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
+input[type="submit"]{
+    bottom: 130px;
+    position: relative;
+    float: right;
+    font-size: 17px;
+    width: 100px;
+    cursor: pointer;
+    height: 34px;
+    border-radius: 20px;
+    background-color: #e5d1e3;
+    border: thin;
+    color: white;
+}
 
 </style>
 
 </head>
 <body>
 
-		<div class="admin_logo">
-			<img src="/tobe/img/logo.png" style="width: 13rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 로그인 페이지</b></span>
-		</div>
+	<div class="admin_logo">
+		<img src="/tobe/img/logo.png" style="width: 13rem;">
+		<span style="position: relative; font-size: 2rem; color: #e5d1e3;"><b>관리자 로그인 페이지</b></span>
+	</div>
 	<form action="login.do" method="post" id="board1" name="board1" onsubmit="return loginCheck()">
             <div class="sub">
                	<div class="size">
@@ -75,12 +113,11 @@ body {
                     <div class="member">
                         <div class="box">
                             <fieldset class="login_form">
-                                <ul class="no_dot" margin>
-                                    <li>TOBE</li>
-                                    <li><input type="text" id="ad_id" name="ad_id" placeholder="아이디" style="width:200px"></li>
-                                    <li><input type="password" id="ad_pwd" name="ad_pwd" placeholder="비밀번호" style="width:200px"></li>
-                                    <li><label><input type="checkbox" name="reg1" id="reg1" style="width:10px;height:10px"/><font size="1px">아이디저장</font></label></li>
-                                    <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>
+                                <ul class="no_dot">
+                                    <li><input type="text" id="ad_id" name="ad_id" placeholder="아이디" style="width:200px; height: 30px;"></li>
+                                    <li><input type="password" id="ad_pwd" name="ad_pwd" placeholder="비밀번호" style="width:200px; margin: 10px 0; height: 30px;"></li>
+                                    <li><label><input type="checkbox" name="reg1" id="reg1" style="width:15px; height:15px; margin: 10px 3px;"/><font size="3px">아이디저장</font></label></li>
+                                    <li><a href="userFindMember.do" class="btn" style="font-size:15px">아이디|비밀번호 찾기</a></li>
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인"/></div>
                             </fieldset>

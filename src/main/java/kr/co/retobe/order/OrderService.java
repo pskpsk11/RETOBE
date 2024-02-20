@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.retobe.vo.BasketVO;
+import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.PayDetailVO;
 import kr.co.retobe.vo.PayVO;
 
@@ -28,4 +29,7 @@ public interface OrderService {
 	boolean payDetail(PayDetailVO vo, MultipartFile file, HttpServletRequest request);
 	
 	List<Map<String, Object>> getorder(Map map);
+	
+	
+	CourseVO getlecture(int course_no);
 }

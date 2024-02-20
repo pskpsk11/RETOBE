@@ -206,6 +206,8 @@ public class CourseController {
         return "/user/course/userCourseDetailList";
     }
 	
+	
+	
 	@GetMapping("/user/schedule.do")
 	public String userTestSchedule() {
 		return "user/common/userTestSchedule";

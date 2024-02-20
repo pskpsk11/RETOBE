@@ -92,8 +92,7 @@ public class BoardController {
 	
 	@GetMapping("/user/reviewIndex.do")
 	public String getSelectReviewNo(Model model, ReviewVO rvo) {
-		List<Map<String, Object>> ReviewList = service.getSelectReviewNo();
-		model.addAttribute("ReviewList", ReviewList);
+		model.addAttribute("map", service.getSelectReviewNo(rvo));
 		return "user/review/userReviewIndex";
 	}
 	

@@ -258,11 +258,12 @@
   width: 70%;
 }
 .member .login_form .login_btn {
-  position: absolute;
-  width: 25%;
-  height: 90px;
-  right: 0;
-  top: 25px;
+	font-size: x-large;
+  	position: absolute;
+    width: 240px;
+    height: 90px;
+    right: 1px;
+    top: 90px;
 }
 .member .login_form .login_btn input[type="submit"] {
   background: #fa0318f0;

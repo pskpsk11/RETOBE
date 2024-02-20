@@ -1,7 +1,6 @@
 package kr.co.retobe.board;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -16,9 +15,11 @@ public interface BoardMapper {
 	int insert (ReviewVO rvo);
 	double selectCourse (int no);
 	int updateCouse(@Param("rating") String userId, @Param("no") String ownerId);
-	List<Map<String, Object>> selectReviewNo();
+	//review
+	List<ReviewVO> selectReviewNo(ReviewVO rvo);
 	ReviewVO ReviewDetail(int review_no);
 	int updateReview(ReviewVO vo);
+	int reviewCount(ReviewVO vo);
 	
 	//qna
 	int insert(QnaVO vo);

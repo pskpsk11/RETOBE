@@ -181,7 +181,7 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
        events: function(info, successCallback, failureCallback){
     	   $.ajax({
    			type: 'GET',
-   			url:'/tobe/user/calendar/list',
+   			url:'/tobe/user/common/calendar/list',
    			dataType:"json",  
    			success:function(res) {
 				var jsonArray = [];

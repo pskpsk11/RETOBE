@@ -33,7 +33,6 @@ function loginCheck() {
 }
 </script>
 
-
 </head>
 
 

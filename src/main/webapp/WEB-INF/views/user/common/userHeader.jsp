@@ -25,6 +25,7 @@
 <script src="/tobe/js/function_jquery.js" type="text/javascript"></script>
 </head>
 <body>
+
    <script type="text/javascript" src="/tobe/js/swiper.min.js"></script>
    <script>
       $(function() {

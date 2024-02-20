@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.retobe.vo.AdminVO;
 import kr.co.retobe.vo.BasketVO;
+import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.MemberVO;
 import kr.co.retobe.vo.PayDetailVO;
 import kr.co.retobe.vo.PayVO;
@@ -114,8 +115,10 @@ public class OrderController {
 	
 	//고칠부분
 	@GetMapping ("/user/mainPayDetail.do")
-	public String userMainPayDetail(Model model, MemberVO mvo, PayVO pvo, PayDetailVO pdvo) {
-		model.addAttribute("lecture");
+	public String userMainPayDetail(Model model, CourseVO vo, @RequestParam("course_no") int course_no) {
+		CourseVO course = service.getlecture(course_no);
+		model.addAttribute("course", course);
+		
 //		System.out.println(cartNo[0]+" 카트다~~~~~~~~~~~`"+cartNo[1]);
 		return "user/pay/userMainPayDetail";
 	}

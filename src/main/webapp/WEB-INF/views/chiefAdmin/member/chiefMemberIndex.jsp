@@ -92,7 +92,7 @@
 
 .container{
    position: relative;
-   margin: -845px 0 0 160px;
+   margin: -790px 0 0 160px;
    width : 1340px ;
    height : 840px;  
 }	
