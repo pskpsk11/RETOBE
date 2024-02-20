@@ -41,16 +41,20 @@
 }
 #topb{
 	display: flex;
-	margin: 50px 0 -50px -160px;
+	margin: 50px 0 0 -30px;
 }
 #f:hover{
-	 color: #49654E;
+	 color: #E5D1E3;
     font-weight: bolder;
     cursor:pointer; 
-    background-color: #F1F8E0;
+    
 }
 #fi{
-	background-color:#F1F8E0;
+	color:#E5D1E3;
+}
+
+#f, #fi, #ff {
+	font-size:30px;
 }
 		/* list */
 		.bbs {height:20px;}
@@ -112,7 +116,7 @@
 .search-wrap {
 	width: 30rem;
 	height: 2rem;
-	margin: 60px 0 -180px 450px;;
+	margin: 100px 0px -50px 500px;;
 }
 
 .dSelect {
@@ -126,7 +130,7 @@
 		text-align: center;
 		width: 50px;
 		height: 23px;
-		background-color: #E4E6D9;
+		background-color: #E5D1E3;
 		cursor: pointer;
 		border-radius: 5px;
 		font-size: 13px;
@@ -139,15 +143,23 @@
 	<div id="topb">
 		<div id="f">
 		<br>
-			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/customer.do';">공지사항</b><br>
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/customer.do';">공지사항&nbsp</b><br>
+		</div>
+		<div id="ff">
+		<br>
+			<b style="text-align:center;"> | </b><br>
 		</div>
 		<div id="f">
 		<br>
-			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/qnaList.do';">1:1문의</b><br>
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/qnaList.do';">&nbsp 1:1문의 &nbsp</b><br>
+		</div>
+		<div id="ff">
+		<br>
+			<b style="text-align:center;"> | </b><br>
 		</div>
 		<div id="fi">
 		<br>
-			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/faqList.do';">FAQ</b><br>
+			<b style="text-align:center;" onclick="location.href='/tobe/gmanager/faqList.do';">&nbsp FAQ</b><br>
 		</div>
 	</div>
 </div>

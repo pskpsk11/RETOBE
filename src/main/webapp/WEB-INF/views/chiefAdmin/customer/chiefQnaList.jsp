@@ -194,11 +194,8 @@ $('.viewRe').click(function () {
                            		<p>${qna.q_content }</p>
                            		<c:if test="${!empty qna.q_reply}">
                            			<div class="title">
-	                           			
 	                           			<div class=" viewData">${qna.q_reply }<button class="viewEdit">수정</button></div>
-	                           			
-	                           			
-	                         			 <div class="edit" style="display:none;">
+	                         			<div class="edit" style="display:none;">
 		                         			 <form action="/tobe/gmanager/edit.do" method="post" >
 			                           	 		  <input type="hidden" id="qna_no" name="qna_no" value="${qna.qna_no} ">
 											      <textarea name="q_reply" cols="100" rows="10">${qna.q_reply }</textarea>
@@ -206,10 +203,7 @@ $('.viewRe').click(function () {
 										    </form>
 											<button class="viewRe">취소</button>
 	                         			 </div>
-	                         			 
-	                         			 
                            			</div>	
-                           			                         			 
                            		</c:if>
                            	 		
                            	 	<c:if test="${empty qna.q_reply}">

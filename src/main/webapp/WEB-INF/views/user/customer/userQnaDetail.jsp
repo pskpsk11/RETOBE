@@ -48,6 +48,7 @@ hr{
 	width: 70rem;
 	margin: 0 auto;
 	padding-left: 65rem;
+	display:flex;
 }
 
 .textBoxAnswer{
@@ -76,48 +77,48 @@ hr{
 </style>
 <body>
 	<div class="wrap">
-		<div class="headerBox">
-			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-		</div>
-		<div class="main">
-		   	<div class = "NoticeDetailTitle">
-		   		<h1>문의 | ${vo.q_title}</h1>
-		   	</div>
-		   	<div id="firstLine">
-			   	<hr>
-			   	<c:out value="${vo.q_writedate}" />
-		   	</div>
-		   	<div class = "textBox">
-	   			<input type="text" value="${vo.q_content}" readonly id="realTextBox">
-		   	</div>
-		   	
-		   	<div class="btnSet clear">
-               <div class="fl_l">
-               	<a href="qna.do" class="btn">목록</a>
-               </div>
-       		</div>
-	   	
-		   	<div class="correction">
-		   		<table>
-		   			<tr>
-		   				<td>
+    	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+   	</div>
+   	<div class="main">
+      <div class="sub">
+        <div class="size">
+            <h3 class="sub_title">문의</h3>
+            <div class="bbs">
+                <div class="view">
+                    <div class="title">
+                        <dl>
+                            <dt>문의| ${vo.q_title}</dt>
+                            <dd class="date"><c:out value="${vo.q_writedate}" /> </dd>
+                        </dl>
+                    </div>
+                    <div class="cont"><p>${vo.q_content}</p></div>
+                    <dl class="file">
+                        <dt>첨부파일 </dt>
+                        <dd>
+                        <a href="#" 
+                        target="_blank">첨부파일.pptx [38.07KB] </a></dd>
+                    </dl>
+                                
+                    <div class="btnSet clear">
+                        <div class="fl_l"><a href="/tobe/user/qna.do" class="btn">목록으로</a></div>
+                    </div>
+            		<div class="btnSet">
 			   				<c:if test="${!empty loginInfo and loginInfo.member_no == vo.member_no}">
-			                     <a class="btn" href="userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
+			                     <a class="btn" href="/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
 			                </c:if>
-		                </td>
-		   				<td>
-		   					<c:if test="${!empty loginInfo}">
+		   					<c:if test="${!empty loginInfo and loginInfo.member_no == vo.member_no}">
 			                     <a class="btn" href="/tobe/user/customer/qna/delete.do?qna_no=${vo.qna_no }">삭제</a>
 			                </c:if>
-		                </td>
-		   			</tr>
-		   		</table>
-		   	</div>
-	   	
+		   			</div>
+                </div>
+            </div>
+        </div>
+       </div>
+      </div>
+  
 		   	
-		<div class="footerBox">
-			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
-		</div>
-   	</div>
+	<div class="footerBox">
+		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	</div>
 </body>
 </html>

@@ -15,17 +15,15 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="/tobe/css/bbs.css"/>
 <script>
-	$(function() {
-		$(".t").click(function() {
-			var idx = $(this).index(".t");
-
-			// 현재 클릭한 토글 외의 다른 토글 닫기
-			//$(".content").not(":eq("+idx+")").slideUp(300);
-			$(".content").slideUp(300);
-			// 클릭한 토글 열기 또는 닫기
-			$(".content").eq(idx).slideToggle(300);
-		});
-	});
+    function toggleTr(id) {
+        var row = $("#" + id);
+        if (row.is(":visible")) {
+            row.slideUp('slow');
+        } else {
+            $(".details").not(row).slideUp('slow'); // 다른 행 닫기
+            row.slideDown('slow');
+        }
+    }
 </script>
 
 
@@ -60,16 +58,16 @@
               </thead>
               <tbody>
               
-                <c:forEach var="vo" items="${map.list }">
-                <tr style='cursor:pointer;' onclick="showTr('tr0');">
-                	<td>${vo.faq_no }</td>
-					<td class="t">${vo.f_title }</td>
-				</tr>
-                <tr>
-                	<td colspan="2"></td>
-					<td class="content" style="display: none;">${vo.f_content }</td>
-				</tr>
-				</c:forEach>
+<c:forEach var="vo" items="${map.list}">
+    <tr style='cursor:pointer;' onclick="toggleTr('tr${vo.faq_no}');">
+        <td>${vo.faq_no}</td>
+        <td class="t">${vo.f_title}</td>
+    </tr>
+    <tr id="tr${vo.faq_no}" class="details" style="display:none; background-color: #efefef;">
+        <td></td>
+        <td class="t">${vo.f_content}</td>
+    </tr>
+</c:forEach>
               </tbody>
             </table>
           

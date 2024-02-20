@@ -178,7 +178,7 @@ public class BoardController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "/tobe/user/customer/userQna.do");
+			model.addAttribute("url", "/tobe/user/qna.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
