@@ -662,11 +662,8 @@ function setCourseComp(no) {
 	   	<div class="sort">
 	   		<ul>
 	   			<li><button name="sortbtn" class="sortcon">마감임박순&nbsp&nbsp&nbsp</button></li>|
-	         	<li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp마감느린순&nbsp&nbsp&nbsp</button></li>|
 		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp가격낮은순&nbsp&nbsp&nbsp</button></li>|
-		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp가격높은순&nbsp&nbsp&nbsp</button></li>|
-		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp리뷰많은순&nbsp&nbsp&nbsp</button></li>|
-		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp베스트강좌순</button></li>
+		        <li><button name="sortbtn" class="sortcon">&nbsp&nbsp&nbsp가격높은순</button></li>
 	        </ul>
 	   	</div>
 	    <div class = "container">

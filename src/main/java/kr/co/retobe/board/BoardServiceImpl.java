@@ -39,8 +39,30 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public List<Map<String,Object>> getSelectReviewNo (){
-		return mapper.selectReviewNo();
+	public Map<String,Object> getSelectReviewNo (ReviewVO rvo){
+		int count = mapper.reviewCount(rvo); //총개수
+		int totalPage = count/10; //총페이지
+		if(count % 10 > 0) totalPage++;
+		System.out.println(rvo.getPage());
+		System.out.println(rvo.getStartIdx());
+		List<ReviewVO> list = mapper.selectReviewNo(rvo);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("count", count);
+		map.put("totalPage", totalPage);
+		map.put("list", list);
+		
+		//페이징처리
+		int endPage = (int)(Math.ceil(rvo.getPage()/10.0)*10);
+		int startPage = endPage - 9;
+		if(endPage > totalPage) endPage = totalPage;
+		boolean prev = startPage > 1;
+		boolean next = endPage < totalPage;
+		map.put("endPage", endPage);
+        map.put("startPage", startPage);
+        map.put("prev", prev);
+        map.put("next", next);
+		return map;
 	}
 
 	@Override

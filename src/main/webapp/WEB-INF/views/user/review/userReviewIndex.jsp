@@ -54,14 +54,14 @@
                    </tr>
                  </thead>
                  <tbody>
-                   <c:if test="${empty ReviewList}">
+                   <c:if test="${empty map.list}">
                      <tr>
                          <td class="first" colspan="8">등록된 글이 없습니다.</td>
                      </tr>
                    </c:if>
-                   <c:forEach var="review" items="${ReviewList}">       
+                   <c:forEach var="review" items="${map.list}">       
                       <tr>
-                         <td>${review.cname}</td>
+                         <td>${review.review_no}</td>
                          <td>
                             <a href="/tobe/user/reviewDetail.do?review_no=${review.review_no}" class="SelectBtn" style="text-decoration: none; color: #000;">${review.r_title}</a>
                          </td>
@@ -73,22 +73,20 @@
                </table>
                <div class="pagenate clear">
                    <ul class='paging'>
-                   <c:forEach var="review" items="${ReviewList}">
-                      <c:if test="${review.prev }">
-                         <li><a href="reviewIndex.do?page=${reveiw.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
-                        </c:if>
-                        <c:forEach var="p" begin="${review.startPage}" end="${review.endPage}">
-                           <c:if test="${p == ReviewVO.page}">
-                              <li><a href='#;' class='current'>${p}</a></li>
-                           </c:if>
-                           <c:if test="${p != ReviewVO.page}">
-                              <li><a href='reviewIndex.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
-                           </c:if>
-                        </c:forEach>
-                        <c:if test="${review.next }">
-                           <li><a href="reviewIndex.do?page=${review.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> >> </a></li>
-                        </c:if>
-                      </c:forEach>
+                   <c:if test="${map.prev }">
+                   		<li><a href="reviewIndex.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
+				   </c:if>
+	                   <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+							<c:if test="${p == ReviewVO.page}">
+								<li><a href='#;' class='current'>${p}</a></li>
+							</c:if>
+							<c:if test="${p != ReviewVO.page}">
+								<li><a href='reviewIndex.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
+							</c:if>
+						</c:forEach>
+					<c:if test="${map.next }">
+						<li><a href="ReviewIndex.do?page=${map.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
+					</c:if>
                    </ul> 
              </div>
      
