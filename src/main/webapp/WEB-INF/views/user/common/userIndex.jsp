@@ -18,6 +18,14 @@
 <script src="/tobe/js/main.js"></script>
 <!-- <script src="/tobe/js/function.js" type="text/javascript"></script> -->
 <!-- <script src="/tobe/js/function_jquery.js" type="text/javascript"></script> -->
+<style>
+ .quickMenu {
+        position: fixed;
+        top: 950px; /* 초기 위치 */
+        left:2000px; /* 초기 위치 */
+        transition: top 0.9s ease; /* 부드러운 이동을 위한 transition 효과 */
+    }
+</style>
 <script>
    $(function(){
        // swiper
@@ -35,6 +43,36 @@
            },
        });
    });
+  
+   window.addEventListener('scroll', function() {
+       var quickMenu = document.querySelector('.quickMenu');
+      // if (window.scrollY > 0) { // 스크롤이 100px 이상 내려갔을 때
+      //   quickMenu.style.top = '0'; // 퀵 메뉴를 화면 상단으로 이동
+      // } else {
+      //    quickMenu.style.top = '50px'; // 퀵 메뉴를 초기 위치로 이동
+      // }
+   });
+   
+   //챗봇
+   $(document).ready(function() {
+	    // 이미지를 클릭했을 때
+	    $('.quickMenu img').click(function(e) {
+	        e.preventDefault(); // 기본 링크 동작 방지
+
+	        // AJAX 요청을 통해 챗봇 내용을 가져오고, 가져온 내용을 챗봇 컨테이너에 추가
+	        $.ajax({
+	            url: '/path/to/your/chatbot', // 여기에는 실제 챗봇 데이터를 제공하는 URL을 입력하세요.
+	            type: 'GET',
+	            success: function(response) {
+	                $('#chatbotContainer').html(response); // 챗봇 내용을 챗봇 컨테이너에 추가
+	                $('#chatbotContainer').slideDown(); // 챗봇 컨테이너를 보여줍니다.
+	            },
+	            error: function(xhr, status, error) {
+	                console.error('AJAX Error:', error);
+	            }
+	        });
+	    });
+	});
 </script>
 </head>
 <body>
@@ -50,7 +88,7 @@
             <div class="swiper-wrapper">
                  <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
                  <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/pa.png');">
+                 <img class="swiper-slide" style="background-image:url('/tobe/img/papa.png');">
              </div>
              
              <div class="swiper-pagination"></div>
@@ -148,7 +186,17 @@
         </div>
       </div>
     </div>
-             
+    <div class="quickMenu">
+		<div><a href=""><img src="/tobe/img/chat.png" class="quick" style="width: 55px; margin-left: 5px;"></a></div>
+	</div>  
+	<div id="chatbotContainer" style="display: none;">
+    	<!-- 챗봇 내용을 담을 컨테이너 -->
+    	<div>
+    		
+    	</div>
+	</div>   
+	
+	
    <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 

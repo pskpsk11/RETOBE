@@ -63,7 +63,7 @@
 #orderbox{
  width: 60%;
 }
-[type="radio"]{
+type="radio"{
 		appearance: none;
         width: 15px;
         height: 15px;
@@ -71,7 +71,7 @@
         background-color: #fff;
         border: 0.3px solid black;
 }
-[type="radio"]:checked{
+type="radio":checked{
         background-color: #fff;
         border: 5px solid black;
 
@@ -82,7 +82,7 @@ hr, strong{
 .finalpay{
 	border: 0.5px solid #000;
     position: relative;
-    /* top: 17rem; */
+    top: -45rem; 
     bottom: 35.05rem;
     left: 56rem;
     width: 15rem;
@@ -92,16 +92,15 @@ hr, strong{
 .agree{
 	border: 0.5px solid #000;
     position: relative;
-    /* top: 45.2rem; */
+    top:-34.5rem;
     bottom: 34.8rem;
     left: 56rem;
     width: 14.9rem;
     font-size: 13px;
     vertical-align: 10px;
 }
-
-input[type="checkbox"] {
-    width: 1rem;
+type="checkbox" {
+    width: 1rem; b
     height: 1rem;
     border-radius: 50%;
     border: 1px solid #999;
@@ -110,7 +109,7 @@ input[type="checkbox"] {
     transition: background 0.2s;
   }
 
-  input[type="checkbox"]:checked {
+type="checkbox":checked {
     background: #000;
     border: none;
   }
@@ -125,7 +124,7 @@ input[type="checkbox"] {
     color: #fff;
     background-color: #000;
 }
-input[type=checkbox] {
+type=checkbox {
 zoom: 0.8;
 }
 .footer{
@@ -209,6 +208,7 @@ function re() {
 </div>
 	<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
 		<input type="hidden" name="cartNo" value="${param.cartNo}">
+		<input type="hidden" name="course_no" value="${lecture.course_no}">
 		<input type="hidden" name="member_no" value="${loginInfo.member_no}">
 		<table class="info" >
 				<tr id="firstRow">

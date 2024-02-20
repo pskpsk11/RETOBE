@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.retobe.vo.BasketVO;
+import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.PayDetailVO;
 import kr.co.retobe.vo.PayVO;
 
@@ -35,6 +36,8 @@ public interface OrderMapper {
 	int payDetail(PayDetailVO vo);
 	
 	List<Map<String, Object>> getorder(Map map);
+	
+	CourseVO lecture(int course_no);
 }
 
 

@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
 <script>
 $(function(){
 	
@@ -103,7 +103,7 @@ $(function(){
 <style>
 .container{
    position: relative;
-   margin: -845px 0 0 160px;
+   margin: -805px 0 0 160px;
    width : 1340px ;
    height : 840px;  
 }	
@@ -190,7 +190,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 	width:50px;
  }
  
- .searchOrReset{
+.searchOrReset{
 	display : flex;
 	flex-direction:row-reverse;
 	margin: 230px 0 0 90px;
@@ -294,26 +294,30 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 				</c:forEach>
          	</tbody>
          </table>
-         	<div class="pagenate clear">
-                       <ul class='paging'>
-                       <c:if test="${list.prev }">
-                       	<li><a href="/tobe/gmanager/pay.do?page=${list.startPage-1 }"> << </a></li>
+         
+         
+         
+         	<div class="pagenate clear" style="margin: 420px 0 0 0;">
+                   <ul class='paging'>
+                   <c:if test="${list.prev }">
+                   	<li><a href="/tobe/gmanager/pay.do?page=${list.startPage-1 }"> << </a></li>
+                   </c:if>
+                   <c:forEach var="p" begin="${list.startPage}" end="${list.endPage}">
+                   	<c:if test="${p == param.page}">
+                       <li><a href='#;' class='current'>${p}</a></li>
                        </c:if>
-                       <c:forEach var="p" begin="${list.startPage}" end="${list.endPage}">
-                       	<c:if test="${p == param.page}">
-                           <li><a href='#;' class='current'>${p}</a></li>
-                           </c:if>
-                           <c:if test="${p != param.page}">
-                           <li><a href='/tobe/gmanager/pay.do?page=${p}'>${p}</a></li>
-                           </c:if>
-                       </c:forEach>
-                       <c:if test="${list.next }">
-                       	<li><a href="/tobe/gmanager/pay.do?page=${list.endPage+1 }"> >> </a></li>
+                       <c:if test="${p != param.page}">
+                       <li><a href='/tobe/gmanager/pay.do?page=${p}'>${p}</a></li>
                        </c:if>
-                       </ul> 
-              </div> 
+                   </c:forEach>
+                   <c:if test="${list.next }">
+                   	<li><a href="/tobe/gmanager/pay.do?page=${list.endPage+1 }"> >> </a></li>
+                   </c:if>
+                   </ul> 
+             </div>
+              
+              
           </div>  
    </div>
-  </div> 
 </body>
 </html>

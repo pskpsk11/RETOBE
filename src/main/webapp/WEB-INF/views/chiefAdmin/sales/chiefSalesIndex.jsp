@@ -88,10 +88,9 @@ function getFormattedDate(date) {
 	position: absolute;
 	width: 75rem;
 	height: 7.5rem;
-	top: 6rem; 
+	top: 10rem; 
 	left: 12rem;
-	border: 3px solid #ddd;
-	box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+	border: 1px solid #000;
 }
 
 .searchBox table {
@@ -99,6 +98,7 @@ function getFormattedDate(date) {
 	top: 1rem;
 }
 
+/*
 .searchBox th {
 	width: 10rem;
 	font-size: 1.25rem;
@@ -114,7 +114,7 @@ function getFormattedDate(date) {
 	width: 10rem;
 	font-size: 1rem;
 }
-
+*/
 .frmBtn {
 	position: absolute;
 	left: 64rem;
@@ -133,10 +133,9 @@ function getFormattedDate(date) {
 	position: absolute;
 	width: 40rem;
 	height: 29.5rem;
-	top: 16rem; 
+	top: 23rem; 
 	left: 12rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid #000;
 	overflow-y: scroll;
 }
 
@@ -169,10 +168,9 @@ function getFormattedDate(date) {
 	position: absolute;
 	width: 33rem;
 	height: 29.5rem;
-	top: 16rem; 
+	top: 23rem; 
 	left: 54rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid #000;
 	padding: 0 0;
 	margin: 0 0;
 }
@@ -187,45 +185,62 @@ function getFormattedDate(date) {
 .total td{
 	font-size: 1.5rem;
 }
+.resetOrSearch input {
+ 	 background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin : 10px;
+     text-align: center;
+     border-radius: 15px;
+     border :1px solid #E5D1E3;
+}
+.resetOrSearch input:hover{
+	text-decoration: none;
+	background-color : #3F4350;
+	color:white;
+	cursor:pointer;
+}
 
-
-
+.resetOrSearch{
+display:flex;
+flex-direction:row-reverse;
+margin-bottom:5px;
+}
 
 </style>
+
 <body>
 	<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
    	
    	<div class="searchBox">
    		<form action="payList.do" method="get">
    			<table>
-   				<tr>
-   					<th>학원명</th>
-   					<td>
-   						<select name="education" class="input">
-   							<option value="">전체</option>
-   							<option value="1">해커스</option>
-   							<option value="2">파고다</option>
-   							<option value="3">YBM</option>
-   						</select>
-   					</td>	
-   				</tr>
-				<tr>
-					<th>날짜</th>
-					<td>
-						<input type="date" id="startday" name="startday" class="input"> <b style="margin: 0 0.5rem; font-size: 2rem;">-</b>
-						<input type="date" id="endday" name="endday" class="input">
-						<input id="today" type="button" value="오늘" >
-						<input id ="week" type="button" value="일주일">
-						<input id= "oneMonth" type="button" value="1개월">
-						<input id= "threeMonth" type="button" value="3개월">
-						<input id= "year" type="button" value="1년">
+				<tr class="date_btn">
+					
+					<td>학원명</td>
+					<td> <select name="education">
+  							<option value="">전체</option>
+  							<option value="1">해커스</option>
+  							<option value="2">파고다</option>
+  							<option value="3">YBM</option>
+					</select>
 					</td>
+				</tr>
+				<tr class="date_btn">
+					<td>가입일</td>
+				    	<td>
+					&nbsp;<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
+							<input id="today" type="button" value="오늘" >
+							<input id ="week" type="button" value="일주일">
+							<input id= "oneMonth" type="button" value="1개월">
+							<input id= "threeMonth" type="button" value="3개월">
+							<input id= "year" type="button" value="1년">							
+						</td>
 				</tr>   			
    			</table>
-   			<div class="frmBtn">
-		   		<input type="submit" value="검색" >
-   				<input type="reset" value="초기화">
-   			</div>
+   			<div class="resetOrSearch">   	 			
+				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/gmanager/sales.do'">
+				<input class ="bnt" type="submit" id="" value="검색">
+			</div>    
    		</form>
    	</div>
    	

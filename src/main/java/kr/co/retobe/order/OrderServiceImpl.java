@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.retobe.vo.BasketVO;
+import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.PayDetailVO;
 import kr.co.retobe.vo.PayVO;
 
@@ -96,7 +97,11 @@ public class OrderServiceImpl implements OrderService{
 		return mapper.CartMap(cart_no);
 	}
 
-
+	@Override
+	public CourseVO getlecture(int course_no) {
+		return mapper.lecture(course_no);
+	}
+	
 	@Override
 	public boolean pay(PayVO vo, MultipartFile file, HttpServletRequest request) {
 		// TODO Auto-generated method stub

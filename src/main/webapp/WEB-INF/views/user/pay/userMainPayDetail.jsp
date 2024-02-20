@@ -63,7 +63,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 #orderbox{
  width: 60%;
 }
-[type="radio"]{
+type="radio"{
 		appearance: none;
         width: 15px;
         height: 15px;
@@ -71,14 +71,16 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
         background-color: #fff;
         border: 0.3px solid black;
 }
-[type="radio"]:checked{
+
+type="radio":checked{
         background-color: #fff;
         border: 5px solid black;
-
 }
+
 hr, strong{
 	margin-left: 15px;
 }
+
 .finalpay{
 	border: 0.5px solid #000;
     position: relative;
@@ -100,7 +102,7 @@ hr, strong{
     vertical-align: 10px;
 }
 
-input[type="checkbox"] {
+type="checkbox" {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -110,7 +112,7 @@ input[type="checkbox"] {
     transition: background 0.2s;
   }
 
-  input[type="checkbox"]:checked {
+type="checkbox":checked {
     background: #000;
     border: none;
   }
@@ -125,7 +127,7 @@ input[type="checkbox"] {
     color: #fff;
     background-color: #000;
 }
-input[type=checkbox] {
+type=checkbox {
 zoom: 0.8;
 }
 .footer{
@@ -195,8 +197,32 @@ function re() {
 	    $("#cart").submit();
 	}
 
+	 const loginPoint = ${loginInfo.point};
 
+	  // 포인트 사용 입력 필드에 대한 변경 이벤트 리스너 추가
+	  document.querySelector('input[name="point_usage"]').addEventListener('input', function(event) {
+	    const pointInput = event.target;
+	    const pointUsed = parseFloat(pointInput.value); // 입력된 포인트 값
 
+	    // 최종 결제 금액 업데이트
+	    const totalPrice = parseFloat('${course.price}'); // 총 상품 금액
+	    const finalPrice = totalPrice - pointUsed; // 최종 결제 금액
+	    document.querySelector('#secondRow > td:nth-child(2)').textContent = finalPrice.toLocaleString() + '원';
+
+	    // 결제 예정 금액 업데이트
+	    const paymentScheduled = totalPrice; // 결제 예정 금액은 총 상품 금액
+	    document.querySelector('tr:nth-child(4) > td:nth-child(2)').textContent = paymentScheduled.toLocaleString() + '원';
+	  });
+
+	  // "전액 사용" 버튼 클릭 시
+	  document.querySelector('button').addEventListener('click', function() {
+	    // 보유 포인트를 최대한 사용하고, 최종 결제 금액과 결제 예정 금액 업데이트
+	    const totalPrice = parseFloat('${course.price}'); // 총 상품 금액
+	    document.querySelector('input[name="point_usage"]').value = loginPoint; // 보유 포인트로 설정
+	    document.querySelector('#secondRow > td:nth-child(2)').textContent = '0원';
+	    document.querySelector('tr:nth-child(4) > td:nth-child(2)').textContent = (totalPrice - loginPoint).toLocaleString() + '원';
+	  });
+	  
 </script>
 </head>
 <body>
@@ -205,9 +231,9 @@ function re() {
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
 <div class="title">
-<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+<h1 style="margin: 1rem; padding: 0;">주문상품</h1>
 </div>
-	<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
+	<form id="cart">
 		<input type="hidden" name="cartNo" value="${param.cartNo}">
 		<input type="hidden" name="member_no" value="${loginInfo.member_no}">
 		<table class="info" >
@@ -216,36 +242,33 @@ function re() {
 					<td>강좌정보</td>
 					<td>가격</td>
 				</tr>
-				 <c:forEach var="cart" items="${basket}">
 				 <tr>
-				 	<td><img src="/tobe/img/course_img/${cart.teacher_img_org}" style="width:100px; height:100px"></td>
+				 	<td><img src="/tobe/img/course_img/${course.teacher_img_org}" style="width:150px; height:150px;"></td>
 				
 					<td>
-						  학원명 : ${CodeToString.educationToString(cart.education)}<br>
-                          과정명 : ${cart.cname}<br>
-                          과목 : ${CodeToString.subjectToString(cart.subject)}<br>
-                          지역 : ${CodeToString.areaToString(cart.area)} <br>
-                          지점 : ${CodeToString.branchToString(cart.branch)} <br>
-                       	  시간 : ${cart.time} <br>
-                          요일 : ${CodeToString.dateToStirng(cart.mon, cart.tue, cart.wed, cart.thu, cart.fri, cart.sat, cart.sun)}<br></td>
-					<td class="price">${cart.price }</td>
+						  학원명 : ${CodeToString.educationToString(course.education)}<br>
+                          과정명 : ${course.cname}<br>
+                          과목 : ${CodeToString.subjectToString(course.subject)}<br>
+                          지역 : ${CodeToString.areaToString(course.area)} <br>
+                          지점 : ${CodeToString.branchToString(course.branch)} <br>
+                       	  시간 : ${course.time} <br>
+                          요일 : ${CodeToString.dateToStirng(course.mon, course.tue, course.wed, course.thu, course.fri, course.sat, course.sun)}<br></td>
+					<td class="price">${course.price }</td>
 				</tr>	
 					
-				</c:forEach>
 		</table>
-		<c:forEach var="cart" items="${basket}"> 
 			<div class="title2">
 			
-				<h2 style="margin: 1rem; padding: 0;">포인트 사용</h2>
+				<h1 style="margin: 1rem; padding: 0;">포인트 사용</h1>
 				<hr width="800px;" style="margin-left:15px;">
-				<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
+				<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button name="button" style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 				<hr width="800px;">
 			
-				<strong style="margin-right:10px;">결제 예정 금액</strong>  <b>${cart.price } 원</b>
+				<strong style="margin-right:10px;">결제 예정 금액</strong>  <b>${course.price } 원</b>
 				<br><hr width="800px;">
 			</div>
 			<div class="title3">
-				<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
+				<h1 style="margin: 1rem; padding: 0;">결제 수단</h1>
 				<hr width="800px;" >
 				<input type="radio" name="myRadio" style="margin-left:30px;"> 무통장입금
 				<hr width="800px;">
@@ -260,16 +283,16 @@ function re() {
 				</tr>
 				<tr id="secondRow">
 					<td>총 상품 금액</td>
-					<td>${cart.price }</td>
+					<td>${course.price }</td>
 				</tr>
 				<tr>
 					<td>사용포인트</td>
-					<td>${loginInfo.point }</td>
+					<td>0</td>
 				</tr>
 				
 				<tr id="secondRow">
 					<td>최종 결제 금액</td>
-					<td></td>
+					<td>${course.price}</td>
 				<tr>
 				<tr>
 					<td>적립예정 포인트</td>
@@ -277,7 +300,6 @@ function re() {
 				</tr>
 			
 			</table>
-		</c:forEach>
 		<div class="agree">
 			<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전<br>&nbsp;&nbsp;&nbsp; 체에 동의합니다.<br>
 			<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의 &nbsp;(필수)<br>
@@ -285,10 +307,11 @@ function re() {
 			<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의<br>&nbsp;&nbsp;&nbsp;(필수)<br>
 			<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의<br>&nbsp;(필수)
 		</div>
-				
+	</form>
+	<form method="post" name="cart" id="cart" action="/tobe/user/userPayCompleteDetail.do"> 	
 		<button type="button" name="button3" onclick="requestPay();" class="order" data-CartNo="${vo.cart_no }">결제하기</button>
-
-	</form>			
+	</form>	
+			
 	<div class="footerBox">
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>	

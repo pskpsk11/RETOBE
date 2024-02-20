@@ -176,4 +176,9 @@
 		WHERE cart_no in (#{cart_no}) and b.member_no=#{member_no}
 	</select>
 
+	<select id="lecture" parameterType="kr.co.retobe.vo.CourseVO" resultType="kr.co.retobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{course_no};
+    </select>
 </mapper>
