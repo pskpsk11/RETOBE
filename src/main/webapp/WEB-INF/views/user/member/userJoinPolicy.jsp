@@ -57,7 +57,12 @@
     
 </head> 
 <body>
+<<<<<<< HEAD
 <div class="wrap">
+=======
+    <div class="wrap">
+    <%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>

@@ -77,6 +77,7 @@ hr{
 </style>
 <body>
 	<div class="wrap">
+	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
     	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
    	</div>
    	<div class="main">

@@ -329,6 +329,7 @@ table{
 
 </head>
 <body>
+<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
 	<div class="headerBox">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 	</div>
