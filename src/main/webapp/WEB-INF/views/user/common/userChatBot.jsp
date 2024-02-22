@@ -169,7 +169,7 @@ function courseView() {
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       // OpenAI API 키
-      const apiKey = "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";
+      const apiKey = "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";
 
       // 요청할 텍스트
       const messages = [
@@ -187,40 +187,46 @@ function courseView() {
       ];
 
       // OpenAI API에 요청을 보내는 함수
-      async function generateText() {
-        try {
-          messages.push({
-            role: "user",
-            content: document.getElementById("msg").value,
-          });
-          document.getElementById("msg").value = "";
+      // OpenAI API에 요청을 보내는 함수
+async function generateText() {
+    try {
+        // 사용자의 질문을 가져옴
+        var userQuestion = document.getElementById("msg").value;
+        // 사용자의 질문을 화면에 표시
+        document.getElementById("text").innerHTML +=
+            "<div class='user-question'>" + userQuestion + "</div>";
 
-          const response = await axios.post(
+        messages.push({
+            role: "user",
+            content: userQuestion,
+        });
+        document.getElementById("msg").value = "";
+
+        const response = await axios.post(
             "https://api.openai.com/v1/chat/completions",
             {
-              model: "gpt-3.5-turbo",
-              messages: messages,
+                model: "gpt-3.5-turbo",
+                messages: messages,
             },
             {
-              headers: {
-                "Content-Type": "application/json;charset=UTF-8",
-                Authorization: "Bearer "+apiKey,
-              },
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8",
+                    Authorization: "Bearer " + apiKey,
+                },
             }
-          );
-			console.log('response:',response)
-          // API 응답에서 생성된 텍스트를 추출
-          const generatedText = response.data.choices[0].message;
+        );
+        console.log("response:", response);
+        // API 응답에서 생성된 텍스트를 추출
+        const generatedText = response.data.choices[0].message;
 
-          console.log("Generated Text:", generatedText);
-          document.getElementById("text").innerHTML =
-            document.getElementById("text").innerHTML +
-            "<BR>" +
-            generatedText.content;
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
+        console.log("Generated Text:", generatedText);
+        document.getElementById("text").innerHTML +=
+            "<div class='bot-response'>" + generatedText.content + "</div>";
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
 
       // 버튼 클릭 이벤트 핸들러
       document.getElementById("btn").addEventListener("click", function (e) {
