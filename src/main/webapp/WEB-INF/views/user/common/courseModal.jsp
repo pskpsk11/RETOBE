@@ -117,7 +117,7 @@ $(function(){
 			    		<button class="removeBtn " value="cosComp1">삭제하기</button>				
 					</c:if>
 					<c:if test="${empty map.cosComp1 }">
-						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/course.do';" ><br><br><br>
+						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course.do';" ><br><br><br>
 						<a href="/tobe/user/course.do" class="bnt" >강좌추가</a>
 					</c:if>
 				</div>

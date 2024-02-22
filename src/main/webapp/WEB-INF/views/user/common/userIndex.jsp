@@ -78,113 +78,114 @@
 <body>
 
 <div class="wrap">
-   <div class="headerBox">
-      <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-   </div>
+	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+   	<div class="headerBox">
+      	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+   	</div>
    
-   <div class="main">
-      <div class="visual animate">
-         <div class="swiper swiper-visual">
-            <div class="swiper-wrapper">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/papa.png');">
-             </div>
+   	<div class="main">
+      	<div class="visual animate">
+         	<div class="swiper swiper-visual">
+            	<div class="swiper-wrapper">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/papa.png');">
+             	</div>
              
-             <div class="swiper-pagination"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-         </div>
-      </div>
+              	<div class="swiper-pagination"></div>
+              	<div class="swiper-button-prev"></div>
+              	<div class="swiper-button-next"></div>
+         	</div>
+      	</div>
 
-      <div class="course">
-        <div class="review">
-          <div class="tit"><h4>리뷰 많은 강좌</h4></div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-        </div>
-        <div class="review">
-          <div class="tit"><h4>베스트 강좌</h4></div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="live">
-        <div class="tit"><h4>리얼 생생 후기</h4></div>
-      </div>
+      	<div class="course">
+        	<div class="review">
+	          	<div class="tit"><h4>리뷰 많은 강좌</h4></div>
+	          	<div class="list">
+	            	<a href="">
+	              		<img src="/tobe/img/hackers1.png" />
+	              		<div class="subject">아침 정규반</div>
+	            	</a>
+	          	</div>
+	          	<div class="list">
+	            	<a href="">
+	           	   		<img src="/tobe/img/hackers2.png" />
+	              		<div class="subject">아침 정규반</div>
+	            	</a>
+	          	</div>
+	          	<div class="list">
+	            	<a href="">
+	              		<img src="/tobe/img/hackers1.png" />
+	              		<div class="subject">아침 정규반</div>
+	           	 	</a>
+	          	</div>
+        	</div>
+        	<div class="review">
+          		<div class="tit"><h4>베스트 강좌</h4></div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers2.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers1.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers2.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+        	</div>
+      	</div>
+      	<div class="live">
+        	<div class="tit"><h4>리얼 생생 후기</h4></div>
+      	</div>
     </div>
     <div class="main">
-      <div class="bbs">
-        <div class="course">
-          <ul>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    	<div class="bbs">
+        	<div class="course">
+          		<ul>
+            		<li>
+              			<a href="javascript:;">
+		               		<dl>
+			                  	<dd class="subject">아침 정규반A</dd>
+			                  	<dd class="title">후기 제목</dd>
+			                  	<dd class="contents">
+			                    	너무너무 좋은 강의입니다 감사합니다...
+			                  	</dd>
+			                </dl>
+              			</a>
+            		</li>
+            		<li>
+		              	<a href="javascript:;">
+		                	<dl>
+		                  		<dd class="subject">아침 정규반A</dd>
+		                  		<dd class="title">후기 제목</dd>
+		                  		<dd class="contents">
+		                   	 	너무너무 좋은 강의입니다 감사합니다...
+		                  		</dd>
+		                	</dl>
+		              	</a>
+		            </li>
+            		<li>
+              			<a href="javascript:;">
+                			<dl>
+			                  	<dd class="subject">아침 정규반A</dd>
+			                  	<dd class="title">후기 제목</dd>
+			                  	<dd class="contents">
+			                    	너무너무 좋은 강의입니다 감사합니다...
+			                  	</dd>
+                			</dl>
+              			</a>
+            		</li>
+          		</ul>
+        	</div>
+      	</div>
     </div>
     <div class="quickMenu">
 		<div><a href=""><img src="/tobe/img/chat.png" class="quick" style="width: 55px; margin-left: 5px;"></a></div>
