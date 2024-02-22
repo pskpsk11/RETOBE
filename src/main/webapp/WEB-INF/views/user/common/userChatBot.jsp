@@ -169,7 +169,7 @@ function courseView() {
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       // OpenAI API 키
-      const apiKey = "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";
+      const apiKey = "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";
 
       // 요청할 텍스트
       const messages = [
@@ -203,12 +203,12 @@ function courseView() {
             },
             {
               headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${apiKey}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: "Bearer "+apiKey,
               },
             }
           );
-
+			console.log('response:',response)
           // API 응답에서 생성된 텍스트를 추출
           const generatedText = response.data.choices[0].message;
 
