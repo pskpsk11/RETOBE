@@ -25,8 +25,6 @@
 <script src="/tobe/js/function.js" type="text/javascript"></script>
 <script src="/tobe/js/function_jquery.js" type="text/javascript"></script>
 <style>
-<<<<<<< HEAD
-=======
 	/* 커스텀 시작 */
 	.side-bar > ul ul {
 	  display: none;
@@ -171,7 +169,6 @@
 	/* 사이드바 끝 */
 	
 	/* 커스텀 끝 */
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
 </style>
 </head>
 <body>

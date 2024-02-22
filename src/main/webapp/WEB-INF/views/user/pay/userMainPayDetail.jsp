@@ -227,6 +227,8 @@ function re() {
 </head>
 <body>
 <div class="wrap">
+	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+    <%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>

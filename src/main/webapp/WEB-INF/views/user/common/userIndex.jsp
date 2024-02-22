@@ -79,19 +79,11 @@
 <body>
 
 <div class="wrap">
-<<<<<<< HEAD
 <%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
 <%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
    <div class="headerBox">
       <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
    </div>
-=======
-	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
-   	<div class="headerBox">
-      	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-   	</div>
->>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
-   
    	<div class="main">
       	<div class="visual animate">
          	<div class="swiper swiper-visual">

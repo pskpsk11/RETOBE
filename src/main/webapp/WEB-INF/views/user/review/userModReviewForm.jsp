@@ -89,8 +89,8 @@
 </head> 
 <body>
     <div class="wrap">
-    <%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
-       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+    <%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
         <div class="sub">
             <div class="size">
                 <h3 class="sub_title">수강후기 작성</h3>
