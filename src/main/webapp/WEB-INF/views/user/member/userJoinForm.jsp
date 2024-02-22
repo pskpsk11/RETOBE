@@ -120,6 +120,8 @@
 </head> 
 <body>
      <div class="wrap">
+     <%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+     <%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
@@ -204,8 +206,10 @@
 	                </div>
 	            </div>
 	        </div>
-		<%@ include file= "/WEB-INF/views/user/common/userFooter.jsp" %>
     	</div>
+	    	<div class="footerBox">
+				<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+			</div>
     	</div>
 </body> 
 </html>

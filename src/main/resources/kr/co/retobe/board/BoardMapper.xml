@@ -117,11 +117,11 @@
 	
  		
 	<select id="qnaList" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
-	    <include refid="qnaSql"/>
-	    SELECT qna.*, member.name AS member_name
-	    FROM qna
-	    JOIN member ON member.member_no = qna.member_no
-	    LIMIT #{startIdx}, 10
+	   SELECT *,
+	   (SELECT NAME FROM member WHERE member_no = qna.member_no) AS member_name
+		FROM qna
+		<include refid="qnaSql"/>
+		LIMIT #{startIdx}, 10
 	</select>
 	
 	<select id="qnaCount" parameterType="kr.co.retobe.vo.QnaVO" resultType="int">

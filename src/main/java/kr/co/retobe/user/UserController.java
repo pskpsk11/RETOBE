@@ -289,4 +289,5 @@ public class UserController {
 		  model.addAttribute("map", map);
 		return "user/common/courseModal"; 
 	}
+	
 }

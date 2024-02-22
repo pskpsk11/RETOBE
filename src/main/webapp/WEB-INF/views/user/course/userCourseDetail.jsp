@@ -262,7 +262,7 @@ function ajaxFuncReview(page) {
 function setCourseComp(no) {
 	  var compT;	
 	  $.ajax({    	
-        url: "/tobe/user/course/setCourseComp.do",
+        url: "/tobe/user/setCourseComp.do",
         data: {
             course_no: no,
         },
@@ -283,6 +283,8 @@ function setCourseComp(no) {
 </script>
 <body>
    <div class="wrap">
+   <%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+   <%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>

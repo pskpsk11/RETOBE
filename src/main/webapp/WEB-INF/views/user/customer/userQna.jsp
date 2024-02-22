@@ -15,7 +15,8 @@
 
 <body>
 	<div class="wrap">
-
+	<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+	<%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
 		<div class="headerBox">
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
@@ -112,13 +113,14 @@
                     title="검색어 입력"
                     placeholder="검색어를 입력하세요."
                   />
-                  <input type="button" id="" value="검색" title="검색" />
+                  <input type="button" id="" value="검색" title="검색"/>
                 </span>
               </form>
             </div>
           </div>
         </div>
       </div>
+     </div>
 		
 		<div class="footerBox">
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>

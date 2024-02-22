@@ -19,7 +19,12 @@
 <script src="/tobe/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"/>
+<script src="../js/script.js"></script>
+<script src="../js/main.js"></script>
+<!-- <script src="/tobe/js/function.js" type="text/javascript"></script> -->
+<!-- <script src="/tobe/js/function_jquery.js" type="text/javascript"></script> -->
 <style>
+ HEAD
       /* 전체 챗봇 컨테이너 스타일 */
       .chat-container {
         width: 300px;
@@ -105,6 +110,14 @@
         cursor: pointer;
       }
     </style>
+ .quickMenu {
+        position: fixed;
+        top: 950px; /* 초기 위치 */
+        left:2000px; /* 초기 위치 */
+        transition: top 0.9s ease; /* 부드러운 이동을 위한 transition 효과 */
+    }
+
+</style>
 <script>
    $(function(){
        // swiper
@@ -130,6 +143,11 @@
    
    // OpenAI API 키
    const apiKey = "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";
+   //챗봇
+   //$(document).ready(function() {
+	    // 이미지를 클릭했을 때
+	    //$('.quickMenu img').click(function(e) {
+	        //e.preventDefault(); // 기본 링크 동작 방지
 
    // 요청할 텍스트
    const messages = [
@@ -199,119 +217,135 @@
        document.getElementById("chatIcon").style.display = "block";
      });
    
+	        // AJAX 요청을 통해 챗봇 내용을 가져오고, 가져온 내용을 챗봇 컨테이너에 추가
+	        //$.ajax({
+	            //url: '/path/to/your/chatbot', // 여기에는 실제 챗봇 데이터를 제공하는 URL을 입력하세요.
+	            //type: 'GET',
+	            //success: function(response) {
+	                //$('#chatbotContainer').html(response); // 챗봇 내용을 챗봇 컨테이너에 추가
+	                //$('#chatbotContainer').slideDown(); // 챗봇 컨테이너를 보여줍니다.
+	            //},
+	            //error: function(xhr, status, error) {
+	                //console.error('AJAX Error:', error);
+	            //}
+	        //});
+	    //});
+	//});
 </script>
 </head>
 <body>
 
 <div class="wrap">
+<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+<%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
    <div class="headerBox">
       <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
    </div>
-   
-   <div class="main">
-      <div class="visual animate">
-         <div class="swiper swiper-visual">
-            <div class="swiper-wrapper">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
-                 <img class="swiper-slide" style="background-image:url('/tobe/img/papa.png');">
-             </div>
+   	<div class="main">
+      	<div class="visual animate">
+         	<div class="swiper swiper-visual">
+            	<div class="swiper-wrapper">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
+                 	<img class="swiper-slide" style="background-image:url('/tobe/img/papa.png');">
+             	</div>
              
-             <div class="swiper-pagination"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-         </div>
-      </div>
+              	<div class="swiper-pagination"></div>
+              	<div class="swiper-button-prev"></div>
+              	<div class="swiper-button-next"></div>
+         	</div>
+      	</div>
 
-      <div class="course">
-        <div class="review">
-          <div class="tit"><h4>리뷰 많은 강좌</h4></div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-        </div>
-        <div class="review">
-          <div class="tit"><h4>베스트 강좌</h4></div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers1.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-          <div class="list">
-            <a href="">
-              <img src="/tobe/img/hackers2.png" />
-              <div class="subject">아침 정규반</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="live">
-        <div class="tit"><h4>리얼 생생 후기</h4></div>
-      </div>
+      	<div class="course">
+        	<div class="review">
+	          	<div class="tit"><h4>리뷰 많은 강좌</h4></div>
+	          	<div class="list">
+	            	<a href="">
+	              		<img src="/tobe/img/hackers1.png" />
+	              		<div class="subject">아침 정규반</div>
+	            	</a>
+	          	</div>
+	          	<div class="list">
+	            	<a href="">
+	           	   		<img src="/tobe/img/hackers2.png" />
+	              		<div class="subject">아침 정규반</div>
+	            	</a>
+	          	</div>
+	          	<div class="list">
+	            	<a href="">
+	              		<img src="/tobe/img/hackers1.png" />
+	              		<div class="subject">아침 정규반</div>
+	           	 	</a>
+	          	</div>
+        	</div>
+        	<div class="review">
+          		<div class="tit"><h4>베스트 강좌</h4></div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers2.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers1.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+          		<div class="list">
+            		<a href="">
+              			<img src="/tobe/img/hackers2.png" />
+              			<div class="subject">아침 정규반</div>
+            		</a>
+          		</div>
+        	</div>
+      	</div>
+      	<div class="live">
+        	<div class="tit"><h4>리얼 생생 후기</h4></div>
+      	</div>
     </div>
     <div class="main">
-      <div class="bbs">
-        <div class="course">
-          <ul>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <dl>
-                  <dd class="subject">아침 정규반A</dd>
-                  <dd class="title">후기 제목</dd>
-                  <dd class="contents">
-                    너무너무 좋은 강의입니다 감사합니다...
-                  </dd>
-                </dl>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    	<div class="bbs">
+        	<div class="course">
+          		<ul>
+            		<li>
+              			<a href="javascript:;">
+		               		<dl>
+			                  	<dd class="subject">아침 정규반A</dd>
+			                  	<dd class="title">후기 제목</dd>
+			                  	<dd class="contents">
+			                    	너무너무 좋은 강의입니다 감사합니다...
+			                  	</dd>
+			                </dl>
+              			</a>
+            		</li>
+            		<li>
+		              	<a href="javascript:;">
+		                	<dl>
+		                  		<dd class="subject">아침 정규반A</dd>
+		                  		<dd class="title">후기 제목</dd>
+		                  		<dd class="contents">
+		                   	 	너무너무 좋은 강의입니다 감사합니다...
+		                  		</dd>
+		                	</dl>
+		              	</a>
+		            </li>
+            		<li>
+              			<a href="javascript:;">
+                			<dl>
+			                  	<dd class="subject">아침 정규반A</dd>
+			                  	<dd class="title">후기 제목</dd>
+			                  	<dd class="contents">
+			                    	너무너무 좋은 강의입니다 감사합니다...
+			                  	</dd>
+                			</dl>
+              			</a>
+            		</li>
+          		</ul>
+        	</div>
+      	</div>
     </div>
+<<<<<<< HEAD
     <!--<div class="chat">
 		<div><a href=""><img src="/tobe/img/chat.png" class="chatbot" style="width: 55px; margin-left: 5px;"></a></div>
 	</div>    -->
@@ -330,6 +364,18 @@
     </div>  
 	
 	
+=======
+    <!--  
+    <div class="quickMenu">
+		<div><a href=""><img src="/tobe/img/chat.png" class="quick" style="width: 55px; margin-left: 5px;"></a></div>
+	</div>  
+	<div id="chatbotContainer" style="display: none;">
+    	<!-- 챗봇 내용을 담을 컨테이너 -->
+    
+    
+      	
+<div>   
+>>>>>>> branch 'master' of https://github.com/pskpsk11/RETOBE.git
    <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 
