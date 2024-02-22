@@ -18,6 +18,7 @@ $(function(){
     
 
     // 퀵메뉴
+    /*
     var q_left = $(".menu >ul:first-child").position().left + 1200;
     var q_top = $(".menu >ul:first-child").position().top;
     $('#quickMenu').css({
@@ -39,7 +40,7 @@ $(function(){
     $("#goTop").click(function(){
         $('html').animate({scrollTop:0},300);
     });
-
+*/
     
 
 });

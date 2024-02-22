@@ -23,6 +23,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/tobe/js/function.js" type="text/javascript"></script>
 <script src="/tobe/js/function_jquery.js" type="text/javascript"></script>
+<style>
+</style>
 </head>
 <body>
 
@@ -102,7 +104,7 @@
                <div class = "util clear">
 	               <c:if test ="${empty loginInfo }"> 
 	                  <a href = "#;" id = "login_click">로그인</a>
-	                  <a href = "/tobe/user/joinForm.do">회원가입</a>
+	                  <a href = "/tobe/user/joinPolicy.do">회원가입</a>
 	               </c:if>
                   <c:if test ="${!empty loginInfo }">
 	                  <a href="/tobe/user/logout.do">로그아웃</a>

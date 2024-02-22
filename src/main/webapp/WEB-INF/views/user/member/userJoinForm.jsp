@@ -204,8 +204,10 @@
 	                </div>
 	            </div>
 	        </div>
-		<%@ include file= "/WEB-INF/views/user/common/userFooter.jsp" %>
     	</div>
+	    	<div class="footerBox">
+				<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+			</div>
     	</div>
 </body> 
 </html>

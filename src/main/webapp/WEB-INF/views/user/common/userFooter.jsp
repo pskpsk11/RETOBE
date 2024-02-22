@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/tobe/css/main.css" />
 <link rel="stylesheet" href="/tobe/css/contents.css" />
 <link rel="stylesheet" href="/tobe/css/swiper.css" />
+<style>
+
+</style>
 </head>
 <body>
    <div id="footer">
@@ -32,7 +35,7 @@
                 <span>사업자등록번호 : 123-45-67890</span>
               </li>
             </ul>
-            <div class="copy">Copyright 2019 tobe. All Rights Reserved</div>
+            <div class="copy">Copyright 2024 tobe. All Rights Reserved</div>
             <div class="util">
               <a href="#;">개인정보취급방침</a>
             </div>

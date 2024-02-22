@@ -14,8 +14,8 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>   
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<script src="/tobe/js/script.js"></script>
-<script src="/tobe/js/main.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/main.js"></script>
 <!-- <script src="/tobe/js/function.js" type="text/javascript"></script> -->
 <!-- <script src="/tobe/js/function_jquery.js" type="text/javascript"></script> -->
 <style>
@@ -25,6 +25,7 @@
         left:2000px; /* 초기 위치 */
         transition: top 0.9s ease; /* 부드러운 이동을 위한 transition 효과 */
     }
+
 </style>
 <script>
    $(function(){
@@ -54,30 +55,32 @@
    });
    
    //챗봇
-   $(document).ready(function() {
+   //$(document).ready(function() {
 	    // 이미지를 클릭했을 때
-	    $('.quickMenu img').click(function(e) {
-	        e.preventDefault(); // 기본 링크 동작 방지
+	    //$('.quickMenu img').click(function(e) {
+	        //e.preventDefault(); // 기본 링크 동작 방지
 
 	        // AJAX 요청을 통해 챗봇 내용을 가져오고, 가져온 내용을 챗봇 컨테이너에 추가
-	        $.ajax({
-	            url: '/path/to/your/chatbot', // 여기에는 실제 챗봇 데이터를 제공하는 URL을 입력하세요.
-	            type: 'GET',
-	            success: function(response) {
-	                $('#chatbotContainer').html(response); // 챗봇 내용을 챗봇 컨테이너에 추가
-	                $('#chatbotContainer').slideDown(); // 챗봇 컨테이너를 보여줍니다.
-	            },
-	            error: function(xhr, status, error) {
-	                console.error('AJAX Error:', error);
-	            }
-	        });
-	    });
-	});
+	        //$.ajax({
+	            //url: '/path/to/your/chatbot', // 여기에는 실제 챗봇 데이터를 제공하는 URL을 입력하세요.
+	            //type: 'GET',
+	            //success: function(response) {
+	                //$('#chatbotContainer').html(response); // 챗봇 내용을 챗봇 컨테이너에 추가
+	                //$('#chatbotContainer').slideDown(); // 챗봇 컨테이너를 보여줍니다.
+	            //},
+	            //error: function(xhr, status, error) {
+	                //console.error('AJAX Error:', error);
+	            //}
+	        //});
+	    //});
+	//});
 </script>
 </head>
 <body>
 
 <div class="wrap">
+<%@include file="/WEB-INF/views/user/common/userSidebar.jsp"%>
+<%@include file="/WEB-INF/views/user/common/userChatBot.jsp"%>
    <div class="headerBox">
       <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
    </div>
@@ -186,17 +189,16 @@
         </div>
       </div>
     </div>
+    <!--  
     <div class="quickMenu">
 		<div><a href=""><img src="/tobe/img/chat.png" class="quick" style="width: 55px; margin-left: 5px;"></a></div>
 	</div>  
 	<div id="chatbotContainer" style="display: none;">
     	<!-- 챗봇 내용을 담을 컨테이너 -->
-    	<div>
-    		
-    	</div>
-	</div>   
-	
-	
+    
+    
+      	
+<div>   
    <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 
