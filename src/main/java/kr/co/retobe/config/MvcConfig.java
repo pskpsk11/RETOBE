@@ -41,6 +41,8 @@ public class MvcConfig implements WebMvcConfigurer{
 	private String username;
 	@Value("${db.userpassword}")
 	private String userpassword;
+	@Value("${chatgpt.api}")
+	private String api;
 	
 	
 	// html,css,js,img.... 컨트롤러에서 매핑되지 않은 URL을 톰캣에서 처리하기 위해
@@ -132,9 +134,9 @@ public class MvcConfig implements WebMvcConfigurer{
 						.excludePathPatterns("/user/faq.do")
 						.excludePathPatterns("/user/login.do")
 						.excludePathPatterns("/user/joinForm.do")
-						.excludePathPatterns("/user/findMember.do")
-						.excludePathPatterns("/user/member/userFindPwdNext.do")
 						.excludePathPatterns("/user/joinPolicy.do")
+						.excludePathPatterns("/user/find.do")
+						.excludePathPatterns("/user/findPwd.do")
 						.addPathPatterns("/user/basket.do")
 						.addPathPatterns("/user/basketDelete.do")
 						.addPathPatterns("/user/qna/insert.do")

@@ -169,7 +169,7 @@ function courseView() {
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       // OpenAI API 키
-      const apiKey = "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";
+      const apiKey = "다들 아시죠???";
 
       // 요청할 텍스트
       const messages = [

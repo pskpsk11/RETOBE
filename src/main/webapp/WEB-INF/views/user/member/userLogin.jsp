@@ -30,6 +30,21 @@ function loginCheck() {
 		$("#pwd").focus();
 		return false;
 	}
+	
+	function openPopup(url, name, width, height) {
+	    // 팝업 창의 가로, 세로 크기를 가져옴
+	    var popupWidth = width || 450;
+	    var popupHeight = height || 380;
+
+	    // 팝업 창이 화면 중앙에 위치하도록 계산
+	    var left = (screen.width - popupWidth) / 2;
+	    var top = (screen.height - popupHeight) / 2;
+	    
+	    top -= 50; // 조정할 수 있는 값
+
+	    // 팝업 창을 가운데에 띄우기
+	    window.open(url, name, 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + left + ',top=' + top + ',resizable=yes');
+	}
 }
 </script>
 
@@ -56,12 +71,12 @@ function loginCheck() {
 	                                    <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px; font-size: 1rem;"></li>
 	                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px; font-size: 1rem;"></li>
 	                                    <ul class="change">
-		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=450,height=600');"></li>
+		                                    <li float="left"><input style="font-weight:bolder" class="id_pwd" type="button" value="아이디 / 비밀번호 찾기" onclick="openPopup('find.do', '아이디/비밀번호 찾기', 450, 380)";></li>
 	                                    </ul>
 	                                </ul>
 	                               	<input class= "login_btn" type="submit" value="로그인"/>
 	                               	<div class="btnSet_clear">
-		                                <div style="color: #2F5720; font-size:xx-small; font-weight:bolder">
+		                                <div style="font-size:xx-small; font-weight:bolder">
 		                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinPolicy.do" class="btn">    회원가입    </a></p>
 		                               </div>
 	                            </div>

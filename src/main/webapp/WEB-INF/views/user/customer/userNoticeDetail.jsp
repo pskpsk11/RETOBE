@@ -36,8 +36,7 @@
                     <dl class="file">
                         <dt>첨부파일 </dt>
                         <dd>
-                        <a href="#" 
-                        target="_blank">첨부파일.pptx [38.07KB] </a></dd>
+                        <input type="file" name="file" id="file" class="wid100"/>
                     </dl>
                                 
                     <div class="btnSet clear">

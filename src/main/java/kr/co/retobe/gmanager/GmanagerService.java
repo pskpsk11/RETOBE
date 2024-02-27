@@ -40,7 +40,7 @@ public interface GmanagerService {
 	Map<String, Object> noticeList(NoticeVO vo);
 
 	QnaVO getQnaDetail(int qnaNo);
-	List<QnaVO> getqnalist(QnaVO vo);
+	Map<String, Object> getQnaListReal(QnaVO vo);
 
 	List<FaqVO> getfaqlist(FaqVO vo);
 

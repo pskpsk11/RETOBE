@@ -98,7 +98,7 @@ text-align:center;
 			
 	</div>
 	
-	<form action="userFindPwdNext.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
+	<form action="findPwd.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
 		<div class="pwd_contents" id="pwd_data" style="display: none;">
 			<fieldset clss="pwd_form">
 				<ul>

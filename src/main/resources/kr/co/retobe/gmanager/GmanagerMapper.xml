@@ -131,6 +131,9 @@
 	<select id="getqnalist" resultType="kr.co.retobe.vo.QnaVO">
 		select qna_no, q_title, q_writedate, member_no from qna
 	</select>
+	
+	
+	
 	<select id="QnaDetail" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
         SELECT q_title, q_writedate, q_content
         FROM qna
@@ -189,6 +192,19 @@
 			</if>
 		</where>
 	</sql>
+	<select id="getQnaListReal" parameterType="kr.co.retobe.vo.QnaVO" resultType="kr.co.retobe.vo.QnaVO">
+		SELECT *
+		FROM qna
+		<include refid="qnaSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="qnaCount" parameterType="kr.co.retobe.vo.QnaVO" resultType="int">
+		SELECT COUNT(*)
+		FROM qna
+		<include refid="qnaSql"/>
+	</select>
+	
 	<!-- email -->
 	<sql id="whereSqlB">
 		<where>	
