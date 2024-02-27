@@ -14,47 +14,7 @@
 </head>
 <style>
 
-.NoticeDetailTitle {
-	width: 70rem;
-	margin: 0 auto;
-}
 
-#firstLine{
-	width: 70rem;
-	margin: 0 auto;
-}
-#secondLine{
-	width: 70rem;
-	margin: 0 auto;
-}
-
-hr{
-	border: 1px solid #000;
-}
-.textBox{
-	width: 70rem;
-	margin: 0 auto;
-
-}
-#realTextBox{
-	width: 70rem;
-	margin: 0 auto;
-	height: 350px;
-	background-color: #f1f3f5;
-	border: 0;
-}
-
-.correction{
-	width: 70rem;
-	margin: 0 auto;
-	padding-left: 65rem;
-	display:flex;
-}
-
-.textBoxAnswer{
-	width: 70rem;
-	margin: 0 auto;
-}
 .combackBtn{
 	margin: 0 auto;
 	width: 70rem;
@@ -95,6 +55,27 @@ hr{
                     </div>
                     <div class="cont"><p>${vo.q_content}</p></div>
                     
+                    <div id="secondLine">
+				   		<h3 class="sub_title">답변</h3>
+				   		<div class="bbs">
+					   		<div class="view">
+					   			<div class="title">
+						   			<dl>
+			                            <dt>답변| ${vo.q_title}</dt>
+	                        		</dl>
+	                        			<div class="cont" readonly id="realTextBox"><p>${vo.q_reply}</p></div>
+						   			</div>
+					   			</div>
+					   		</div>
+					   	<hr>
+				   	</div>
+				   	
+				   	
+				   	
+				   	<div class="btnSet clear">
+                        <div class="fl_l"><a href="/tobe/user/qna.do" class="btn">목록으로</a></div>
+                    </div>
+                    
             		<div class="btnSet">
 			   				<c:if test="${!empty loginInfo and loginInfo.member_no == vo.member_no}">
 			                     <a class="btn" href="/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
@@ -103,16 +84,6 @@ hr{
 			                     <a class="btn" href="/tobe/user/customer/qna/delete.do?qna_no=${vo.qna_no }">삭제</a>
 			                </c:if>
 		   			</div>
-	   				<div id="secondLine">
-				   		<div class = "answer"><h1>답변</h1></div>
-					   	<hr>
-				   	</div>
-				   	<div class = "textBoxAnswer">
-			   			<input type="text" value="${vo.q_reply}" readonly id="realTextBox">
-				   	</div>
-				   	<div class="btnSet clear">
-                        <div class="fl_l"><a href="/tobe/user/qna.do" class="btn">목록으로</a></div>
-                    </div>
                 </div>
             </div>
         </div>
