@@ -117,7 +117,7 @@ input[type="submit"]{
                                     <li><input type="text" id="ad_id" name="ad_id" placeholder="아이디" style="width:200px; height: 30px;"></li>
                                     <li><input type="password" id="ad_pwd" name="ad_pwd" placeholder="비밀번호" style="width:200px; margin: 10px 0; height: 30px;"></li>
                                     <li><label><input type="checkbox" name="reg1" id="reg1" style="width:15px; height:15px; margin: 10px 3px;"/><font size="3px">아이디저장</font></label></li>
-                                    <li><a href="userFindMember.do" class="btn" style="font-size:15px">아이디|비밀번호 찾기</a></li>
+                                    <li><a href="find.do" class="btn" style="font-size:15px">아이디|비밀번호 찾기</a></li>
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인"/></div>
                             </fieldset>

@@ -169,6 +169,12 @@
 	/* 사이드바 끝 */
 	
 	/* 커스텀 끝 */
+	
+	.bottom_area a{
+	cursor:pointer;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -233,7 +239,23 @@
             }
          }
          return "null";
+         
       }
+      
+      function openPopup(url, name, width, height) {
+    	    // 팝업 창의 가로, 세로 크기를 가져옴
+    	    var popupWidth = width || 450;
+    	    var popupHeight = height || 380;
+
+    	    // 팝업 창이 화면 중앙에 위치하도록 계산
+    	    var left = (screen.width - popupWidth) / 2;
+    	    var top = (screen.height - popupHeight) / 2;
+    	    
+    	    top -= 50; // 조정할 수 있는 값
+
+    	    // 팝업 창을 가운데에 띄우기
+    	    window.open(url, name, 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + left + ',top=' + top + ',resizable=yes');
+    	}
    </script>
       <div id = "header">
          <div class = "head_top">
@@ -290,10 +312,7 @@
                      </div>
                   </div>
                   <div class = "bottom_area">
-                     <input type="checkbox" id="reg" name="reg"/>
-                     <label for="reg">아이디 저장</label>
-                     &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                     <a href="#;">아이디 찾기</a>&nbsp;/&nbsp;<a href="#;">비밀번호 찾기</a>
+					<a onclick="openPopup('find.do', '아이디/비밀번호 찾기', 450, 380)">아이디 찾기 / 비밀번호 찾기</a>
                   </div>
                </div>
                </form>

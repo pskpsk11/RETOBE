@@ -118,7 +118,7 @@ public class GmanagerServiceImpl implements GmanagerService{
 		return mapper.faqinsert(vo) > 0 ? true : false;
 	}
 
-	 @Override
+	 	@Override
 	   public Map<String, Object> noticeList(NoticeVO param) {
 	      int count = mapper.noticeCount(param); //총개수
 	        int totalPage = count / 10; //총 페이지
@@ -158,9 +158,31 @@ public class GmanagerServiceImpl implements GmanagerService{
 	}
 
 	@Override
-	public List<QnaVO> getqnalist(QnaVO vo) {	
-		return mapper.getqnalist(vo);
-	}
+	public Map<String, Object> getQnaListReal(QnaVO param) {
+		int count = mapper.qnaCount(param); //총개수
+		int totalPage = count / 10; //총 페이지
+		if (count % 10 > 0) totalPage++;
+		System.out.println(param.getPage());
+		System.out.println(param.getStartIdx());
+		List<QnaVO> getqnaList = mapper.getQnaListReal(param); //목록
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("count", count);
+		map.put("totalPage", totalPage);
+		map.put("list", getqnaList);
+		
+		//페이징
+		int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
+		int startPage = endPage - 9;
+		if (endPage > totalPage) endPage = totalPage;
+		boolean prev = startPage > 1;
+		boolean next = endPage < totalPage;
+		map.put("endPage", endPage);
+		map.put("startPage", startPage);
+		map.put("prev", prev);
+		map.put("next", next);
+		return map;
+	   }
 
 	@Override
 	public QnaVO getQnaDetail(int qnaNo) {

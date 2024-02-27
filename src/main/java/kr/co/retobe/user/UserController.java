@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.retobe.util.Chatbot;
+import kr.co.retobe.util.SendMail;
 import kr.co.retobe.vo.BasketVO;
 import kr.co.retobe.vo.CourseVO;
 import kr.co.retobe.vo.MemberVO;
@@ -22,9 +24,16 @@ import kr.co.retobe.vo.MemberVO;
 public class UserController {
 	@Autowired
 	UserService service;
+	
+	@Autowired
+	private SendMail sendEmail;
+	
 	//메인페이지
 	@GetMapping("/user/main.do")
-	public String index(){//(HttpSession sess) {
+	public String index(Model model){//(HttpSession sess) {
+		Chatbot cb = new Chatbot();
+		model.addAttribute("api", cb.getApi());
+		System.out.println(cb.getApi()+"///");
 		return "user/common/userIndex"; 
 	}
 	
@@ -289,5 +298,57 @@ public class UserController {
 		  model.addAttribute("map", map);
 		return "user/common/courseModal"; 
 	}
+	
+	//	아이디 비밀번호 찾기
+	@GetMapping("/user/find.do")
+	public String findMember() {
+		return "user/member/userFindMember";
+	}
+	
+	@PostMapping("/user/find.do")
+	public String userFindMember(MemberVO vo, Model model) {
+		MemberVO findId = service.findId(vo);
+		if (findId == null) {
+			model.addAttribute("msg", "등록된 정보가 없습니다.");
+			model.addAttribute("cmd", "back");
+			return "user/common/userAlert";
+		} else { 
+			model.addAttribute("user", findId);
+			return "user/member/userFindMemberNext";
+		}
+		
+	}
+	
+	@GetMapping("/user/findNext.do")
+	public String findMemberNext() {
+		return "user/member/userFindMemberNext";
+	}
+	
+	@PostMapping("/user/findPwd.do")
+	public String userFindPwd(MemberVO vo, HttpSession sess, Model model) {
+		MemberVO findPwd = service.findPwd(vo); 
+			model.addAttribute("user", findPwd);
+			sendEmail.init();
+			if (findPwd == null) {
+				model.addAttribute("msg", "등록된 정보가 없습니다.");
+				model.addAttribute("cmd", "back");
+				return "user/common/userAlert";
+			} else { 
+				model.addAttribute("user", findPwd);			
+				String pw="";
+				for (int i=0; i<12; i++) {
+						pw +=(char) ((Math.random()*26)+97);
+				}
+				
+				vo.setPwd(pw);
+				service.updatePw(vo);
+				
+				String content = "TOBE 임시 비밀번호입니다." + "<br><br>" + "임시 번호는" + pw + "입니다.";				
+				
+				sendEmail.sendMail(findPwd.getEmail(), "TOBE 임시 비밀번호 발급", content);				
+				
+				return "user/member/userFindPwdNext";
+			}
+		}
 	
 }

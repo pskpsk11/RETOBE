@@ -40,7 +40,7 @@ public interface GmanagerMapper {
 	List<NoticeVO> noticeList(NoticeVO vo);
 
 	QnaVO QnaDetail(int qnaNo);
-	List<QnaVO> getqnalist(QnaVO vo);
+	List<QnaVO> getQnaListReal(QnaVO vo);
 
 	public List<FaqVO> getfaqlist(FaqVO vo);	
 
@@ -54,7 +54,7 @@ public interface GmanagerMapper {
 	int qnaInsert(QnaVO vo);
 	int updateGno(int no);
 
-	int qnaCount(QnaVO vo);
+	public int qnaCount(QnaVO vo);
 	List<QnaVO> qnaList(QnaVO vo);
 	QnaVO qnaDetail(int no);
 

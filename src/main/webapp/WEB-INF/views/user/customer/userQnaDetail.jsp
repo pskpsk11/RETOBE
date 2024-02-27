@@ -94,16 +94,7 @@ hr{
                         </dl>
                     </div>
                     <div class="cont"><p>${vo.q_content}</p></div>
-                    <dl class="file">
-                        <dt>첨부파일 </dt>
-                        <dd>
-                        <a href="#" 
-                        target="_blank">첨부파일.pptx [38.07KB] </a></dd>
-                    </dl>
-                                
-                    <div class="btnSet clear">
-                        <div class="fl_l"><a href="/tobe/user/qna.do" class="btn">목록으로</a></div>
-                    </div>
+                    
             		<div class="btnSet">
 			   				<c:if test="${!empty loginInfo and loginInfo.member_no == vo.member_no}">
 			                     <a class="btn" href="/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
@@ -112,6 +103,16 @@ hr{
 			                     <a class="btn" href="/tobe/user/customer/qna/delete.do?qna_no=${vo.qna_no }">삭제</a>
 			                </c:if>
 		   			</div>
+	   				<div id="secondLine">
+				   		<div class = "answer"><h1>답변</h1></div>
+					   	<hr>
+				   	</div>
+				   	<div class = "textBoxAnswer">
+			   			<input type="text" value="${vo.q_reply}" readonly id="realTextBox">
+				   	</div>
+				   	<div class="btnSet clear">
+                        <div class="fl_l"><a href="/tobe/user/qna.do" class="btn">목록으로</a></div>
+                    </div>
                 </div>
             </div>
         </div>

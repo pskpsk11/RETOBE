@@ -93,7 +93,7 @@ float:left;
 .check_btn{
 margin-top:10px;
 width:273px;
-background-color:black;
+background-color:#ff5050;
 color:white;
 width:429px;
 height:35px;
@@ -113,7 +113,7 @@ flex-direction:column;
 .ok_btn{
 margin-top:10px;
 width:273px;
-background-color:black;
+background-color:#ff5050;
 color:white;
 width:429px;
 height:35px;
@@ -130,7 +130,7 @@ height:60rem;
 <body>
 <div class="main">
 
-	<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="return checkId()">
+	<form action="find.do" method="post" id="board1" name="board1" onsubmit="return checkId()">
 		
 	
 		<div class="head">
@@ -157,7 +157,7 @@ height:60rem;
 			
 	</form>
 			
-	<form action="userFindPwdNext.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
+	<form action="findPwd.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
 		<div class="pwd_contents" id="pwd_data" style="display: none;">
 			<ul class="third">
 				<li style="list-style: none;">회원가입 시 등록하신 정보로<br>비밀번호를 확인하실 수 있습니다.</li>
