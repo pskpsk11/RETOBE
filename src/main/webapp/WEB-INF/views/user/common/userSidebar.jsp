@@ -7,9 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <title>Insert title here</title>
 <link rel="stylesheet" href="/tobe/css/reset.css" />
 <link rel="stylesheet" href="/tobe/css/common.css" />
@@ -20,10 +20,10 @@
      href="https://fonts.googleapis.com/css?family=Sintony:400,700"
      rel="stylesheet"
 />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 <script src="/tobe/js/function.js" type="text/javascript"></script>
-<script src="/tobe/js/function_jquery.js" type="text/javascript"></script>
+<!-- <script src="/tobe/js/function_jquery.js" type="text/javascript"></script> -->
 <style>
 * {padding:0;margin:0;}
 input[id="menuicon"] {display:none;}
@@ -67,33 +67,33 @@ function courseView() {
 </script>
 </head>
 <body>
-<input type="checkbox" id="menuicon">
-<ul>
-	<li>
-		<label for="menuicon">
-			<span></span>
-			<span></span>
-			<span></span>
-		</label>
-	</li>
-</ul>
-<div class="sidebar">
+	<input type="checkbox" id="menuicon">
 	<ul>
 		<li>
-			<a href="#">장바구니</a>
-		</li>
-		<li>
-			<span onclick="courseView();">비교함</span>
-		</li>
-		<li>
-			<c:if test ="${!empty loginInfo }">
-				<a href="/tobe/user/mypage.do">마이페이지</a>
-			</c:if>
+			<label for="menuicon">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
 		</li>
 	</ul>
-</div>
-<div id="ex1" class="modal">
-		
-</div>
+	<div class="sidebar">
+		<ul>
+			<li>
+				<a href="#">장바구니</a>
+			</li>
+			<li>
+				<span onclick="courseView();">비교함</span>
+			</li>
+			<li>
+				<c:if test ="${!empty loginInfo }">
+					<a href="/tobe/user/mypage.do">마이페이지</a>
+				</c:if>
+			</li>
+		</ul>
+	</div>
+	<div id="ex1" class="modal">
+			
+	</div>
 </body>
 </html>

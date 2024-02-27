@@ -9,76 +9,83 @@ button {
   appearance: none;
       font-style: none;
 }
-	.result{
-		max-width: 800px;
-		height: 800px;
-		text-align: center;
-		margin: 0 auto;
-		
-		
-	}
-	.flex{
-		display: flex;
-		justify-content:space-around;
-		align-items: center;
-		height: 90%;
+.modal{
+	max-width: 1280px;
 	
-	}
+}
+.result{
+	max-width: 800px;
+	height: 800px;
+	text-align: center;
+	margin: 0 auto;
 	
-	.cImg{
-		width : 350px ;
-		height:350px;
-		border: 1px solid #ddd;
-		margin : 10px;
-	}
-	.child{
-		display: flex;
-		justify-content:center;
-		flex-direction: column; 
-		align-items: center; 
-		width: 450px;
-	}
 	
-	.bnt{
-    	 background-color: #49654E;
-     	padding: 5px 5px;
-     	margin : 20px;
-    	 text-align: center;
-     	border-radius: 15px;
-    	 color : white;
-    	 width : 200px;
-    	  font-size : 20px;
-    	  
-    	
-	}
-	
-	.removeBtn{
-    	 background-color: #49654E;
-     	padding: 5px 5px;
-     	margin : 20px;
-    	 text-align: center;
-     	border-radius: 15px;
-    	 color : white;
-    	 width : 200px;
-   		 border: none;
-   		 font-size : 20px;
+}
+.flex{
+	color: white;
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+	height: 90%;
 
-	}
-	.text_s{
-		display : flex;
-		justify-content:center;
-		flex-direction: row; 
-		width: 450px;
-		margin : 30px;
-		color : #253528;
-		text-align :left;
-		font-size : 18px;
-		padding : 0 10px 0 10px; 
-	}
+}
 
-	.sub_co{
-		margin-left : 10px
-	}
+.cImg{
+	width : 350px ;
+	height:350px;
+	border: 1px solid #ddd;
+	margin : 10px;
+}
+.child{
+	display: flex;
+	justify-content:center;
+	flex-direction: column; 
+	align-items: center; 
+	width: 450px;
+}
+#comp, #close{
+	color: white;
+}
+.bnt{
+	background-color: #ff5050;
+	padding: 5px 5px;
+   	margin : 20px;
+	text-align: center;
+	border-radius: 15px;
+	color : white;
+	width : 200px;
+ 	font-size : 20px;
+   	  
+   	
+}
+
+.removeBtn{
+	background-color: #ff5050;
+	padding: 5px 5px;
+   	margin : 20px;
+	text-align: center;
+  	border-radius: 15px;
+	color : white;
+	width : 200px;
+	border: none;
+ 	font-size : 20px;
+
+}
+.text_s{
+	display : flex;
+	justify-content:center;
+	flex-direction: row; 
+	width: 450px;
+	margin : 30px;
+	color : #253528;
+	text-align :left;
+	font-size : 18px;
+	padding : 0 10px 0 10px; 
+}
+
+.sub_co{
+	margin-left : 10px
+}
 
 
 </style>
@@ -136,7 +143,7 @@ $(function(){
 				</div>
 	  	 	</div>
 	  	 	<c:if test="${!empty map.cosComp1 && !empty map.cosComp2 }" >
-				<p><a href="#sub-modal" rel="modal:open" text-align="center" class="bnt" >비교하기</a></p>
+				<p id = "comp"><a href="#sub-modal" rel="modal:open" text-align="center" class="bnt" >비교하기</a></p>
 			</c:if>
 		</div>
 		
@@ -203,6 +210,6 @@ $(function(){
 					</div>
 				</div>
 			</div>	 	
-	 		<p> <a href="#ex1" rel="modal:open" class="bnt" >닫기</a></p>
+	 		<p id = "close"> <a href="#ex1" rel="modal:open" class="bnt" >닫기</a></p>
 		</div>
 		
