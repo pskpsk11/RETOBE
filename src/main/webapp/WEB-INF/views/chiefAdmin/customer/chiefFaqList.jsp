@@ -167,20 +167,20 @@
   <div id="search">
 				<div class="search-wrap">
 					<span class="dSelect" style="margin: 0 1rem 1rem;"></span>
-					<form method="get" name="searchForm" id="searchForm" action="userCustomer.do">    
+					<form method="get" name="searchForm" id="searchForm" action="faqList.do">    
 						<span class="srchSelect">
 							<select class="dSelect" name="searchType" title="검색분류 선택" style="margin: 0 0.25rem;">
 								<option value="all">전체</option>
-								<option value="n_title">
-									<c:if test="${NoticeVO.searchType == 'n_title'}">selected</c:if>제목
+								<option value="f_title">
+									<c:if test="${FaqVO.searchType == 'f_title'}">selected</c:if>제목
 								</option>
-								<option value="n_writedate">
-									<c:if test="${NoticeVO.searchType == 'n_writedate'}">selected</c:if>작성일
+								<option value="f_writedate">
+									<c:if test="${FaqVO.searchType == 'f_writedate'}">selected</c:if>작성일
 								</option>
 							</select>
 						</span>
 						<span class="searchWord">
-							<input class="dSelect" type="search" name="searchWord" value="${NoticeVO.searchWord }" placeholder="검색어를 입력하세요.">
+							<input class="dSelect" type="search" name="searchWord" value="${FaqVO.searchWord }" placeholder="검색어를 입력하세요.">
 							<button type="submit" class="dSelect" id="searchBtn">검색</button>
 						</span>
 					</form>
@@ -225,18 +225,18 @@
                 		<div class="pagenate clear">
                     		<ul class='paging'>
 			                    <c:if test="${map.prev }">
-			                    	<li><a href="index.do?page=${map.startPage-1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> << </a></li>
+			                    	<li><a href="faqList.do?page=${map.startPage-1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> << </a></li>
 			                    </c:if>
 			                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 			                    	<c:if test="${p == FaqVO.page}">
 			                        <li><a href='#;' class='current'>${p}</a></li>
 			                        </c:if>
 			                        <c:if test="${p != FaqVO.page}">
-			                        <li><a href='index.do?page=${p}&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}'>${p}</a></li>
+			                        <li><a href='faqList.do?page=${p}&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}'>${p}</a></li>
 			                        </c:if>
 			                    </c:forEach>
                     			<c:if test="${map.next }">
-                    				<li><a href="index.do?page=${map.endPage+1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> >> </a></li>
+                    				<li><a href="faqList.do?page=${map.endPage+1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> >> </a></li>
                     			</c:if>
                     		</ul> 
                 		</div>

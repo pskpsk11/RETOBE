@@ -186,7 +186,7 @@ public class GmanagerController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/gmanager/qnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/gmanager/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -201,7 +201,7 @@ public class GmanagerController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/gmanager/qnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/gmanager/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");

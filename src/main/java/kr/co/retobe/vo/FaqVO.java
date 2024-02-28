@@ -19,5 +19,8 @@ public class FaqVO {
 	}
 	public int getStartIdx() {
 		return (page-1) * 10;
+		
 	}
+	private String searchType;
+	private String searchWord;
 }

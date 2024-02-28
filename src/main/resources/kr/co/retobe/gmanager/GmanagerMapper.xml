@@ -142,8 +142,32 @@
 		<!--GROUP BY member.name;  -->
     </select>
     
+    <sql id="faqSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					q_title LIKE '%${searchWord}%' OR q_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
     <select id="getfaqlist" resultType="kr.co.retobe.vo.FaqVO">
 		select faq_no, f_title, f_content from faq
+	</select>
+	<select id="faqList" parameterType="kr.co.retobe.vo.FaqVO" resultType="kr.co.retobe.vo.FaqVO">
+		SELECT *
+		FROM faq
+		<include refid="faqSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="faqCount" parameterType="kr.co.retobe.vo.FaqVO" resultType="int">
+		SELECT COUNT(*)
+		FROM faq
+		<include refid="faqSql"/>
 	</select>
 	
 	
